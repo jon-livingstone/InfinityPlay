@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfinityPlay", "InfinityPlay\InfinityPlay.csproj", "{04E9EC95-A12A-4402-A691-318258C90B74}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{04E9EC95-A12A-4402-A691-318258C90B74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04E9EC95-A12A-4402-A691-318258C90B74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04E9EC95-A12A-4402-A691-318258C90B74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04E9EC95-A12A-4402-A691-318258C90B74}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FC8B0EE7-D492-4D30-BDFF-8670F094A548}
+	EndGlobalSection
+EndGlobal
