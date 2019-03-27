@@ -10,23 +10,25 @@ namespace InfinityPlay.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return this.View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = 
-                
+            ViewBag.Message =
                 "Your application description page.";
-            if (true) Console.Write("!");
-            return View();
+            if (true)
+            {
+                Console.Write("!");
+                return this.View();
+            }
         }
 
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
 
-            return View();
+            return this.View();
         }
     }
 }
