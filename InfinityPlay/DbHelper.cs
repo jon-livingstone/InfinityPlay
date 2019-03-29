@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -7,7 +8,7 @@ namespace InfinityPlay
 {
     public class DbHelper
     {
-        private static readonly string ConnectionString = "Server=(localdb)\\mssqllocaldb;Database=InfinityPlay;Trusted_Connection=True;MultipleActiveResultSets=true";
+        private static readonly string ConnectionString = ConfigurationManager.ConnectionStrings["InfinityPlay"].ConnectionString;
 
         public static List<DataRow> Query(string queryText)
         {

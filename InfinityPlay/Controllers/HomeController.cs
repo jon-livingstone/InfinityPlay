@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Web;
@@ -11,13 +12,6 @@ namespace InfinityPlay.Controllers
     {
         public ActionResult Index()
         {
-            var albums = DbHelper.Query("SELECT * FROM ALBUMS");
-
-            foreach (var album in albums)
-            {
-                Debug.WriteLine(album["BAND_NAME"]);
-            }
-
             return this.View();
         }
 
@@ -36,7 +30,22 @@ namespace InfinityPlay.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
-            return this.View();
+            return this.View("~/Shared/Error.cshtml");
+        }
+
+        public string Test()
+        {
+            string ret = string.Empty;
+            List<DataRow> tracks = DbHelper.Query("SELECT * FROM TRACKS");
+
+            foreach (DataRow track in tracks)
+            {
+                Debug.WriteLine(track["TRACK_NAME"]);
+            }
+
+            ret = "Hello World!";
+
+            return ret;
         }
     }
 }
