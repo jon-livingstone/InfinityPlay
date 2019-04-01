@@ -33,19 +33,40 @@ namespace InfinityPlay.Controllers
             return this.View("~/Shared/Error.cshtml");
         }
 
-        public string Test()
+        public ActionResult Test()
         {
-            string ret = string.Empty;
-            List<DataRow> tracks = DbHelper.Query("SELECT * FROM TRACKS");
+            string ret = "Hello...\r\n";
 
-            foreach (DataRow track in tracks)
+            List<DataRow> rows = DbHelper.Query("SELECT * FROM TRACKS");
+
+            // Tracks is a collection of datarows, each of which is a collection of fields (column values)
+
+            // Write how many rows there are into the console
+            Debug.WriteLine("Number of rows: " + rows.Count());
+
+            // Start on index 0
+            int i = 0;
+
+            // Do something with each row of all the rows...
+            foreach (DataRow row in rows)
             {
-                Debug.WriteLine(track["TRACK_NAME"]);
+                // Debug.WriteLine("Row at index: " + i);
+                // Write how many column values there are in this row:
+                // Debug.WriteLine("Number of items: " + row.ItemArray.Count());
+                foreach (var r in row.ItemArray)
+                {
+                    string printdata = " | " + r.ToString();
+                    Debug.Write(printdata);
+                    ret += printdata;
+                }
+
+                Debug.WriteLine(" ");
+
+                // Increment "i" by 1
+                i = i + 1;
             }
 
-            ret = "Hello World!";
-
-            return ret;
+            return Content(ret);
         }
     }
 }
