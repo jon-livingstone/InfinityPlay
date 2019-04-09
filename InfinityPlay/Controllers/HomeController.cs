@@ -15,15 +15,14 @@ namespace InfinityPlay.Controllers
             return this.View();
         }
 
-        public ActionResult About()
+        public ActionResult Artists()
         {
-            ViewBag.Message =
-                "Your application description page.";
-            if (true)
-            {
-                Console.Write("!");
                 return this.View();
-            }
+        }
+
+        public ActionResult Albums()
+        {
+                return this.View();
         }
 
         public ActionResult Contact()
@@ -33,40 +32,77 @@ namespace InfinityPlay.Controllers
             return this.View("~/Shared/Error.cshtml");
         }
 
-        public ActionResult Test()
+        /* ---------------------------------Get Album Rating----------------------------------
+        public ActionResult GetAlbumRating(int albumId)
         {
-            string ret = "Hello...\r\n";
+            List<DataRow> rows = DbHelper.Query($"SELECT STAR_RATINGS FROM RATINGS WHERE ALBUM_ID = {albumId}");
+
+            if (rows == null || rows.Count() == 0)
+            {
+                throw new Exception("No Ratings For This Item Yet");
+            }
+
+            List<int> ratings = new List<int>();
+
+            foreach (DataRow row in rows)
+            {
+                int rating = (int)row.ItemArray[0];
+                ratings.Add(rating);
+            }
+
+            double rAverage = ratings.Average();
+            return Content(rAverage.ToString());
+        }
+
+        // ---------------------------------Get Artist Data----------------------------------
+        // public Actionresult ArtistData(int artistid)
+        // {
+        //    List<DataRow> rows = DbHelper.Query($"select star_ratings from ratings where track_id = {artistid}");
+
+        //    if (rows == null || rows.Count() == 0)
+        //    {
+        //        throw new Exception("no ratings for this item yet");
+        //    }
+
+        //    List<int> ratings = new List<int>();
+
+        //    foreach (DataRow row in rows)
+        //    {
+        //        int rating = rows.Count();
+        //        ratings.Add(rating);
+        //    }
+
+        //    double rAverage = ratings.Average();
+        //    return Content(rAverage.ToString());
+        //}
+
+        // ---------------------------------Get Track Data----------------------------------
+        public ActionResult GetTrackData()
+        {
+            string trackinfo = string.Empty;
+
+            List<string> stringList = new List<string>();
 
             List<DataRow> rows = DbHelper.Query("SELECT * FROM TRACKS");
 
-            // Tracks is a collection of datarows, each of which is a collection of fields (column values)
-
-            // Write how many rows there are into the console
             Debug.WriteLine("Number of rows: " + rows.Count());
-
-            // Start on index 0
             int i = 0;
 
-            // Do something with each row of all the rows...
             foreach (DataRow row in rows)
             {
-                // Debug.WriteLine("Row at index: " + i);
-                // Write how many column values there are in this row:
-                // Debug.WriteLine("Number of items: " + row.ItemArray.Count());
-                foreach (var r in row.ItemArray)
+                foreach (var item in row.ItemArray)
                 {
-                    string printdata = " | " + r.ToString();
-                    Debug.Write(printdata);
-                    ret += printdata;
+                    string getinfo = item.ToString();
+                    Debug.WriteLine(getinfo);
+                    stringList.Add(getinfo);
                 }
 
-                Debug.WriteLine(" ");
-
-                // Increment "i" by 1
+                Debug.WriteLine(" | ");
                 i = i + 1;
             }
 
-            return Content(ret);
-        }
+            trackinfo = string.Join(" | ", stringList);
+            return Content(trackinfo);
+        }*/
     }
 }

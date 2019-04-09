@@ -2,39 +2,124 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <meta name="robots" content="noindex">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - InfinityPlay</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    
+    <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+
+
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("InfinityPlay", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+<body id="main">
+    <div id="root">
+        <div class="root-container">
+            <nav class="root-navbar">
+                <div class="navBar">
+
+                    <div class="root-navbar-header">
+                        <a class="navbar-brand" href="/Home/Index"><span class="logo">Infinity<span style="color:#fff;">Play</span></span></a>
+                        @*@Html.ActionLink("InfinityPlay", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+                    </div>
+                    <ul id="navBarGroupLinks">
+                        <li class="navBar-Group active">
+                            <div class="navBar-item navBar-item--left-icon">
+                                <a class="link-subtle navBar-link navBar-link--active" href="/Home/Index" aria-label="Home">
+                                    <span class="sr-only">(current)</span>
+                                    <div class="navBar-link-text-with-icon-wrapper">
+                                        <div class="icon home-icon NavBar__icon">
+                                            <i class="far fa-compass"></i>
+                                        </div>
+                                        <span class="navBar-link__text">Home</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="navBar-Group">
+                            <div class="navBar-item navBar-item--left-icon">
+                                <a aria-label="Home" class="link-subtle navBar-link" href="/Home/Artists">
+                                    <div class="navBar-link-text-with-icon-wrapper">
+                                        <div class="icon home-icon NavBar__icon">
+                                            <i class="fas fa-user-friends"></i>
+                                        </div>
+                                        <span class="navBar-link__text">Artists</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="navBar-Group">
+                            <div class="navBar-item navBar-item--left-icon">
+                                <a aria-label="Home" class="link-subtle navBar-link  " href="/Home/Albums">
+                                    <div class="navBar-link-text-with-icon-wrapper">
+                                        <div class="icon home-icon NavBar__icon">
+                                            <i class="fas fa-music"></i>
+                                        </div>
+                                        <span class="navBar-link__text">Albums</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="navBar-Group">
+                            <div class="navBar-item navBar-item--left-icon">
+                                <a aria-label="Search" class="link-subtle navBar-link" href="#">
+                                    <div class="navBar-link-text-with-icon-wrapper">
+                                        <div class="icon home-icon NavBar__icon">
+                                            <i class="fas fa-search"></i>
+                                        </div>
+                                        <span class="navBar-link__text">Search</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        @*<li class="navBar-Group"><div class="navBar-item navBar-item-left-icon">@Html.ActionLink("About", "About", "Home")</div></li>
+                            <li class="navBar-Group"><div class="navBar-item navBar-item-left-icon">@Html.ActionLink("Contact", "Contact", "Home")</div></li>*@
+                    </ul>
+                </div>
+            </nav>
+            <div class="root-main-view">
+                <div class="main-view-container body-content">
+                    <section class="content-spacing">
+                        @RenderBody()
+                    </section>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+            <div class="Root__now-playing-bar">
+                <footer class="now-playing-bar-container">
+                    <div class="now-playing-bar">
+                        <div class="now-playing-bar_left">
+                            <div class="now-playing">
+                                <span class="now-playing_widget-overlay" draggable="true">
+                                    <a aria-label="" href="" style="border:none;">
+                                        <div class="now-playing_cover-art">
+                                            <div class="now-playing_cover-art shadow" aria-hidden="true" style="width: 56px; height: 56px;"></div>
+                                        </div>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - InfinityPlay</p>
-        </footer>
-    </div>
+    <script>
+        //// Add active class to the current button (highlight it)
+        //var nav = document.getElementById("navBarGroupLinks");
+        //var navBarGroups = header.getElementsByClassName("navBar-Group");
+        //for (var i = 0; i < navBarGroups.length; i++) {
+        //    navBarGroups[i].addEventListener("click", function () {
+        //        var current = document.getElementsByClassName("navBar-link--active");
+        //        current[0].className = current[0].className.replace(" navBar-link--active", "");
+        //        this.className += " navBar-link--active";
+        //    });
+        //}
 
+        $(".nav .nav-link").on("click", function () {
+            $(".nav").find(".active").removeClass("active");
+            $(this).addClass("active");
+        });
+    </script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

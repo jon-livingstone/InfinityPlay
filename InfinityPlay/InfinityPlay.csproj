@@ -137,6 +137,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\TM-SWL008.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -164,6 +165,9 @@
     <Content Include="Scripts\esm\popper-utils.js.map" />
     <Content Include="InfinityPlay.ruleset" />
     <None Include="Properties\PublishProfiles\InfinityPlay-2019-03-29 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\InfinityPlay-2019-03-29 - Web Deploy1.pubxml" />
+    <None Include="Properties\PublishProfiles\InfinityPlay-2019-03-29 - Web Deploy2.pubxml" />
+    <None Include="Properties\PublishProfiles\InfinityPlay-2019-03-29 - Web Deploy3.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -179,6 +183,7 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\Site.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -206,9 +211,12 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Home\Artists.cshtml" />
+    <Content Include="Views\Home\Albums.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Icons\" />
     <Folder Include="Models\InfinityPlayDB\" />
   </ItemGroup>
   <ItemGroup>
