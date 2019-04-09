@@ -101,6 +101,7 @@ ul {
     height: calc(100vh - 90px);
 }
 
+
 .root-navbar-header {
     -webkit-box-orient: horizontal;
     -ms-flex-direction: row;
@@ -188,7 +189,7 @@ ul {
 }
 
 
-a.active::after {
+a.link-subtle.navBar-link.active::after {
     content: "";
     display: block;
     position: absolute;
@@ -330,3 +331,56 @@ a.active::after {
         height: 90px;
         padding: 0 16px;
     }
+    
+    /*----- Media Queries -----*/
+    @media (max-width: 575.98px) {
+    .root-navbar {
+        overflow: hidden;
+        background-color: #000e21;
+        position: fixed;
+        bottom: auto;
+        width: 100%;
+        height: auto;
+        z-index: inherit;
+        flex-direction: inherit;
+    }
+
+    .navBar-link__text {
+        display: none;
+    }
+
+    navbar {
+        padding-top: 24px;
+        padding-bottom: 5px;
+        -webkit-box-orient: vertical;
+        -ms-flex-direction: column;
+        flex-direction: column-reverse;
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        /* width: 230px; */
+        cursor: default;
+        display: flex;
+    }
+
+    .root-navbar-header {
+        -ms-flex-direction: row;
+        -ms-flex-pack: justify;
+        text-align: center;
+    }
+
+    #navBar-Group-Links {
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .root-main-view {
+        padding-left: inherit;
+        padding-bottom: inherit;
+    }
+}
