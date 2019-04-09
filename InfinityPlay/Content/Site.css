@@ -10,6 +10,16 @@ html, body {
     margin: 0;
 }
 
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+    a:focus, a:hover {
+        text-decoration: none;
+        border-bottom-color: currentcolor
+    }
+
 .container-fluid
 {
     margin-right: auto;
@@ -29,11 +39,6 @@ html, body {
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
     display: block;
-}
-    a {
-    color: #257fed;
-    text-decoration: none;
-    background-color: transparent;
 }
 
 .logo {
@@ -138,6 +143,10 @@ ul {
     cursor: default;
 }
 
+.navBar-Group{
+    text-decoration: none;
+}
+
 .navBar-item {
     font-size: 14px;
     line-height: 20px;
@@ -179,7 +188,7 @@ ul {
 }
 
 
-.navBar-link--active:after {
+a.active::after {
     content: "";
     display: block;
     position: absolute;
@@ -187,14 +196,8 @@ ul {
     bottom: 5px;
     width: 4px;
     background-color: #fff;
-}
-
-.navBar-link--active:after {
-    left: 0
-}
-
-.navBar-link--active:after {
-    right: 0
+    left: 0;
+    right: 0;
 }
 
     .navBar-header {
@@ -217,7 +220,7 @@ ul {
     }
 
     .navBar-item--left-icon .navbar-link__text {
-        margin-left: 16px
+        margin-left: 16px;
     }
 
     .home-active-icon, .navBar-item .home-icon, .navBar-item .search-active-icon, .navBar-item .search-icon {
@@ -225,26 +228,22 @@ ul {
         width: 24px;
     }
 
-
-.navBar-item .navBar-link--active .collection-active-icon, .navBar-item .navBar-link--active .home-active-icon, .navBar-item .navBar-link--active .search-active-icon {
-    display: block
+.navBar-item.collection-active-icon, .navBar-item.home-active-icon, .navBar-item.navBar-link--active.collection-icon,.navBar-item.navBar-link--active.home-icon, .navBar-item.navBar-link--active.search-icon, .navBar-item.search-active-icon {
+    display: none;
 }
 
-    .navBar-link--active, .navBar-link--active:focus, .navBar-link--active:hover {
-        color: #fff;
-    }
+.navBar-item.navBar-link--active.collection-active-icon, .navBar-item.navBar-link--active.home-active-icon, .navBar-item.navBar-link--active.search-active-icon {
+    display: block;
+}
+
+.active, .navBar-link--active, .navBar-link--active:focus, .navBar-link--active:hover {
+    color: #fff;
+}
 
     .NavBar__icon {
         flex-shrink: 0;
     }
 
-    .active, .active:active, .active:focus, .active:hover {
-        color: #fff;
-    }
-
-        .active:after {
-            left: 0;
-        }
 
     /****** Main-Content ******/
     #main {

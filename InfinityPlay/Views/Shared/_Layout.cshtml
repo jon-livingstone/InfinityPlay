@@ -23,9 +23,9 @@
                         @*@Html.ActionLink("InfinityPlay", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
                     </div>
                     <ul id="navBarGroupLinks">
-                        <li class="navBar-Group active">
+                        <li class="navBar-Group">
                             <div class="navBar-item navBar-item--left-icon">
-                                <a class="link-subtle navBar-link navBar-link--active" href="/Home/Index" aria-label="Home">
+                                <a class="link-subtle navBar-link navBar-link--active active" href="/Home/Index" aria-label="Home">
                                     <span class="sr-only">(current)</span>
                                     <div class="navBar-link-text-with-icon-wrapper">
                                         <div class="icon home-icon NavBar__icon">
@@ -50,7 +50,7 @@
                         </li>
                         <li class="navBar-Group">
                             <div class="navBar-item navBar-item--left-icon">
-                                <a aria-label="Home" class="link-subtle navBar-link  " href="/Home/Albums">
+                                <a aria-label="Home" class="link-subtle navBar-link" href="/Home/Albums">
                                     <div class="navBar-link-text-with-icon-wrapper">
                                         <div class="icon home-icon NavBar__icon">
                                             <i class="fas fa-music"></i>
@@ -104,21 +104,27 @@
         </div>
     </div>
     <script>
-        //// Add active class to the current button (highlight it)
-        //var nav = document.getElementById("navBarGroupLinks");
-        //var navBarGroups = header.getElementsByClassName("navBar-Group");
-        //for (var i = 0; i < navBarGroups.length; i++) {
-        //    navBarGroups[i].addEventListener("click", function () {
-        //        var current = document.getElementsByClassName("navBar-link--active");
-        //        current[0].className = current[0].className.replace(" navBar-link--active", "");
-        //        this.className += " navBar-link--active";
-        //    });
-        //}
+        // Get the container element
+        var navGroup = document.getElementById("navBarGroupLinks");
 
-        $(".nav .nav-link").on("click", function () {
-            $(".nav").find(".active").removeClass("active");
-            $(this).addClass("active");
-        });
+        // Get all buttons with class="navBar-Links" inside the container
+        var Links = navGroup.getElementsByClassName("navBar-link");
+
+        // Loop through the buttons and add the active class to the current/clicked button
+        for (var i = 0; i < Links.length; i++) {
+            Links[i].addEventListener("click", function () {
+                var current = document.getElementsByClassName("active");
+
+                // If there's no active class
+                if (current.length > 0) {
+                    current[0].className = current[0].className.replace(" active", "");
+                }
+
+                // Add the active class to the current/clicked button
+                this.className += " active";
+            });
+        }
+
     </script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
