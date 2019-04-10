@@ -1,0 +1,62 @@
+﻿<nav class="root-navbar">
+    <div class="navBar">
+
+        <div class="root-navbar-header">
+            <a class="navbar-brand" href="/home/index"><span class="logo">Infinity<span style="color:#fff;">Play</span></span></a>
+            @*@Html.ActionLink("InfinityPlay", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+        </div>
+        <ul id="navBar-Group-Links">
+            <li class="navBar-Group Home">
+                <div class="navBar-item navBar-item--left-icon">
+                    <a class="link-subtle navBar-link " href="/home/index" aria-label="Home">
+                        <span class="sr-only">(current)</span>
+                        <div class="navBar-link-text-with-icon-wrapper">
+                            <div class="icon home-icon NavBar__icon">
+                                <i class="far fa-compass"></i>
+                            </div>
+                            <span class="navBar-link__text">Home</span>
+                        </div>
+                    </a>
+                </div>
+            </li>
+            <li class="navBar-Group Artists">
+                <div class="navBar-item navBar-item--left-icon">
+                    <a class="link-subtle navBar-link Artists" href="/home/artists" aria-label="Artists">
+                        <div class="navBar-link-text-with-icon-wrapper">
+                            <div class="icon home-icon NavBar__icon">
+                                <i class="fas fa-user-friends"></i>
+                            </div>
+                            <span class="navBar-link__text">Artists</span>
+                        </div>
+                    </a>
+                </div>
+            </li>
+            <li class="navBar-Group Albums">
+                <div class="navBar-item navBar-item--left-icon">
+                    <a class="link-subtle navBar-link" href="/home/albums" aria-label="Albums">
+                        <div class="navBar-link-text-with-icon-wrapper">
+                            <div class="icon home-icon NavBar__icon">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <span class="navBar-link__text">Albums</span>
+                        </div>
+                    </a>
+                </div>
+            </li>
+            <li class="navBar-Group Search">
+                <div class="navBar-item navBar-item--left-icon">
+                    <a class="link-subtle navBar-link" href="#" aria-label="Search">
+                        <div class="navBar-link-text-with-icon-wrapper">
+                            <div class="icon home-icon NavBar__icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <span class="navBar-link__text">Search</span>
+                        </div>
+                    </a>
+                </div>
+            </li>
+            @*<li class="navBar-Group"><div class="navBar-item navBar-item-left-icon">@Html.ActionLink("About", "About", "Home")</div></li>
+                <li class="navBar-Group"><div class="navBar-item navBar-item-left-icon">@Html.ActionLink("Contact", "Contact", "Home")</div></li>*@
+        </ul>
+    </div>
+</nav>
