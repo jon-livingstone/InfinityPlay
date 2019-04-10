@@ -82,6 +82,11 @@ ul {
 
 
 /****** Nav-Menu ******/
+.navbar-brand {
+    /*margin-right: auto;*/
+    margin-bottom: 20px;
+}
+
 .root-navbar {
     left: 0;
     display: flex;
@@ -152,6 +157,10 @@ ul {
     font-size: 14px;
     line-height: 20px;
     letter-spacing: .015em;
+}
+
+.icon.home-icon.NavBar__icon.fas.fa-search {
+    visibility:hidden;
 }
 
 .navBar-item--left-icon, .navBar-item--with-icon-right {
@@ -334,16 +343,27 @@ a.link-subtle.navBar-link.active::after {
     
     /*----- Media Queries -----*/
     @media (max-width: 575.98px) {
-    .root-navbar {
-        overflow: hidden;
-        background-color: #000e21;
-        position: fixed;
-        bottom: auto;
-        width: 100%;
-        height: auto;
-        z-index: inherit;
-        flex-direction: inherit;
-    }
+
+        .navbar-brand {
+            margin-right: auto;
+            margin-bottom: 0;
+        }
+
+        .root-navbar {
+            overflow: hidden;
+            background-color: #000e21;
+            position: fixed;
+            bottom: auto;
+            width: 100%;
+            height: auto;
+            z-index: inherit;
+            flex-direction: inherit;
+            -moz-transition: width 1s ease-in-out, left 1.5s ease-in-out;
+            -webkit-transition: width 1s ease-in-out, left 1.5s ease-in-out;
+            -moz-transition: width 1s ease-in-out, left 1.5s ease-in-out;
+            -o-transition: width 1s ease-in-out, left 1.5s ease-in-out;
+            transition: width 1s ease-in-out, left 1.5s ease-in-out;
+        }
 
     .navBar-link__text {
         display: none;
@@ -373,14 +393,62 @@ a.link-subtle.navBar-link.active::after {
         text-align: center;
     }
 
+   .navBar-Group {
+            text-decoration: none;
+            margin-bottom: 15px;
+            margin-top: 15px;
+        }
+
     #navBar-Group-Links {
         display: flex;
         justify-content: center;
-        padding: 10px;
+        padding: 0px;
     }
 
-    .root-main-view {
-        padding-left: inherit;
-        padding-bottom: inherit;
-    }
+        .fas.fa-search {
+            visibility:visible;
+        }
+
+        .morphsearch-input, .morphsearch-submit {
+            visibility:hidden;
+        }
+
+        .root-main-view {
+            padding-left: inherit;
+            padding-bottom: inherit;
+            padding-top: 150px;
+        }
+
 }
+
+@media (max-width: 767.98px){
+    .navbar-brand {
+
+    }
+    .navBar-link__text {
+        margin-left: 16px;
+        display: none;
+    }
+    .navBar {
+        padding-top: 24px;
+        padding-bottom: 5px;
+        -webkit-box-orient: vertical;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        width: 140px;
+        cursor: default;
+    }
+    .navBar-Group {
+        text-decoration: none;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    }
