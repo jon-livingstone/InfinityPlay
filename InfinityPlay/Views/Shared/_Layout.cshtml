@@ -8,27 +8,43 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    <link href="~/Content/search.css" rel="stylesheet" />
     <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
 
 </head>
 <body id="root">
-        <div class="root-container">
-            @{
-                Html.RenderPartial("_Navigation");
-            }
-            <div class="root-main-view">
-                <div class="main-view-container body-content">
-                    <section class="content-spacing">
-                        @RenderBody()
-                    </section>
-                </div>
+    <div class="root-container">
+        @{
+            Html.RenderPartial("_Navigation");
+        }
+        <div class="root-main-view">
+            <div class="main-view-container body-content gradient-wrap">
+                <section class="content-spacing">
+                    @RenderBody()
+                </section>
             </div>
-            @{
-                Html.RenderPartial("_MediaPlayer_Footer");
-            }
         </div>
+        @{
+            Html.RenderPartial("_MediaPlayer_Footer");
+        }
+    </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="~/Scripts/Site.js"></script>
+    <script src="~/Scripts/classie.js"></script>
+    <script src="https://unpkg.com/grade-js/docs/dist/grade.js"></script>
+    <script src="path/to/grade.js"></script>
+
+    <script type="text/javascript">
+        window.addEventListener('load', function () {
+            /*
+                A NodeList of all your image containers (Or a single Node).
+                The library will locate an <img /> within each
+                container to create the gradient from.
+             */
+            Grade(document.querySelectorAll('.gradient-wrap'))
+        })
+    </script>
 </body>
 </html>

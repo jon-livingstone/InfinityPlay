@@ -1,44 +1,76 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
-
-<nav class="root-home"></nav>
-<div>
-    <section>
-        <div>
-            <h1>Discover</h1>
+﻿
+<div class="gradient-wrap">
+    <div class="jumbotron-fluid ">
+        <div class="container-fluid gradient-wrap">
+            <div class="banner-text">
+                <h1>Featured Artists</h1>
+                <h4>Tom Misch</h4>
+            </div>
+            <div class="banner-img">
+                <img src="~/Images/TM-HDR.jpg" class="img-fluid banner-img" height="300" />
+            </div>
         </div>
+    </div>
+
+    <div class="row">
         <div class="container-fluid">
             <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-2">
-                <div>
-                    <div draggable="true">
-                        <div class="media-object" style="max-width: 300px;">
-                            <div class="media-object-hoverable">
-                                <div class="react-contextmenu-wrapper">
-                                    <a class="cover-art shadow cover-art--with-auto-height linking actionable" aria-hidden="true" href="/playlist/37i9dQZEVXcXsmbcWvz7Bk" style="width: auto; height: auto;">
-                                        <div>
-                                            <div class="icon">
-                                                
-                                            </div>
-                                            <div class="cover-art-image cover-art-image-loaded"> </div>
-                                        </div>
-                                        <a class="cover-art-playback" dir="ltr"><img src="~/Content/Images/TM-SWL008.jpg" width="80" height="81"  /><title>PLAY</title></a>
-                                    </a>
-                                </div>
-                                <div class="mo-info">
-                                    <div class="react-contextmenu-wrapper">
-                                        <a class="mo-info-name" title="Discover Weekly" dir="auto" href="/playlist/37i9dQZEVXcXsmbcWvz7Bk">Discover Weekly</a>
-                                    </div>
-                                </div>
+                <div class="head-text">
+                    <h2>Discover</h2>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-2 discover">
+                <div class="media-object">
+                    <div class="react-contextmenu-wrapper">
+                        <a aria-hidden="true" href="#">
+                            <div>
+                                <img src="~/Images/OJ-SWL013.jpg" class="cover-art-image cover-art-image-loaded img-fluid" />
                             </div>
+                        </a>
+                    </div>
+                    <div class="mo-info">
+                        <div class="react-contextmenu-wrapper">
+                            <a class="mo-info-name" title="oriJanus" dir="auto" href="#">oriJanus</a>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-2 discover">
+                <div class="media-object">
+                    <div class="react-contextmenu-wrapper">
+                        <a aria-hidden="true" href="#">
+                            <div>
+                                <img src="~/Images/SXSC.jpg" class="cover-art-image cover-art-image-loaded img-fluid" />
+                            </div>
+                        </a>
+                    </div>
+                    <div class="mo-info">
+                        <div class="react-contextmenu-wrapper">
+                            <a class="mo-info-name" title="Stussy X Soulection" dir="auto" href="#">Stussy X Soulection</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-    </section>
-    <div class="jumbotron">
+            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-2 discover">
+                <div class="media-object">
+                    <div class="react-contextmenu-wrapper">
+                        <a aria-hidden="true" href="#">
+                            <div>
+                                <img src="~/Images/TM-SWL008.jpg" class="cover-art-image cover-art-image-loaded img-fluid" />
+                            </div>
+                        </a>
+                    </div>
+                    <div class="mo-info">
+                        <div class="react-contextmenu-wrapper">
+                            <a class="mo-info-name" title="Tom Misch" dir="auto" href="#">Tom Misch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div class="jumbotron">
         <h1>InfinityPlay</h1>
         <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
         <p>
@@ -72,5 +104,4 @@
                 <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a>
             </p>
         </div>
-    </div>
-</div>
+    </div>*@

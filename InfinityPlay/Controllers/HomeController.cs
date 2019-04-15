@@ -15,14 +15,24 @@ namespace InfinityPlay.Controllers
             return this.View();
         }
 
+        public PartialViewResult Home()
+        {
+            return PartialView("Home");
+        }
+
         public ActionResult Artists()
         {
-                return this.View();
+            return PartialView("Artists");
         }
 
         public ActionResult Albums()
         {
-                return this.View();
+            return PartialView("Albums");
+        }
+
+        public ActionResult Search()
+        {
+            return PartialView("Search");
         }
 
         public ActionResult Contact()

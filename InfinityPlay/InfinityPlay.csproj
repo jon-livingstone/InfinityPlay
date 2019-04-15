@@ -138,10 +138,14 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\TM-SWL008.jpg" />
-    <Content Include="Content\morphsearch.css" />
+    <Content Include="Content\search.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\SXSC.jpg" />
+    <Content Include="Images\OJ-SWL013.jpg" />
+    <Content Include="Images\TM-SWL008.jpg" />
+    <Content Include="Images\TM-HDR.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -213,10 +217,12 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Home\Artists.cshtml" />
-    <Content Include="Views\Home\Albums.cshtml" />
     <Content Include="Views\Shared\_Navigation.cshtml" />
     <Content Include="Views\Shared\_MediaPlayer_Footer.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
+    <Content Include="Views\Home\Artists.cshtml" />
+    <Content Include="Views\Home\Albums.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
