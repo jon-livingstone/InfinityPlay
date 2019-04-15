@@ -159,8 +159,7 @@ ul {
     letter-spacing: .015em;
 }
 
-.icon.home-icon.NavBar__icon.fas.fa-search {
-    visibility:hidden;
+.NavBar__icon.fas fa-search {
 }
 
 .navBar-item--left-icon, .navBar-item--with-icon-right {
@@ -179,7 +178,7 @@ ul {
 .navBar-link {
     border: 0;
     width: 100%;
-    padding: 0 24px;
+    padding: 40px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -252,14 +251,20 @@ a.link-subtle.navBar-link.active::after {
 
     .NavBar__icon {
         flex-shrink: 0;
+        font-size: 15px;
     }
 
+.fa-compass{
+    font-size: 20px;
+}
 
-    /****** Main-Content ******/
-    #main {
-        width: 100%;
-        padding: 0;
-    }
+
+
+/****** Main-Content ******/
+#main {
+    width: 100%;
+    padding: 0;
+}
 
     #root {
         min-height: 100vh;
@@ -382,7 +387,6 @@ a.link-subtle.navBar-link.active::after {
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
-        /* width: 230px; */
         cursor: default;
         display: flex;
     }
@@ -395,8 +399,6 @@ a.link-subtle.navBar-link.active::after {
 
    .navBar-Group {
             text-decoration: none;
-            margin-bottom: 15px;
-            margin-top: 15px;
         }
 
     #navBar-Group-Links {
@@ -404,13 +406,12 @@ a.link-subtle.navBar-link.active::after {
         justify-content: center;
         padding: 0px;
     }
+        .NavBar__icon {
+            font-size: 20px;
+            }
 
-        .fas.fa-search {
-            visibility:visible;
-        }
-
-        .morphsearch-input, .morphsearch-submit {
-            visibility:hidden;
+        .fa-compass {
+            font-size: 23px;
         }
 
         .root-main-view {
@@ -419,16 +420,20 @@ a.link-subtle.navBar-link.active::after {
             padding-top: 150px;
         }
 
+
 }
 
-@media (max-width: 767.98px){
+@media (min-width: 576px) and (max-width: 991.98px) {
     .navbar-brand {
-
+        margin-right: 0;
+        margin-bottom: 0;
     }
+
     .navBar-link__text {
         margin-left: 16px;
         display: none;
     }
+
     .navBar {
         padding-top: 24px;
         padding-bottom: 5px;
@@ -445,10 +450,22 @@ a.link-subtle.navBar-link.active::after {
         width: 140px;
         cursor: default;
     }
+
     .navBar-Group {
         text-decoration: none;
         margin-bottom: 20px;
         margin-top: 20px;
     }
 
+    .root-main-view {
+        padding-left: 140px;
     }
+
+    .navBar-link {
+        padding: 50px;
+    }
+
+    .NavBar__icon {
+        font-size: 24px;
+    }
+}

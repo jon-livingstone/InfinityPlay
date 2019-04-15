@@ -215,6 +215,8 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\Artists.cshtml" />
     <Content Include="Views\Home\Albums.cshtml" />
+    <Content Include="Views\Shared\_Navigation.cshtml" />
+    <Content Include="Views\Shared\_MediaPlayer_Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
