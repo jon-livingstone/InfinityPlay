@@ -1,10 +1,10 @@
 ﻿
 //-------------Navigating the app without hard reloading pages
 $(document).ready(function () {
-    var page;
     $('ul#navLinks li').click(function () {
-        page = $(this).attr('data-page-type');
-        $('.content-spacing').load(page);
+        const url = $(this).attr('data-page-type');
+        history.pushState(null, null, url);
+        $('.content-spacing').load("/partial/"+ url);
     });
 });
 //------------- END: Navigating the app without hard reloading pages
