@@ -10,21 +10,67 @@ namespace InfinityPlay.Controllers
 {
     public class HomeController : Controller
     {
+        // Index
+        [Route("Partial/Index")]
+        public ActionResult IndexPartial()
+        {
+            return PartialView("Index");
+        }
+
         public ActionResult Index()
         {
             return this.View();
         }
 
+        // Home
+        [Route("Partial/Home")]
+        public ActionResult HomePartial()
+        {
+            return PartialView("Home");
+        }
+
+        public ActionResult Home()
+        {
+            return this.View();
+        }
+
+        // Artists
+        [Route("Partial/Artists")]
+        public ActionResult ArtistsPartial()
+        {
+            return PartialView("Artists");
+        }
+
         public ActionResult Artists()
         {
-                return this.View();
+            return View();
+        }
+
+        // Albums
+        [Route("Partial/Albums")]
+        public ActionResult AlbumsPartial()
+        {
+            return PartialView("Albums");
         }
 
         public ActionResult Albums()
         {
-                return this.View();
+            return View();
         }
 
+        // Search
+        [Route("Partial/Search")]
+        public ActionResult SearchPartial()
+        {
+            return PartialView("Search");
+        }
+
+        public ActionResult Search()
+        {
+            return PartialView("Search");
+        }
+
+        // Contact
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
