@@ -10,12 +10,13 @@ namespace InfinityPlay
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/Site.js",
-                        "~/Scripts/classie.js",
-                        "~/Scripts/grade.js"));
+                        "~/Scripts/Site.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
+
+            bundles.Add(new ScriptBundle("~/bundles/grade").Include(
+                        "~/Scripts/grade.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
