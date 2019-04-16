@@ -10,15 +10,25 @@ html, body {
     margin: 0;
 }
 
+.mo-info {
+    font-size: 12px;
+    text-align: center;
+}
+
 a {
     color: #fff;
     text-decoration: none;
 }
 
-    a:focus, a:hover {
-        text-decoration: none;
-        border-bottom-color: currentcolor
-    }
+.article, .footer, .header, nav, section {
+    display: block;
+}
+
+
+a:focus, a:hover {
+    text-decoration: none;
+    border-bottom-color: currentcolor
+}
 
 .container-fluid {
     margin-right: auto;
@@ -77,9 +87,8 @@ ul {
     vertical-align: baseline;
 }
 
+
 /****** Header ******/
-
-
 /****** Nav-Menu ******/
 .navbar-brand {
     /*margin-right: auto;*/
@@ -342,15 +351,16 @@ a.link-subtle.navBar-link.active::after {
 }
 
 .gradient-wrap {
-    padding: 20px;
-    height: calc(100vh - 91px);
+    padding: 33px;
+    height: 100%;
 }
 
 .content-spacing {
-    margin: auto auto;
+    margin: 0 auto;
     max-width: 1480px;
     height: 100vh;
     position: absolute;
+    padding: 0 32px;
 }
 /*----- Home -----*/
 
@@ -368,13 +378,21 @@ a.link-subtle.navBar-link.active::after {
     float: right;
     object-fit: cover;
     min-height: 300px;
-    max-height: 330px;
 }
 
 .banner-text {
-    padding: 80px 0px 0px 0px;
     float: left;
     position: relative;
+}
+
+.heat-text {
+    margin: 24px 0;
+}
+
+.mo-info {
+    font-size: 12px;
+    position: relative;
+    padding-bottom: 2.5em;
 }
 
 .discover {
@@ -384,34 +402,19 @@ a.link-subtle.navBar-link.active::after {
     padding-right: 10px;
 }
 
-.react-contextmenu-wrapper {
-    display: inline;
-}
-
 .media-object {
     position: relative;
     padding-bottom: 2.5em;
     text-align: center;
 }
 
-.cover-art--with-auto-height {
-    padding-top: 100%;
-}
 
 .cover-art {
-    margin: 0;
-    display: block;
-    border: 0;
-    outline: 0;
     position: relative;
-    background-color: #282828;
+
+    text-align: center;
 }
 
-.row::after {
-    content: "";
-    clear: both;
-    display: table;
-}
 
 .bloc-logo {
     position: relative;
@@ -552,20 +555,56 @@ a.link-subtle.navBar-link.active::after {
     .root-main-view {
         padding-left: inherit;
         padding-bottom: inherit;
-        padding-top: 150px;
+        padding-top: 140px;
     }
 
     .banner-text {
         padding: 30px 0 20px 0px;
-        float: left;
+        text-align: center;
         position: relative;
+    }
+
+    .display-3 {
+        font-size: 2.5rem;
+    }
+
+    .head-text {
+        text-align: center;
     }
 }
 
 @media (min-width: 576px) and (max-width: 991.98px) {
+
+    .mo-info {
+        font-size: 12px;
+        position: relative;
+        padding-bottom: 2.5em;
+    }
+
     .navbar-brand {
         margin-right: 0;
         margin-bottom: 0;
+    }
+
+    .banner-text {
+        padding: 30px 0 20px 0px;
+        text-align: center;
+        position: relative;
+    }
+
+
+    .display-3 {
+        font-size: 2.5rem;
+    }
+
+    .banner-img {
+        float: none;
+    }
+
+    .gradient-wrap {
+        padding: 20px;
+        height: 100%;
+        position: relative;
     }
 
     .navBar-link__text {
