@@ -10,7 +10,9 @@ namespace InfinityPlay
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/Site.js"));
+                        "~/Scripts/Site.js",
+                        "~/Scripts/classie.js",
+                        "~/Scripts/grade.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
