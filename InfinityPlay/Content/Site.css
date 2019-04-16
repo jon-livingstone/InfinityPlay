@@ -544,9 +544,6 @@ a.link-subtle.navBar-link.active::after {
         font-size: 20px;
     }
 
-    .fa-compass {
-        font-size: 23px;
-    }
 
     .root-main-view {
         padding-left: inherit;
@@ -605,9 +602,5 @@ a.link-subtle.navBar-link.active::after {
 
     .NavBar__icon {
         font-size: 24px;
-    }
-
-    .fa-compass {
-        font-size: 28px;
     }
 }
