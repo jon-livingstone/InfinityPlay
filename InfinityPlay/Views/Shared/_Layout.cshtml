@@ -19,8 +19,10 @@
         }
         <div class="root-main-view">
             <div class="main-view-container body-content" id="grade">
-                <section class="content-spacing">
-                    @RenderBody()
+                <section>
+                    <div id="mainContent">
+                        @RenderBody()
+                    </div>
                 </section>
             </div>
         </div>
@@ -30,13 +32,11 @@
     </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/grade")
     @RenderSection("scripts", required: false)
-    <script src="~/Scripts/grade.js"></script>
-
 
     <script type="text/javascript">
         window.addEventListener('load', function () {
-
             Grade(document.querySelectorAll('.gradient-wrap'));
         });
     </script>

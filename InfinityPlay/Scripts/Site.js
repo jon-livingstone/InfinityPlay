@@ -4,7 +4,9 @@ $(document).ready(function () {
     $('ul#navLinks li').click(function () {
         const url = $(this).attr('data-page-type');
         history.pushState(null, null, url);
-        $('.content-spacing').load("/partial/"+ url);
+        $('#mainContent').load("/partial/" + url, "", function () {
+            Grade(document.querySelectorAll('.gradient-wrap'));
+        });
     });
 });
 //------------- END: Navigating the app without hard reloading pages

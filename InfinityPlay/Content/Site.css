@@ -49,11 +49,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     }
 
 
-/* Set padding to keep content from hitting the edges */
+/* Set padding to keep content from hitting the edges
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-}
+} */
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
@@ -341,11 +341,15 @@ a.link-subtle.navBar-link.active::after {
     min-height: 100% !important;
 }
 
+.gradient-wrap {
+    padding: 20px;
+    height: calc(100vh - 91px);
+}
+
 .content-spacing {
-    padding: 15px 32px;
-    margin: 0 auto;
+    margin: auto auto;
     max-width: 1480px;
-    height: 100%;
+    height: 100vh;
     position: absolute;
 }
 /*----- Home -----*/
