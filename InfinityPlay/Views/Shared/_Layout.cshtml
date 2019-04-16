@@ -18,7 +18,7 @@
             Html.RenderPartial("_Navigation");
         }
         <div class="root-main-view">
-            <div class="main-view-container body-content gradient-wrap">
+            <div class="main-view-container body-content" id="grade">
                 <section class="content-spacing">
                     @RenderBody()
                 </section>
@@ -31,20 +31,14 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    <script src="~/Scripts/Site.js"></script>
-    <script src="~/Scripts/classie.js"></script>
-    <script src="https://unpkg.com/grade-js/docs/dist/grade.js"></script>
-    <script src="path/to/grade.js"></script>
+    <script src="~/Scripts/grade.js"></script>
+
 
     <script type="text/javascript">
         window.addEventListener('load', function () {
-            /*
-                A NodeList of all your image containers (Or a single Node).
-                The library will locate an <img /> within each
-                container to create the gradient from.
-             */
-            Grade(document.querySelectorAll('.gradient-wrap'))
-        })
+
+            Grade(document.querySelectorAll('.gradient-wrap'));
+        });
     </script>
 </body>
 </html>

@@ -175,6 +175,8 @@
     <None Include="Properties\PublishProfiles\InfinityPlay-2019-03-29 - Web Deploy2.pubxml" />
     <None Include="Properties\PublishProfiles\InfinityPlay-2019-03-29 - Web Deploy3.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\grade.index.js" />
+    <Content Include="Scripts\grade.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
