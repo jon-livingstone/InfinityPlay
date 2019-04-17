@@ -15,7 +15,7 @@ $(document).ready(function () {
 //----------------------- Search function
 (function () {
     var Search = document.getElementById('Search'),
-        input = Search.querySelector('.Search-input'),
+        input = Search.querySelector('input.Search-input'),
         ctrlClose = Search.querySelector('span.Search-close'),
         isOpen = isAnimating = false,
         // show/hide search area
@@ -62,22 +62,17 @@ $(document).ready(function () {
 
     /***** for demo purposes only: don't allow to submit the form *****/
     Search.querySelector('button[type="submit"]').addEventListener('click', function (ev) { ev.preventDefault(); });
+})();
 
+function inputfocus () {
+    var x = document.getElementById("input.Search-input").autofocus;
+}
 
-    function inputfocus() {
-        var x = document.getElementById("input.Search-input").autofocus;
-    };
-});
-    //----------------------- END: Search function
+//----------------------- END: Search function
 
 
 //--------------------- Gradient Average -------------
 window.addEventListener('load', function () {
-    /*
-        A NodeList of all your image containers (Or a single Node).
-        The library will locate an <img /> within each
-        container to create the gradient from.
-     */
-    Grade(document.querySelectorAll('.gradient-wrap'))
-})
+    Grade(document.querySelectorAll('.gradient-wrap'));
+});
 //---------------------- END: Gradient Average-----------
