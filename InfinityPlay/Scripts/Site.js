@@ -4,7 +4,9 @@ $(document).ready(function () {
     $('ul#navLinks li').click(function () {
         const url = $(this).attr('data-page-type');
         history.pushState(null, null, url);
-        $('.content-spacing').load("/partial/"+ url);
+        $('#mainContent').load("/partial/" + url, "", function () {
+            Grade(document.querySelectorAll('.gradient-wrap'));
+        });
     });
 });
 //------------- END: Navigating the app without hard reloading pages
@@ -69,13 +71,13 @@ $(document).ready(function () {
     //----------------------- END: Search function
 
 
-    //--------------------- Gradient Average -------------
-    window.addEventListener('load', function () {
-        /*
-            A NodeList of all your image containers (Or a single Node).
-            The library will locate an <img /> within each
-            container to create the gradient from.
-         */
-        Grade(document.querySelectorAll('.gradient-wrap'));
-    });
-    //---------------------- END: Gradient Average-----------
+//--------------------- Gradient Average -------------
+window.addEventListener('load', function () {
+    /*
+        A NodeList of all your image containers (Or a single Node).
+        The library will locate an <img /> within each
+        container to create the gradient from.
+     */
+    Grade(document.querySelectorAll('.gradient-wrap'))
+})
+//---------------------- END: Gradient Average-----------
