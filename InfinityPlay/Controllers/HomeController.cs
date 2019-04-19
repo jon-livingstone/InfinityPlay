@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using InfinityPlay.Models;
 
 namespace InfinityPlay.Controllers
 {
     public class HomeController : Controller
     {
-        // Index
+        // ----- Index
         [Route("Partial/Index")]
         public ActionResult IndexPartial()
         {
@@ -22,7 +24,7 @@ namespace InfinityPlay.Controllers
             return this.View();
         }
 
-        // Home
+        // ----- Home
         [Route("Partial/Home")]
         public ActionResult HomePartial()
         {
@@ -34,31 +36,35 @@ namespace InfinityPlay.Controllers
             return this.View();
         }
 
-        // Artists
+        // ----- Artists
+        public ActionResult Artists()
+        {
+            var list = AllArtistList();
+            return PartialView("Artists", list);
+        }
+
         [Route("Partial/Artists")]
         public ActionResult ArtistsPartial()
         {
-            return PartialView("Artists");
+            var list = AllArtistList();
+            return PartialView("Artists", list);
         }
 
-        public ActionResult Artists()
-        {
-            return View();
-        }
-
-        // Albums
+        // ----- Albums
         [Route("Partial/Albums")]
         public ActionResult AlbumsPartial()
         {
-            return PartialView("Albums");
+            var list = AllAlbumList();
+            return PartialView("Albums", list);
         }
 
         public ActionResult Albums()
         {
-            return View();
+            var list = AllAlbumList();
+            return View("Albums", list);
         }
 
-        // Search
+        // ----- Search
         [Route("Partial/Search")]
         public ActionResult SearchPartial()
         {
@@ -70,13 +76,114 @@ namespace InfinityPlay.Controllers
             return PartialView("Search");
         }
 
-        // Contact
-        public ActionResult Contact()
+        // ---------- PRIVATE METHODS ------------//
+        // Artists
+        private List<HomeModels.ARTISTS> AllArtistList()
         {
-            ViewBag.Message = "Your contact page.";
+            List<HomeModels.ARTISTS> list = new List<HomeModels.ARTISTS>();
+            try
+            {
+                using (SqlConnection con = new SqlConnection())
+                {
+                    string sql = "SELECT * FROM ARTISTS";
+                    con.ConnectionString = @"Server=LIVINGSTONEDT\SQLEXPRESS;Database=InfinityPlay;Trusted_Connection=True;MultipleActiveResultSets=true";
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    da.SelectCommand = new SqlCommand(sql, con);
+                    da.Fill(dt);
 
-            return this.View("~/Shared/Error.cshtml");
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        var artistList = new Models.HomeModels.ARTISTS();
+                        artistList.ARTIST_NAME = (string)row["ARTIST_NAME"];
+                        artistList.ARTIST_ID = (int)row["ARTIST_ID"];
+                        artistList.ALBUM_ID = (int)row["ALBUM_ID"];
+
+                        list.Add(artistList);
+                    }
+                }
+
+                return list;
+            }
+            catch (Exception)
+            {
+                return list;
+            }
         }
+
+        // Albums
+        private List<HomeModels.ALBUMS> AllAlbumList()
+        {
+            List<HomeModels.ALBUMS> list = new List<HomeModels.ALBUMS>();
+            try
+            {
+                using (SqlConnection con = new SqlConnection())
+                {
+                    string sql = "SELECT * FROM ALBUMS";
+                    con.ConnectionString = @"Server=LIVINGSTONEDT\SQLEXPRESS;Database=InfinityPlay;Trusted_Connection=True;MultipleActiveResultSets=true";
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    da.SelectCommand = new SqlCommand(sql, con);
+                    da.Fill(dt);
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        var albumList = new Models.HomeModels.ALBUMS();
+                        albumList.ALBUM_ID = (int)row["ALBUM_ID"];
+                        albumList.ALBUM_NAME = (string)row["ALBUM_NAME"];
+                        albumList.ALBUM_ART = (string)row["ALBUM_ART"];
+                        albumList.BAND_NAME = (string)row["BAND_NAME"];
+                        albumList.RELEASE_YEAR = (int)row["RELEASE_YEAR"];
+                        albumList.RECORD_LABEL = (string)row["RECORD_LABEL"];
+
+                        list.Add(albumList);
+                    }
+                }
+
+                return list;
+            }
+            catch (Exception)
+            {
+                return list;
+            }
+        }
+
+        private List<HomeModels.ALBUMS> AllALBUList()
+        {
+            List<HomeModels.ALBUMS> list = new List<HomeModels.ALBUMS>();
+            try
+            {
+                using (SqlConnection con = new SqlConnection())
+                {
+                    string sql = "SELECT * FROM ALBUM";
+                    con.ConnectionString = @"Server=LIVINGSTONEDT\SQLEXPRESS;Database=InfinityPlay;Trusted_Connection=True;MultipleActiveResultSets=true";
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    da.SelectCommand = new SqlCommand(sql, con);
+                    da.Fill(dt);
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        var albumList = new Models.HomeModels.ALBUMS();
+                        albumList.ALBUM_ID = (int)row["ALBUM_ID"];
+                        albumList.ALBUM_NAME = (string)row["ALBUM_NAME"];
+                        albumList.ALBUM_ART = (string)row["ALBUM_ART"];
+                        albumList.BAND_NAME = (string)row["BAND_NAME"];
+                        albumList.RELEASE_YEAR = (int)row["RELEASE_YEAR"];
+                        albumList.RECORD_LABEL = (string)row["RECORD_LABEL"];
+
+                        list.Add(albumList);
+                    }
+                }
+
+                return list;
+            }
+            catch (Exception)
+            {
+                return list;
+            }
+        }
+
 
         /* ---------------------------------Get Album Rating----------------------------------
         public ActionResult GetAlbumRating(int albumId)
@@ -101,9 +208,9 @@ namespace InfinityPlay.Controllers
         }
 
         // ---------------------------------Get Artist Data----------------------------------
-        // public Actionresult ArtistData(int artistid)
+        // public Actionresult ArtistData(int ArtistID)
         // {
-        //    List<DataRow> rows = DbHelper.Query($"select star_ratings from ratings where track_id = {artistid}");
+        //    List<DataRow> rows = DbHelper.Query($"select star_ratings from ratings where track_id = {ArtistID}");
 
         //    if (rows == null || rows.Count() == 0)
         //    {
