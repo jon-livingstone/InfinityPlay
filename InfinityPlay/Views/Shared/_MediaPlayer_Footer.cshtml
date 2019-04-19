@@ -1,7 +1,75 @@
 ﻿<div class="Root__now-playing-bar">
     <footer class="now-playing-bar-container">
         <div class="now-playing-bar">
-            <h3>Now Playing Placeholder</h3>
+            <div class="now-playing-bar__left">
+                <div class="now-playing">
+                    <span class="now-playing__widget-overlay" draggable="true">
+                        <a aria-label="" style="border: none;">
+                            <div class="now-playing__cover-art">
+                                <div class="cover-art shadow" aria-hidden="true" style="width: 56px; height: 56px;">
+                                    <div>
+                                        <div class="cover-art-image cover-art-image-loaded" style="background-image: url()"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </span>
+                    <div class="track-info ellipsis-one-line">
+                        <div class="track-info__name ellipsis-one-line" dir="auto">
+                            <div class="react-contextmenu-wrapper">
+                                <span draggable="true"><a href="#"></a></span>
+                            </div>
+                        </div>
+                        <div class="track-info__artists" dir="auto">
+                            <span><span class="react-contextmenu-wrapper"><span draggable="true"><a href="#"></a></span></span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="now-playing-bar__center">
+                <div class="player-controls" dir="ltr">
+                    <div class="player-controls__buttons">
+                        <button class="control-button" title="Enable shuffle"> <i class="fas fa-random"></i></button>
+                        <button class="control-button control-button--disabled" title="Previous"><i class="fas fa-step-backward"></i></button>
+                        <button class="control-button control-button--circled" title="Play"><i class="far fa-play-circle"></i></button>
+                        <button class="control-button spoticon-skip-forward-16" title="Next"><i class="fas fa-step-forward"></i></button>
+                        <button class="control-button spoticon-repeat-16" title="Enable repeat"<i class="fas fa-redo-alt"></i></button>
+                    </div>
+                    <div class="playback-bar">
+                        <div class="playback-bar__progress-time">0:00</div>
+                        <div class="progress-bar">
+                            <div class="middle-align progress-bar__bg">
+                                <div class="progress-bar__fg_wrapper">
+                                    <div class="progress-bar__fg" style="transform: translateX(-100%);"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="playback-bar__progress-time">3:20</div>
+                    </div>
+                </div>
+            </div>
+            <div class="now-playing-bar__right">
+                <div class="now-playing-bar__right__inner">
+                    <div class="ExtraControls">
+                        <div class="GlueDropTarget">
+                            <button class="control-button spoticon-queue-16" title="Queue"></button>
+                        </div>
+                        <div class="ExtraControls__connect-device-picker">
+                            <span class="connect-device-picker"><button class="spoticon-devices-16 control-button" aria-label="Connect to a device"></button></span>
+                        </div>
+                        <div class="volume-bar" dir="ltr">
+                            <button class="control-button volume-bar__icon" aria-label="Mute"><i class="fas fa-volume-up"></i></button>
+                            <div class="progress-bar">
+                                <div class="middle-align progress-bar__bg">
+                                    <div class="progress-bar__fg_wrapper">
+                                        <div class="progress-bar__fg" style="transform: translateX(-32.1243%);"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 </div>
