@@ -12,6 +12,8 @@ namespace InfinityPlay.Controllers
 {
     public class HomeController : Controller
     {
+        //private static Random rnd = new Random();
+
         // ----- Index
         [Route("Partial/Index")]
         public ActionResult IndexPartial()
@@ -40,7 +42,7 @@ namespace InfinityPlay.Controllers
         public ActionResult Artists()
         {
             var list = AllArtistList();
-            return PartialView("Artists", list);
+            return View("Artists", list);
         }
 
         [Route("Partial/Artists")]
@@ -111,6 +113,25 @@ namespace InfinityPlay.Controllers
             }
         }
 
+        //private HomeModels.ALBUMS GetRandomAlbum()
+        //{
+        //    HomeModels.ALBUMS album = new HomeModels.ALBUMS();
+
+        //    List<HomeModels.ALBUMS> allAlbums = AllAlbumList();
+
+        //    int r = rnd.Next(allAlbums.Count);
+
+        //    album = allAlbums[r];
+        //    return album;
+        //}
+
+        //public string test()
+        //{
+        //    var album = GetRandomAlbum();
+
+        //    return album.ALBUM_NAME;
+        //}
+
         // Albums
         private List<HomeModels.ALBUMS> AllAlbumList()
         {
@@ -135,6 +156,8 @@ namespace InfinityPlay.Controllers
                         albumList.BAND_NAME = (string)row["BAND_NAME"];
                         albumList.RELEASE_YEAR = (int)row["RELEASE_YEAR"];
                         albumList.RECORD_LABEL = (string)row["RECORD_LABEL"];
+
+
 
                         list.Add(albumList);
                     }

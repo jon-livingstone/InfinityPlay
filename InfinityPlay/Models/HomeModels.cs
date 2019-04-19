@@ -17,9 +17,9 @@ namespace InfinityPlay.Models
 
             public int ALBUM_ID { get; set; }
 
-            // public virtual COMMENTS COMMENTS { get; set; }
+            public virtual COMMENTS COMMENTS { get; set; }
 
-            // public virtual TRACKS TRACKS { get; set; }
+            public virtual TRACKS TRACKS { get; set; }
         }
 
         public class ALBUMS
@@ -37,13 +37,13 @@ namespace InfinityPlay.Models
 
             public string RECORD_LABEL { get; set; }
 
-            //public virtual ARTISTS ARTISTS { get; set; }
+            public virtual ARTISTS ARTISTS { get; set; }
 
-            //public virtual TRACKS TRACKS { get; set; }
+            public virtual TRACKS TRACKS { get; set; }
 
-            //public virtual RATINGS RATINGS { get; set; }
+            public virtual RATINGS RATINGS { get; set; }
 
-            //public virtual COMMENTS COMMENTS { get; set; }
+            public virtual COMMENTS COMMENTS { get; set; }
         }
 
         public class TRACKS
