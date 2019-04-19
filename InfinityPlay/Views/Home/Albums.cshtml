@@ -1,4 +1,6 @@
-﻿<div class="gradientBG vh-100">
+﻿@model IEnumerable<InfinityPlay.Models.HomeModels.ALBUMS>
+
+<div class="gradientBG vh-100">
     <div class="container">
         <div class="head-text d-block p-3">
             <div class="mb-2 mt-4">
@@ -6,39 +8,21 @@
             </div>
         </div>
         <div class="grid-row">
-            <div class="col-xs-6 col-sm-5 col-md-4 col-lg-3 col-xl-2 d-inline-block flex-row">
-                <div class="text-center media-object" style="max-width: 300px;">
-                    <a aria-hidden="true" href="#">
-                        <img src="~/Images/OJ-SWL013.jpg" class="img-fluid img-thumbnail cover-art" />
-                    </a>
-                    <div class="mo-info">
-                        <a class="mo-info-album" title="Soulection White Label" dir="auto" href="#">Soulection White Label</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-5 col-md-4 col-lg-3 col-xl-2 d-inline-block flex-row">
-                <div class="text-center media-object" style="max-width: 300px;">
-                    <a aria-hidden="true" href="#">
-                        <img src="~/Images/SXSC.jpg" class="img-fluid img-thumbnail cover-art" />
-                    </a>
-                    <div class="mo-info">
-                        <a class="mo-info-album" title="Stussy X Soulection Compilation" dir="auto" href="#">Stussy x Soulection Compilation</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-5 col-md-4 col-lg-3 col-xl-2 d-inline-block flex-row">
-                <div>
+            @foreach (var item in Model)
+            {
+
+                <div class="col-xs-6 col-sm-5 col-md-4 col-lg-3 col-xl-2 d-inline-block flex-row">
                     <div class="text-center media-object" style="max-width: 300px;">
-                        <a class="" aria-hidden="true" href="#">
+                        <a aria-hidden="true" href="#">
                             <img src="~/Images/TM-SWL008.jpg" class="img-fluid img-thumbnail cover-art" />
                         </a>
                         <div class="mo-info">
-                            <a class="mo-info-album " title="Tom Misch" dir="auto" href="#">Soulection White Lable</a>
+                            <a class="mo-info-artist" dir="auto" href="#"> @item.ALBUM_NAME</a>
                         </div>
                     </div>
                 </div>
-            </div>
+
+            }
         </div>
     </div>
 </div>
-
