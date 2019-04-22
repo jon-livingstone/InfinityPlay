@@ -64,9 +64,6 @@ $(document).ready(function () {
     Search.querySelector('button[type="submit"]').addEventListener('click', function (ev) { ev.preventDefault(); });
 })();
 
-function inputfocus () {
-    var x = document.getElementById("input.Search-input").autofocus;
-}
 
 //----------------------- END: Search function
 
@@ -75,4 +72,18 @@ function inputfocus () {
 window.addEventListener('load', function () {
     Grade(document.querySelectorAll('.gradient-wrap'));
 });
-//---------------------- END: Gradient Average-----------
+//---------------------- END: Gradient Average -----------
+
+
+//---------------------- Toggle Responsive Now Playing Bar -----------
+//$(document).ready(function () {
+//    $("button.slide").click(function () {
+//        $("div.Root__now-playing-bar.slider").slideUp();
+//        debugger
+//    });
+//    $("button.slide").click(function () {
+//        $("div.Root__now-playing-bar.slider").slideDown();
+//    });
+//});
+
+//---------------------- END:Toggle Responsive Now Playing Bar -----------

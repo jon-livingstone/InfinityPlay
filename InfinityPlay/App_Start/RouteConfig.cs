@@ -19,7 +19,6 @@ namespace InfinityPlay
                 name: "Default",
                 url: "{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional });
-
         }
     }
 }
