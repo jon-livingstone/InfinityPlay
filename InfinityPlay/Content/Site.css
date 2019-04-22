@@ -52,7 +52,7 @@ html, body {
     color: #fff;
     opacity: .6;
     text-transform: none;
-    cursor:default;
+    cursor: default;
 }
 
 a {
@@ -120,6 +120,7 @@ ul {
     border: 0;
     vertical-align: baseline;
 }
+
 .gradient-text {
     animation: flow 30s ease-in-out infinite;
     background: linear-gradient(-60deg, #257fed, #5f2c82, #fff, #0052D4);
@@ -165,7 +166,7 @@ ul {
     flex-direction: column;
     position: fixed;
     top: 0;
-    z-index: 4;
+    z-index: 1;
     background-color: #000e21;
     overflow-y: auto;
     min-height: 0 !important;
@@ -325,6 +326,11 @@ a.link-subtle.navBar-link.active::after {
 .fa-compass {
     font-size: 20px;
 }
+
+.fa-play-circle {
+    font-size: 32px;
+}
+
 
 /*----- Search Function ------*/
 .overlay {
@@ -497,55 +503,56 @@ a.link-subtle.navBar-link.active::after {
     position: relative;
 }
 
-    .cover-art, .cover-art-image-loaded {
-        opacity: 1;
+.cover-art, .cover-art-image-loaded {
+    opacity: 1;
+}
+
+    .cover-art.shadow {
+        -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
+        box-shadow: 0 0 10px rgba(0,0,0,.3);
     }
 
-        .cover-art.shadow {
-            -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
-            box-shadow: 0 0 10px rgba(0,0,0,.3);
-        }
-        .cover-art.actionable {
-            -webkit-transition: none 33ms cubic-bezier(.3,0,.7,1);
-            transition: none 33ms cubic-bezier(.3,0,.7,1);
-            -webkit-transition-property: -webkit-transform;
-            transition-property: -webkit-transform;
-            transition-property: transform;
-            transition-property: transform,-webkit-transform;
-        }
+    .cover-art.actionable {
+        -webkit-transition: none 33ms cubic-bezier(.3,0,.7,1);
+        transition: none 33ms cubic-bezier(.3,0,.7,1);
+        -webkit-transition-property: -webkit-transform;
+        transition-property: -webkit-transform;
+        transition-property: transform;
+        transition-property: transform,-webkit-transform;
+    }
 
-        .cover-art .cover-art-playback {
-            -webkit-transition: none 33ms cubic-bezier(.3,0,.7,1);
-            transition: none 33ms cubic-bezier(.3,0,.7,1);
-            -webkit-transition-property: all;
-            transition-property: all;
-            background-color: rgba(0,0,0,0);
-            display: none;
-            position: absolute;
-            z-index: 3;
-            width: 62px;
-            height: 62px;
-            margin-left: -31px;
-            margin-top: -31px;
-            top: 50%;
-            left: 50%;
-            color: #fff;
-            border: 0;
-            border-radius: 500px;
-            -webkit-box-sizing: content-box;
-            box-sizing: content-box;
-            outline: none;
-            -webkit-box-shadow: inset 0 0 0 1px #b3b3b3;
-            box-shadow: inset 0 0 0 1px #b3b3b3;
-        }
+    .cover-art .cover-art-playback {
+        -webkit-transition: none 33ms cubic-bezier(.3,0,.7,1);
+        transition: none 33ms cubic-bezier(.3,0,.7,1);
+        -webkit-transition-property: all;
+        transition-property: all;
+        background-color: rgba(0,0,0,0);
+        display: none;
+        position: absolute;
+        z-index: 3;
+        width: 62px;
+        height: 62px;
+        margin-left: -31px;
+        margin-top: -31px;
+        top: 50%;
+        left: 50%;
+        color: #fff;
+        border: 0;
+        border-radius: 500px;
+        -webkit-box-sizing: content-box;
+        box-sizing: content-box;
+        outline: none;
+        -webkit-box-shadow: inset 0 0 0 1px #b3b3b3;
+        box-shadow: inset 0 0 0 1px #b3b3b3;
+    }
 
-        .cover-art .icon {
-            position: absolute;
-            top: 35%;
-            bottom: 35%;
-            left: 35%;
-            right: 35%;
-        }
+    .cover-art .icon {
+        position: absolute;
+        top: 35%;
+        bottom: 35%;
+        left: 35%;
+        right: 35%;
+    }
 
 
 .bloc-logo {
@@ -586,18 +593,26 @@ a.link-subtle.navBar-link.active::after {
 
 
 /****** Footer ******/
+
+#slider {
+    border-top: 1px solid black;
+    min-height: 100vh;
+}
+
+
 .Root__now-playing-bar {
     background-color: #fff;
     position: fixed;
     width: 100%;
     bottom: 0;
     z-index: 1;
+    color: #257fed;
 }
 
 .now-playing-bar-container {
     min-width: 620px;
     background-color: #fff;
-    border-top: 1px solid #257fed;
+    border-top: 3px solid #257fed;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -750,7 +765,7 @@ a.link-subtle.navBar-link.active::after {
 .control-button {
     background-color: rgba(0,0,0,0);
     border: none;
-    color: #b3b3b3;
+    color: #257fed;
     width: 32px;
     min-width: 32px;
     height: 32px;
@@ -768,6 +783,17 @@ a.link-subtle.navBar-link.active::after {
     transition-property: all;
 }
 
+    .control-button--circled:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border-radius: 500px;
+        border: 1px solid hsla(0,0%,100%,.6)
+    }
+
 body, button, input {
     font-size: 14px;
     line-height: 20px;
@@ -775,6 +801,13 @@ body, button, input {
     font-weight: var(--glue-font-weight-normal);
     color: #b3b3b3;
     text-transform: none;
+}
+
+.middle-align {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 .playback-bar {
@@ -802,31 +835,91 @@ body, button, input {
     text-align: center;
 }
 
-.progress-bar {
+
+.progress_bar{
     height: 12px;
     position: relative;
-    width: 100%;
+    width: 100%
 }
 
-.middle-align {
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
+.progress_bar__bg {
+    background-color: #e5e5e5;
+    border-radius: 2px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 4px;
+    width: 100%
 }
 
-.progress-bar__fg_wrapper {
+.progress_bar__fg_wrapper {
     overflow: hidden;
     width: 100%;
     height: 4px;
-    border-radius: 2px;
+    border-radius: 2px
 }
 
-.progress-bar__fg, .progress-bar__slider {
+.progress_bar__fg {
+    -webkit-transition-property: background-color;
+    transition-property: background-color;
+    -webkit-transition-timing-function: cubic-bezier(1,0,.7,1);
+    transition-timing-function: cubic-bezier(1,0,.7,1);
+    background-color: #257fed;
+    border-radius: 2px;
+    height: 4px;
+    width: 100%;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+    will-change: transform,background-color
+}
+
+.progress_bar__fg, .progress_bar__slider {
+    -webkit-transition-duration: .1s;
+    transition-duration: .1s
+}
+
+.progress_bar__slider {
+    -webkit-transition-property: -webkit-transform;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+    transition-property: transform,-webkit-transform;
+    -webkit-transition-timing-function: cubic-bezier(1,0,.7,1);
+    transition-timing-function: cubic-bezier(1,0,.7,1);
+    background-color: #fff;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    margin-left: -6px;
+    margin-top: -6px;
+    z-index: 100;
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.5);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.5);
+    -webkit-transform: scale(0);
+    transform: scale(0)
+}
+
+.progress_bar--is-active .progress_bar__fg {
+    -webkit-transition-property: background-color;
+    transition-property: background-color;
     -webkit-transition-duration: .1s;
     transition-duration: .1s;
+    -webkit-transition-timing-function: cubic-bezier(.3,0,0,1);
+    transition-timing-function: cubic-bezier(.3,0,0,1);
+    background-color: #1db954
 }
 
+.progress_bar--is-active .progress_bar__slider {
+    -webkit-transition-property: -webkit-transform;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+    transition-property: transform,-webkit-transform;
+    -webkit-transition-duration: .1s;
+    transition-duration: .1s;
+    -webkit-transition-timing-function: cubic-bezier(.3,0,0,1);
+    transition-timing-function: cubic-bezier(.3,0,0,1);
+    -webkit-transform: scale(1);
+    transform: scale(1)
+}
 .now-playing-bar__right {
     width: 30%;
     min-width: 180px;
