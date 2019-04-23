@@ -417,6 +417,7 @@ a.link-subtle.navBar-link.active::after {
 
 .gradientBG {
     background-image: linear-gradient(135deg, rgb(37, 127, 237) 0%, rgb(0, 14, 33) 75%);
+    height: 100vh;
 }
 
 
@@ -426,7 +427,7 @@ a.link-subtle.navBar-link.active::after {
 
 .content-spacing {
     width: calc(100%);
-    height: auto;
+    height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
     will-change: transform;
@@ -435,7 +436,6 @@ a.link-subtle.navBar-link.active::after {
     transition: opacity .25s;
     margin: 0 auto;
 }
-
 
 .head-text {
     position: relative;
@@ -836,7 +836,7 @@ body, button, input {
 }
 
 
-.progress_bar{
+.progress_bar {
     height: 12px;
     position: relative;
     width: 100%
@@ -920,6 +920,7 @@ body, button, input {
     -webkit-transform: scale(1);
     transform: scale(1)
 }
+
 .now-playing-bar__right {
     width: 30%;
     min-width: 180px;
