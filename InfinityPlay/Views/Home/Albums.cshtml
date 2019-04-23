@@ -13,17 +13,11 @@
 
                 <div class="col-xs-6 col-sm-5 col-md-4 col-lg-3 col-xl-2 d-inline-block flex-row">
                     <div class="text-center media-object" style="max-width: 300px;">
-                        @*<a aria-hidden="true" href="#">
-                            <img src="~/Images/TM-SWL008.jpg" class="img-fluid img-thumbnail cover-art" />
-                        </a>*@
+                        <a aria-hidden="true" href="#">
+                            <img src="@item.ALBUM_ART" class="img-fluid img-thumbnail cover-art cover-art-image cover-art-image-loaded" />
+                        </a>
                         <div class="mo-info">
                             <a class="mo-info-album cover-art shadow cover-art--with-auto-height linking actionable" dir="auto" href="#">
-                                <div>
-                                    <div class="icon"></div>
-                                    <div >
-                                        <img class="img-fluid img-thumbnail cover-art cover-art-image cover-art-image-loaded" src="@item.ALBUM_ART" />
-                                    </div>
-                                </div>
                                 <button class="cover-art-playback"><i class="fas fa-play"></i></button>
                                 <div>@item.ALBUM_NAME</div>
                             </a>
