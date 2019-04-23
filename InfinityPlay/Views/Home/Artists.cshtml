@@ -10,19 +10,18 @@
         <div class="grid-row">
             @foreach (var item in Model)
             {
- 
-                <div class="col-xs-6 col-sm-5 col-md-4 col-lg-3 col-xl-2 d-inline-block flex-row">
+                 <div class="col-xs-6 col-sm-5 col-md-4 col-lg-3 col-xl-2 d-inline-block flex-row">
                     <div class="text-center media-object" style="max-width: 300px;">
                         <a aria-hidden="true" href="#">
-                            <img src="~/Images/TM-SWL008.jpg" class="img-fluid img-thumbnail cover-art" />
+                            <img src="@item.ARTIST_IMG" class="img-fluid img-thumbnail cover-art" />
                         </a>
                         <div class="mo-info">
                             <a class="mo-info-artist" dir="auto" href="#"> @item.ARTIST_NAME</a>
                         </div>
                     </div>
                 </div>
-
             }
+
         </div>
     </div>
 </div>
