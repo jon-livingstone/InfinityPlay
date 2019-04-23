@@ -420,7 +420,6 @@ a.link-subtle.navBar-link.active::after {
     height: 100vh;
 }
 
-
 .gradient-wrap {
     height: 100%;
 }
@@ -1131,5 +1130,10 @@ body, button, input {
 @media (min-width: 1200px) {
     .display-3 {
         font-size: 4rem;
+    }
+}
+@media screen and (min-width: 1900px) {
+    .gradientBG {
+        height:100vh;
     }
 }

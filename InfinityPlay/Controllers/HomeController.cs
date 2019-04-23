@@ -100,6 +100,7 @@ namespace InfinityPlay.Controllers
                         artistList.ARTIST_NAME = (string)row["ARTIST_NAME"];
                         artistList.ARTIST_ID = (int)row["ARTIST_ID"];
                         artistList.ALBUM_ID = (int)row["ALBUM_ID"];
+                        artistList.ARTIST_IMG = (string)row["ARTIST_IMG"];
 
                         list.Add(artistList);
                     }

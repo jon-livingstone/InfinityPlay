@@ -17,6 +17,8 @@ namespace InfinityPlay.Models
 
             public int ALBUM_ID { get; set; }
 
+            public string ARTIST_IMG { get; set; }
+
             public virtual COMMENTS COMMENTS { get; set; }
 
             public virtual TRACKS TRACKS { get; set; }
