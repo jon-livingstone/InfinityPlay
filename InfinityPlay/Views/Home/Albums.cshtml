@@ -3,28 +3,32 @@
 <div class="gradientBG vh-100">
     <div class="container">
         <div class="head-text d-block p-3">
-            <div class="mb-2 mt-4">
+            <div class="mb-2 mt-4 title">
                 <h2>Albums</h2>
             </div>
         </div>
         <div class="grid-row">
             @foreach (var item in Model)
             {
-
                 <div class="col-xs-6 col-sm-5 col-md-4 col-lg-3 col-xl-2 d-inline-block flex-row">
                     <div class="text-center media-object" style="max-width: 300px;">
-                        <a aria-hidden="true" href="#">
-                            <img src="@item.ALBUM_ART" class="img-fluid img-thumbnail cover-art cover-art-image cover-art-image-loaded" />
+                        <a class="cover-art" aria-hidden="true" href="#">
+                            <div class="overlay_image">
+                                <img src="@item.ALBUM_ART" class="img-fluid img-thumbnail" />
+                            </div>
+                                <div class="play-icon">
+                                    <i class="far fa-play-circle"></i>
+                                </div>
+                            
+                                <div class="mo-info">
+                                    <div class="mo-info-album" dir="auto" href="#">
+                                        <div>@item.ALBUM_NAME</div>
+                                    </div>
+                                </div>
+                            <div>
+                                <div class="mo-info-artist" dir="auto">@item.BAND_NAME</div>
+                            </div>
                         </a>
-                        <div class="mo-info">
-                            <a class="mo-info-album cover-art shadow cover-art--with-auto-height linking actionable" dir="auto" href="#">
-                                <button class="cover-art-playback"><i class="fas fa-play"></i></button>
-                                <div>@item.ALBUM_NAME</div>
-                            </a>
-                        </div>
-                        <div>
-                            <div class="mo-info-artist" dir="auto">@item.BAND_NAME</div>
-                        </div>
                     </div>
                 </div>
 
