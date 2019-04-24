@@ -331,10 +331,6 @@ a.link-subtle.navBar-link.active::after {
     font-size: 20px;
 }
 
-.fa-play-circle {
-    font-size: 32px;
-}
-
 
 /*----- Search Function ------*/
 /*.overlay {
@@ -785,32 +781,10 @@ a.link-subtle.navBar-link.active::after {
     color: #404040;
 }
 
-.control-button--circled {
-    -webkit-transition: none 33ms cubic-bezier(.3,0,.7,1);
-    transition: none 33ms cubic-bezier(.3,0,.7,1);
-    -webkit-transition-property: all;
-    transition-property: all;
+.play-button {
+    font-size: 32px;
 }
 
-    .control-button--circled:after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        border-radius: 500px;
-        border: 1px solid hsla(0,0%,100%,.6)
-    }
-
-body, button, input {
-    font-size: 14px;
-    line-height: 20px;
-    letter-spacing: .015em;
-    font-weight: var(--glue-font-weight-normal);
-    color: #b3b3b3;
-    text-transform: none;
-}
 
 .middle-align {
     position: absolute;
@@ -974,6 +948,10 @@ body, button, input {
 /*----- Media Queries -----*/
 @media (max-width: 575.98px) {
 
+    .gradientBG {
+        height: auto;
+    }
+
     .navbar-brand {
         margin-right: auto;
         margin-bottom: 0;
@@ -1039,7 +1017,7 @@ body, button, input {
 
     .root-main-view {
         padding-left: inherit;
-        padding-bottom: inherit;
+        padding-bottom: 90px;
         padding-top: 140px;
     }
 
