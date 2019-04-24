@@ -492,6 +492,11 @@ a.link-subtle.navBar-link.active::after {
     padding-right: 10px;
 }
 
+.media-object {
+    position: relative;
+    padding-bottom: 2.5em;
+}
+
 .image {
     display: block;
     width: 100%;
