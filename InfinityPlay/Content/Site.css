@@ -7,7 +7,7 @@
 
 abbr, acronym, address, applet, article, aside, audio,
 b, big, blockquote, body, canvas, caption, center, cite, code, dd, del,
-details, dfn, /*div*/, dl, dt, em, embed, fieldset, figcaption, figure, footer,
+details, dfn, /*div,*/ dl, dt, em, embed, fieldset, figcaption, figure, footer,
 form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd,
 label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby,
 s, samp, section, small, span, strike, strong, sub, summary, sup,
@@ -505,16 +505,30 @@ a.link-subtle.navBar-link.active::after {
 .media-object {
     position: relative;
     padding-bottom: 2.5em;
+}
+
+.image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.play-icon {
+    color: white;
+    font-size: 75px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
     text-align: center;
 }
 
+    .play-icon:hover {
+        color: white;
+    }
 
-.play-icon{
-    color:white;
-    opacity:1;
-}
-
-.cover-art {
+.media-object-hoverable {
     margin: 0;
     display: block;
     border: 0;
@@ -522,27 +536,42 @@ a.link-subtle.navBar-link.active::after {
     position: relative;
 }
 
-    .cover-art .play-icon {
-        position: absolute;
-        top: 35%;
-        bottom: 35%;
-        left: 35%;
-        right: 35%;
-        display: none;
+    .media-object-hoverable:hover .overlay_image {
+        opacity: .6;
     }
 
-    .cover-art:hover .play-icon {
-        display: block;
-        color: white;
-        opacity: 1;
+.overlay_image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .3s ease;
+    background-color: #000e21;
+}
 
-    }
+.media-object .media-object-hoverable.playing .icon, .media-object .media-object-hoverable:focus .icon, .media-object .media-object-hoverable:hover .icon {
+    display: none
+}
 
-.cover-art:hover .overlay_image{
-    background-color: #000;
-    opacity: 0.4;
-    z-index: 100;
-    display: block;
+.media-object .media-object-hoverable.playing .cover-art-image, .media-object .media-object-hoverable.playing .daily-mix-decoration, .media-object .media-object-hoverable:focus .cover-art-image, .media-object .media-object-hoverable:focus .daily-mix-decoration, .media-object .media-object-hoverable:hover .cover-art-image, .media-object .media-object-hoverable:hover .daily-mix-decoration {
+    -webkit-transition-property: -webkit-filter;
+    transition-property: -webkit-filter;
+    transition-property: filter;
+    transition-property: filter,-webkit-filter;
+    -webkit-transition-duration: .2s;
+    transition-duration: .2s;
+    -webkit-transition-timing-function: cubic-bezier(.3,0,0,1);
+    transition-timing-function: cubic-bezier(.3,0,0,1);
+    -webkit-filter: brightness(.3);
+    filter: brightness(.3)
+}
+
+.media-object .media-object-hoverable.playing .cover-art-playback, .media-object .media-object-hoverable:focus .cover-art-playback, .media-object .media-object-hoverable:hover .cover-art-playback {
+    display: block
 }
 
 .bloc-logo {
