@@ -421,6 +421,7 @@ a.link-subtle.navBar-link.active::after {
 
 .gradientBG {
     background-image: linear-gradient(135deg, rgb(37, 127, 237) 0%, rgb(0, 14, 33) 75%);
+    height: 100vh;
 }
 
 .gradient-wrap {
@@ -491,14 +492,28 @@ a.link-subtle.navBar-link.active::after {
     padding-right: 10px;
 }
 
-.media-object {
-    position: relative;
-    padding-bottom: 2.5em;
+.image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.play-icon {
+    color: white;
+    font-size: 75px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
     text-align: center;
 }
 
+    .play-icon:hover {
+        color: white;
+    }
 
-.cover-art {
+.media-object-hoverable {
     margin: 0;
     display: block;
     border: 0;
@@ -506,28 +521,43 @@ a.link-subtle.navBar-link.active::after {
     position: relative;
 }
 
-
-    .cover-art .play-icon {
-        position: absolute;
-        top: 35%;
-        bottom: 35%;
-        left: 35%;
-        right: 35%;
-        display:none;
+    .media-object-hoverable:hover .overlay_image {
+        opacity: .6;
     }
 
-    .cover-art:hover .play-icon {
-        display: block;
-        color: white;
-        opacity: 1;
-    }
+.overlay_image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .3s ease;
+    background-color: #000e21;
+}
 
-    .cover-art:hover .overlay_image {
-        background-color: #000;
-        opacity: 0.4;
-        z-index: 100;
-        display: block;
-    }
+.media-object .media-object-hoverable.playing .icon, .media-object .media-object-hoverable:focus .icon, .media-object .media-object-hoverable:hover .icon {
+    display: none
+}
+
+.media-object .media-object-hoverable.playing .cover-art-image, .media-object .media-object-hoverable.playing .daily-mix-decoration, .media-object .media-object-hoverable:focus .cover-art-image, .media-object .media-object-hoverable:focus .daily-mix-decoration, .media-object .media-object-hoverable:hover .cover-art-image, .media-object .media-object-hoverable:hover .daily-mix-decoration {
+    -webkit-transition-property: -webkit-filter;
+    transition-property: -webkit-filter;
+    transition-property: filter;
+    transition-property: filter,-webkit-filter;
+    -webkit-transition-duration: .2s;
+    transition-duration: .2s;
+    -webkit-transition-timing-function: cubic-bezier(.3,0,0,1);
+    transition-timing-function: cubic-bezier(.3,0,0,1);
+    -webkit-filter: brightness(.3);
+    filter: brightness(.3)
+}
+
+.media-object .media-object-hoverable.playing .cover-art-playback, .media-object .media-object-hoverable:focus .cover-art-playback, .media-object .media-object-hoverable:hover .cover-art-playback {
+    display: block
+}
 
 .bloc-logo {
     position: relative;
@@ -579,7 +609,7 @@ a.link-subtle.navBar-link.active::after {
     position: fixed;
     width: 100%;
     bottom: 0;
-    z-index: 1;
+    z-index: 1030 !important;
     color: #257fed;
 }
 
@@ -810,7 +840,7 @@ body, button, input {
 }
 
 
-.progress_bar{
+.progress_bar {
     height: 12px;
     position: relative;
     width: 100%
@@ -894,6 +924,7 @@ body, button, input {
     -webkit-transform: scale(1);
     transform: scale(1)
 }
+
 .now-playing-bar__right {
     width: 30%;
     min-width: 180px;
@@ -1109,6 +1140,6 @@ body, button, input {
 
 @media screen and (min-width: 1900px) {
     .gradientBG {
-        height:100vh;
+        height: 100vh;
     }
 }

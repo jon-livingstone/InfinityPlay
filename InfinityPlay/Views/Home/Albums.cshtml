@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<InfinityPlay.Models.HomeModels.ALBUMS>
 
-<div class="gradientBG vh-100">
+<div class="gradientBG">
     <div class="container">
         <div class="head-text d-block p-3">
             <div class="mb-2 mt-4 title">
@@ -11,27 +11,29 @@
             @foreach (var item in Model)
             {
                 <div class="col-xs-6 col-sm-5 col-md-4 col-lg-3 col-xl-2 d-inline-block flex-row">
-                    <div class="text-center media-object" style="max-width: 300px;">
-                        <a class="cover-art" aria-hidden="true" href="#">
-                            <div class="overlay_image">
-                                <img src="@item.ALBUM_ART" class="img-fluid img-thumbnail" />
+                    <div class="media-object" style="max-width: 300px;">
+                        <div class="media-object-hoverable">
+                            <div class="media-object-wrapper">
+                                <img src="@item.ALBUM_ART" class="img-fluid img-thumbnail image" />
+                                <div class="overlay_image">
+                                    <a class="cover-art play-icon" aria-hidden="true" href="#">
+                                        <div class="">
+                                            <i class="far fa-play-circle"></i>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
-                                <div class="play-icon">
-                                    <i class="far fa-play-circle"></i>
-                                </div>
-                            
-                                <div class="mo-info">
-                                    <div class="mo-info-album" dir="auto" href="#">
-                                        <div>@item.ALBUM_NAME</div>
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="mo-info">
+                            <div class="mo-info-album" dir="auto" href="#">
+                                <div>@item.ALBUM_NAME</div>
+                            </div>
                             <div>
                                 <div class="mo-info-artist" dir="auto">@item.BAND_NAME</div>
                             </div>
-                        </a>
+                        </div>
                     </div>
                 </div>
-
             }
         </div>
     </div>
