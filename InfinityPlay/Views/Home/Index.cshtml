@@ -1,13 +1,15 @@
-﻿<div class=" content-spacing gradient-wrap h-auto w-100">
+﻿@model InfinityPlay.Models.HomePageModel
+
+<div class="content-spacing gradient-wrap h-auto w-100">
     <div class="container">
         <div class="jumbotron-fluid pt-3">
             <div class="row gradient-wrap">
                 <div class="col-md-6 banner-text">
                     <h1 class="d-block display-3 d-block float-lg-right">Featured Artist</h1>
-                    <h2 class="d-block mt-2 d-block float-lg-right">Tom Misch</h2>
+                    <h2 class="d-block mt-2 d-block float-lg-right">@Model.Artist.ARTIST_NAME</h2>
                 </div>
                 <div class="col-md-6 banner-img">
-                    <img src="~/Images/TM-HDR.jpg" class="img-fluid banner-img img-thumbnail" height="300" />
+                    <img src="@Model.Artist.ARTIST_IMG" class="img-fluid banner-img img-thumbnail" height="300" />
                 </div>
             </div>
         </div>
