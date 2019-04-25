@@ -12,7 +12,7 @@ namespace InfinityPlay.Controllers
 {
     public class HomeController : Controller
     {
-        //private static Random rnd = new Random();
+        // private static Random rnd = new Random();
 
         // ----- Index
         [Route("Partial/Index")]
@@ -114,24 +114,24 @@ namespace InfinityPlay.Controllers
             }
         }
 
-        //private HomeModels.ALBUMS GetRandomAlbum()
-        //{
+        // private HomeModels.ALBUMS GetRandomAlbum()
+        // {
         //    HomeModels.ALBUMS album = new HomeModels.ALBUMS();
 
-        //    List<HomeModels.ALBUMS> allAlbums = AllAlbumList();
+        // List<HomeModels.ALBUMS> allAlbums = AllAlbumList();
 
-        //    int r = rnd.Next(allAlbums.Count);
+        // int r = rnd.Next(allAlbums.Count);
 
-        //    album = allAlbums[r];
+        // album = allAlbums[r];
         //    return album;
-        //}
+        // }
 
-        //public string test()
-        //{
+        // public string test()
+        // {
         //    var album = GetRandomAlbum();
 
-        //    return album.ALBUM_NAME;
-        //}
+        // return album.ALBUM_NAME;
+        // }
 
         // Albums
         private List<HomeModels.ALBUMS> AllAlbumList()
@@ -157,9 +157,6 @@ namespace InfinityPlay.Controllers
                         albumList.BAND_NAME = (string)row["BAND_NAME"];
                         albumList.RELEASE_YEAR = (int)row["RELEASE_YEAR"];
                         albumList.RECORD_LABEL = (string)row["RECORD_LABEL"];
-
-
-
                         list.Add(albumList);
                     }
                 }
@@ -207,7 +204,6 @@ namespace InfinityPlay.Controllers
                 return list;
             }
         }
-
 
         /* ---------------------------------Get Album Rating----------------------------------
         public ActionResult GetAlbumRating(int albumId)

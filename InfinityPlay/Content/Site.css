@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-a, abbr, acronym, address, applet, article, aside, audio,
+abbr, acronym, address, applet, article, aside, audio,
 b, big, blockquote, body, canvas, caption, center, cite, code, dd, del,
 details, dfn, /*div*/, dl, dt, em, embed, fieldset, figcaption, figure, footer,
 form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd,
@@ -18,6 +18,7 @@ table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
     vertical-align: baseline;
 }
 
+
 html, body {
     height: 100%;
 }
@@ -26,8 +27,9 @@ html, body {
     border-bottom-width: 0;
 }
 
-.title {
-    color: white;
+
+.title{
+    color:white;
 }
 
 .mo-info {
@@ -58,6 +60,14 @@ html, body {
     cursor: default;
 }
 
+.mo-info-artistlist {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: .015em;
+    font-weight: 500;
+    color: #fff;
+    text-transform: none;
+}
 
 a {
     color: #fff;
@@ -344,9 +354,9 @@ a.link-subtle.navBar-link.active::after {
     background-color: rgba(0,0,0, 0.9);
     overflow-x: hidden;
     transition: 0.5s;
-}
+}*/
 
-.overlay-content {
+/*.overlay-content {
     position: relative;
     top: 25%;
     width: 100%;
@@ -426,7 +436,7 @@ a.link-subtle.navBar-link.active::after {
 
 .content-spacing {
     width: calc(100%);
-    height: auto;
+    height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
     will-change: transform;
@@ -435,7 +445,6 @@ a.link-subtle.navBar-link.active::after {
     transition: opacity .25s;
     margin: 0 auto;
 }
-
 
 .head-text {
     position: relative;
@@ -711,26 +720,8 @@ a.link-subtle.navBar-link.active::after {
     position: relative;
 }
 
-.cover-art.shadow {
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
-    box-shadow: 0 0 10px rgba(0,0,0,.3);
-}
 
-.cover-art .cover-art-image {
-    -webkit-transition-property: opacity;
-    transition-property: opacity;
-    -webkit-transition-duration: .3s;
-    transition-duration: .3s;
-    -webkit-transition-timing-function: cubic-bezier(.3,0,.4,1);
-    transition-timing-function: cubic-bezier(.3,0,.4,1);
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover !important;
-    background-position: 50%;
-    opacity: 0;
-}
+
 
 .now-playing-bar__center {
     width: 40%;
