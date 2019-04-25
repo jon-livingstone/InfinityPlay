@@ -6,94 +6,99 @@ using System.Web;
 
 namespace InfinityPlay.Models
 {
-    public class HomeModels
+    public class HomePageModel
     {
-        public class ARTISTS
-        {
-            [Key]
-            public int ARTIST_ID { get; set; }
+        public ARTIST Artist { get; set; }
 
-            public string ARTIST_NAME { get; set; }
-
-            public int ALBUM_ID { get; set; }
-
-            public string ARTIST_IMG { get; set; }
-
-            public virtual COMMENTS COMMENTS { get; set; }
-
-            public virtual TRACKS TRACKS { get; set; }
-        }
-
-        public class ALBUMS
-        {
-            [Key]
-            public int ALBUM_ID { get; set; }
-
-            public string ALBUM_NAME { get; set; }
-
-            public string BAND_NAME { get; set; }
-
-            public string ALBUM_ART { get; set; }
-
-            public int RELEASE_YEAR { get; set; }
-
-            public string RECORD_LABEL { get; set; }
-
-            public virtual ARTISTS ARTISTS { get; set; }
-
-            public virtual TRACKS TRACKS { get; set; }
-
-            public virtual RATINGS RATINGS { get; set; }
-
-            public virtual COMMENTS COMMENTS { get; set; }
-        }
-
-        public class TRACKS
-        {
-            [Key]
-            public int TRACK_ID { get; set; }
-
-            public char TRACK_NAME { get; set; }
-
-            public int TRACK_NUMBER { get; set; }
-
-            public int DURATION { get; set; }
-
-            public virtual COMMENTS COMMENTS { get; set; }
-
-            public virtual ICollection<ALBUMS> ALBUMs { get; set; }
-
-            public virtual ICollection<ARTISTS> ARTISTs { get; set; }
-        }
-
-        public class COMMENTS
-        {
-            [Key]
-            public int COMMENT_ID { get; set; }
-
-            public char USERNAME { get; set; }
-
-            public char EMAIL { get; set; }
-
-            public char COMMENT { get; set; }
-
-            public DateTime CREATED_AT { get; set; }
-
-            public virtual ICollection<ALBUMS> ALBUMs { get; set; }
-
-            public virtual ICollection<TRACKS> TRACKs { get; set; }
-
-            public virtual ICollection<ARTISTS> ARTISTs { get; set; }
-        }
-
-        public class RATINGS
-        {
-            [Key]
-            public int RATINGS_ID { get; set; }
-
-            public int STAR_RATINGS { get; set; }
-
-            public virtual ICollection<ALBUMS> ALBUMs { get; set; }
-        }
+        public List<ALBUM> Albums { get; set; }
     }
+
+    public class ARTIST
+    {
+        [Key]
+        public int ARTIST_ID { get; set; }
+
+        public string ARTIST_NAME { get; set; }
+
+        public int ALBUM_ID { get; set; }
+
+        public string ARTIST_IMG { get; set; }
+
+    //    public virtual COMMENTS COMMENTS { get; set; }
+
+    //    public virtual TRACKS TRACKS { get; set; }
+    }
+
+    public class ALBUM
+    {
+        [Key]
+        public int ALBUM_ID { get; set; }
+
+        public string ALBUM_NAME { get; set; }
+
+        public string BAND_NAME { get; set; }
+
+        public string ALBUM_ART { get; set; }
+
+        public int RELEASE_YEAR { get; set; }
+
+        public string RECORD_LABEL { get; set; }
+
+        //public virtual ARTISTS ARTISTS { get; set; }
+
+        //public virtual TRACKS TRACKS { get; set; }
+
+        //public virtual RATINGS RATINGS { get; set; }
+
+        //public virtual COMMENTS COMMENTS { get; set; }
+    }
+
+    public class TRACK
+    {
+        [Key]
+        public int TRACK_ID { get; set; }
+
+        public char TRACK_NAME { get; set; }
+
+        public int TRACK_NUMBER { get; set; }
+
+        public int DURATION { get; set; }
+
+    //    public virtual COMMENTS COMMENTS { get; set; }
+
+    //    public virtual ICollection<ALBUMS> ALBUMs { get; set; }
+
+    //    public virtual ICollection<ARTISTS> ARTISTs { get; set; }
+    }
+
+    public class COMMENT
+    {
+        [Key]
+        public int COMMENT_ID { get; set; }
+
+        public char USERNAME { get; set; }
+
+        public char EMAIL { get; set; }
+
+        public string COMMENT_TEXT { get; set; }
+
+        public DateTime CREATED_AT { get; set; }
+
+    //    public virtual ICollection<ALBUMS> ALBUMs { get; set; }
+
+    //    public virtual ICollection<TRACKS> TRACKs { get; set; }
+
+    //    public virtual ICollection<ARTISTS> ARTISTs { get; set; }
+    }
+
+    public class RATING
+    {
+        [Key]
+        public int RATING_ID { get; set; }
+
+        public int STAR_RATING { get; set; }
+
+        //public virtual ICollection<ALBUMS> ALBUMs { get; set; }
+    }
+    
 }

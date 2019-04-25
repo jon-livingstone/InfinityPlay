@@ -12,30 +12,32 @@ namespace InfinityPlay.Controllers
 {
     public class HomeController : Controller
     {
-        //private static Random rnd = new Random();
-
         // ----- Index
         [Route("Partial/Index")]
         public ActionResult IndexPartial()
         {
-            return PartialView("Index");
+            var model = GetPageModel();
+            return PartialView("Home", model);
         }
 
         public ActionResult Index()
         {
-            return this.View();
+            var model = GetPageModel();
+            return View("Home", model);
         }
 
         // ----- Home
         [Route("Partial/Home")]
         public ActionResult HomePartial()
         {
-            return PartialView("Home");
+            var model = GetPageModel();
+            return PartialView("Home", model);
         }
 
         public ActionResult Home()
         {
-            return this.View();
+            var model = GetPageModel();
+            return this.View("Home", model);
         }
 
         // ----- Artists
@@ -79,31 +81,47 @@ namespace InfinityPlay.Controllers
         }
 
         // ---------- PRIVATE METHODS ------------//
-        // Artists
-        private List<HomeModels.ARTISTS> AllArtistList()
+
+        // Home
+        private HomePageModel GetPageModel()
         {
-            List<HomeModels.ARTISTS> list = new List<HomeModels.ARTISTS>();
+            var model = new HomePageModel();
+            model.Artist = GetRandomArtist();
+            model.Albums = AllAlbumList();
+            return model;
+        }
+
+        private static Random rnd = new Random();
+
+        private ARTIST GetRandomArtist()
+        {
+            var artist = new ARTIST();
+
+            var allArtists = AllArtistList();
+
+            int r = rnd.Next(allArtists.Count);
+
+            artist = allArtists[r];
+            return artist;
+        }
+
+        // Artists
+        private List<ARTIST> AllArtistList()
+        {
+            List<ARTIST> list = new List<ARTIST>();
             try
             {
-                using (SqlConnection con = new SqlConnection())
+                var rows = DbHelper.Query("SELECT * FROM ARTISTS");
+
+                foreach (DataRow row in rows)
                 {
-                    string sql = "SELECT * FROM ARTISTS";
-                    con.ConnectionString = @"Server=LIVINGSTONEDT\SQLEXPRESS;Database=InfinityPlay;Trusted_Connection=True;MultipleActiveResultSets=true";
-                    DataTable dt = new DataTable();
-                    SqlDataAdapter da = new SqlDataAdapter();
-                    da.SelectCommand = new SqlCommand(sql, con);
-                    da.Fill(dt);
+                    var artist = new ARTIST();
+                    artist.ARTIST_NAME = (string)row["ARTIST_NAME"];
+                    artist.ARTIST_ID = (int)row["ARTIST_ID"];
+                    artist.ALBUM_ID = (int)row["ALBUM_ID"];
+                    artist.ARTIST_IMG = (string)row["ARTIST_IMG"];
 
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        var artistList = new Models.HomeModels.ARTISTS();
-                        artistList.ARTIST_NAME = (string)row["ARTIST_NAME"];
-                        artistList.ARTIST_ID = (int)row["ARTIST_ID"];
-                        artistList.ALBUM_ID = (int)row["ALBUM_ID"];
-                        artistList.ARTIST_IMG = (string)row["ARTIST_IMG"];
-
-                        list.Add(artistList);
-                    }
+                    list.Add(artist);
                 }
 
                 return list;
@@ -113,91 +131,25 @@ namespace InfinityPlay.Controllers
                 return list;
             }
         }
-
-        //private HomeModels.ALBUMS GetRandomAlbum()
-        //{
-        //    HomeModels.ALBUMS album = new HomeModels.ALBUMS();
-
-        //    List<HomeModels.ALBUMS> allAlbums = AllAlbumList();
-
-        //    int r = rnd.Next(allAlbums.Count);
-
-        //    album = allAlbums[r];
-        //    return album;
-        //}
-
-        //public string test()
-        //{
-        //    var album = GetRandomAlbum();
-
-        //    return album.ALBUM_NAME;
-        //}
 
         // Albums
-        private List<HomeModels.ALBUMS> AllAlbumList()
+        private List<ALBUM> AllAlbumList()
         {
-            List<HomeModels.ALBUMS> list = new List<HomeModels.ALBUMS>();
+            List<ALBUM> list = new List<ALBUM>();
             try
             {
-                using (SqlConnection con = new SqlConnection())
+                var rows = DbHelper.Query("SELECT * FROM ALBUMS");
+
+                foreach (DataRow row in rows)
                 {
-                    string sql = "SELECT * FROM ALBUMS";
-                    con.ConnectionString = @"Server=LIVINGSTONEDT\SQLEXPRESS;Database=InfinityPlay;Trusted_Connection=True;MultipleActiveResultSets=true";
-                    DataTable dt = new DataTable();
-                    SqlDataAdapter da = new SqlDataAdapter();
-                    da.SelectCommand = new SqlCommand(sql, con);
-                    da.Fill(dt);
-
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        var albumList = new Models.HomeModels.ALBUMS();
-                        albumList.ALBUM_ID = (int)row["ALBUM_ID"];
-                        albumList.ALBUM_NAME = (string)row["ALBUM_NAME"];
-                        albumList.ALBUM_ART = (string)row["ALBUM_ART"];
-                        albumList.BAND_NAME = (string)row["BAND_NAME"];
-                        albumList.RELEASE_YEAR = (int)row["RELEASE_YEAR"];
-                        albumList.RECORD_LABEL = (string)row["RECORD_LABEL"];
-
-
-
-                        list.Add(albumList);
-                    }
-                }
-
-                return list;
-            }
-            catch (Exception)
-            {
-                return list;
-            }
-        }
-
-        private List<HomeModels.ALBUMS> AllALBUList()
-        {
-            List<HomeModels.ALBUMS> list = new List<HomeModels.ALBUMS>();
-            try
-            {
-                using (SqlConnection con = new SqlConnection())
-                {
-                    string sql = "SELECT * FROM ALBUM";
-                    con.ConnectionString = @"Server=LIVINGSTONEDT\SQLEXPRESS;Database=InfinityPlay;Trusted_Connection=True;MultipleActiveResultSets=true";
-                    DataTable dt = new DataTable();
-                    SqlDataAdapter da = new SqlDataAdapter();
-                    da.SelectCommand = new SqlCommand(sql, con);
-                    da.Fill(dt);
-
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        var albumList = new Models.HomeModels.ALBUMS();
-                        albumList.ALBUM_ID = (int)row["ALBUM_ID"];
-                        albumList.ALBUM_NAME = (string)row["ALBUM_NAME"];
-                        albumList.ALBUM_ART = (string)row["ALBUM_ART"];
-                        albumList.BAND_NAME = (string)row["BAND_NAME"];
-                        albumList.RELEASE_YEAR = (int)row["RELEASE_YEAR"];
-                        albumList.RECORD_LABEL = (string)row["RECORD_LABEL"];
-
-                        list.Add(albumList);
-                    }
+                    var albumList = new ALBUM();
+                    albumList.ALBUM_ID = (int)row["ALBUM_ID"];
+                    albumList.ALBUM_NAME = (string)row["ALBUM_NAME"];
+                    albumList.ALBUM_ART = (string)row["ALBUM_ART"];
+                    albumList.BAND_NAME = (string)row["BAND_NAME"];
+                    albumList.RELEASE_YEAR = (int)row["RELEASE_YEAR"];
+                    albumList.RECORD_LABEL = (string)row["RECORD_LABEL"];
+                    list.Add(albumList);
                 }
 
                 return list;
