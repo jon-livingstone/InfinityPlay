@@ -5,9 +5,9 @@
     box-sizing: border-box;
 }
 
-a, abbr, acronym, address, applet, article, aside, audio,
+abbr, acronym, address, applet, article, aside, audio,
 b, big, blockquote, body, canvas, caption, center, cite, code, dd, del,
-details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer,
+details, dfn, /*div,*/ dl, dt, em, embed, fieldset, figcaption, figure, footer,
 form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd,
 label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby,
 s, samp, section, small, span, strike, strong, sub, summary, sup,
@@ -18,6 +18,7 @@ table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
     vertical-align: baseline;
 }
 
+
 html, body {
     height: 100%;
 }
@@ -25,6 +26,11 @@ html, body {
 .media-object.a {
     border-bottom-width: 0;
 }
+
+.title{
+    color:white;
+}
+
 
 .mo-info {
     margin: 12px 0 4px;
@@ -48,12 +54,21 @@ html, body {
     font-size: 14px;
     line-height: 20px;
     letter-spacing: .015em;
-    font-weight: var(--glue-font-weight-normal);
     color: #fff;
     opacity: .6;
     text-transform: none;
     cursor: default;
 }
+
+.mo-info-artistlist {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: .015em;
+    font-weight: 500;
+    color: #fff;
+    text-transform: none;
+}
+
 
 a {
     color: #fff;
@@ -333,7 +348,7 @@ a.link-subtle.navBar-link.active::after {
 
 
 /*----- Search Function ------*/
-.overlay {
+/*.overlay {
     height: 100%;
     width: 0;
     position: fixed;
@@ -344,9 +359,9 @@ a.link-subtle.navBar-link.active::after {
     background-color: rgba(0,0,0, 0.9);
     overflow-x: hidden;
     transition: 0.5s;
-}
+}*/
 
-.overlay-content {
+/*.overlay-content {
     position: relative;
     top: 25%;
     width: 100%;
@@ -384,7 +399,7 @@ a.link-subtle.navBar-link.active::after {
         top: 15px;
         right: 35px;
     }
-}
+}*/
 
 
 
@@ -490,11 +505,30 @@ a.link-subtle.navBar-link.active::after {
 .media-object {
     position: relative;
     padding-bottom: 2.5em;
+}
+
+.image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.play-icon {
+    color: white;
+    font-size: 75px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
     text-align: center;
 }
 
+    .play-icon:hover {
+        color: white;
+    }
 
-.cover-art {
+.media-object-hoverable {
     margin: 0;
     display: block;
     border: 0;
@@ -502,57 +536,43 @@ a.link-subtle.navBar-link.active::after {
     position: relative;
 }
 
-.cover-art, .cover-art-image-loaded {
-    opacity: 1;
+    .media-object-hoverable:hover .overlay_image {
+        opacity: .6;
+    }
+
+.overlay_image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .3s ease;
+    background-color: #000e21;
 }
 
-    .cover-art.shadow {
-        -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
-        box-shadow: 0 0 10px rgba(0,0,0,.3);
-    }
+.media-object .media-object-hoverable.playing .icon, .media-object .media-object-hoverable:focus .icon, .media-object .media-object-hoverable:hover .icon {
+    display: none
+}
 
-    .cover-art.actionable {
-        -webkit-transition: none 33ms cubic-bezier(.3,0,.7,1);
-        transition: none 33ms cubic-bezier(.3,0,.7,1);
-        -webkit-transition-property: -webkit-transform;
-        transition-property: -webkit-transform;
-        transition-property: transform;
-        transition-property: transform,-webkit-transform;
-    }
+.media-object .media-object-hoverable.playing .cover-art-image, .media-object .media-object-hoverable.playing .daily-mix-decoration, .media-object .media-object-hoverable:focus .cover-art-image, .media-object .media-object-hoverable:focus .daily-mix-decoration, .media-object .media-object-hoverable:hover .cover-art-image, .media-object .media-object-hoverable:hover .daily-mix-decoration {
+    -webkit-transition-property: -webkit-filter;
+    transition-property: -webkit-filter;
+    transition-property: filter;
+    transition-property: filter,-webkit-filter;
+    -webkit-transition-duration: .2s;
+    transition-duration: .2s;
+    -webkit-transition-timing-function: cubic-bezier(.3,0,0,1);
+    transition-timing-function: cubic-bezier(.3,0,0,1);
+    -webkit-filter: brightness(.3);
+    filter: brightness(.3)
+}
 
-    .cover-art .cover-art-playback {
-        -webkit-transition: none 33ms cubic-bezier(.3,0,.7,1);
-        transition: none 33ms cubic-bezier(.3,0,.7,1);
-        -webkit-transition-property: all;
-        transition-property: all;
-        background-color: rgba(0,0,0,0);
-        display: none;
-        position: absolute;
-        z-index: 3;
-        width: 62px;
-        height: 62px;
-        margin-left: -31px;
-        margin-top: -31px;
-        top: 50%;
-        left: 50%;
-        color: #fff;
-        border: 0;
-        border-radius: 500px;
-        -webkit-box-sizing: content-box;
-        box-sizing: content-box;
-        outline: none;
-        -webkit-box-shadow: inset 0 0 0 1px #b3b3b3;
-        box-shadow: inset 0 0 0 1px #b3b3b3;
-    }
-
-    .cover-art .icon {
-        position: absolute;
-        top: 35%;
-        bottom: 35%;
-        left: 35%;
-        right: 35%;
-    }
-
+.media-object .media-object-hoverable.playing .cover-art-playback, .media-object .media-object-hoverable:focus .cover-art-playback, .media-object .media-object-hoverable:hover .cover-art-playback {
+    display: block
+}
 
 .bloc-logo {
     position: relative;
@@ -705,26 +725,8 @@ a.link-subtle.navBar-link.active::after {
     position: relative;
 }
 
-.cover-art.shadow {
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
-    box-shadow: 0 0 10px rgba(0,0,0,.3);
-}
 
-.cover-art .cover-art-image {
-    -webkit-transition-property: opacity;
-    transition-property: opacity;
-    -webkit-transition-duration: .3s;
-    transition-duration: .3s;
-    -webkit-transition-timing-function: cubic-bezier(.3,0,.4,1);
-    transition-timing-function: cubic-bezier(.3,0,.4,1);
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover !important;
-    background-position: 50%;
-    opacity: 0;
-}
+
 
 .now-playing-bar__center {
     width: 40%;
@@ -1132,8 +1134,9 @@ body, button, input {
         font-size: 4rem;
     }
 }
+
 @media screen and (min-width: 1900px) {
     .gradientBG {
-        height:100vh;
+        height: 100vh;
     }
 }
