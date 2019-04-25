@@ -22,6 +22,10 @@ html, body {
     height: 100%;
 }
 
+.background{
+    background-color: black;
+}
+
 .media-object.a {
     border-bottom-width: 0;
 }
@@ -59,10 +63,10 @@ html, body {
 }
 
 
-a {
-    color: #fff;
-    text-decoration: none;
-}
+    a {
+        color: #fff;
+        text-decoration: none;
+    }
 
 .article, .footer, .header, nav, section {
     display: block;
@@ -496,6 +500,7 @@ a.link-subtle.navBar-link.active::after {
     padding-bottom: 2.5em;
 }
 
+
 .image {
     display: block;
     width: 100%;
@@ -523,6 +528,7 @@ a.link-subtle.navBar-link.active::after {
     border: 0;
     outline: 0;
     position: relative;
+    cursor: pointer;
 }
 
     .media-object-hoverable:hover .overlay_image {
@@ -972,7 +978,6 @@ body, button, input {
 
 /*----- Media Queries -----*/
 @media (max-width: 575.98px) {
-
     .navbar-brand {
         margin-right: auto;
         margin-bottom: 0;
@@ -1038,8 +1043,11 @@ body, button, input {
 
     .root-main-view {
         padding-left: inherit;
-        padding-bottom: inherit;
-        padding-top: 140px;
+        padding-bottom: 90px;
+        padding-top: 105px;
+    }
+    .banner-img{
+        text-align:center;
     }
 
     .banner-text {
@@ -1082,6 +1090,7 @@ body, button, input {
 
     .banner-img {
         float: none;
+        text-align:center;
     }
 
     .gradient-wrap {
