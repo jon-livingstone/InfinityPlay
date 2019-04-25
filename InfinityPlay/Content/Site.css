@@ -421,7 +421,6 @@ a.link-subtle.navBar-link.active::after {
 
 .gradientBG {
     background-image: linear-gradient(135deg, rgb(37, 127, 237) 0%, rgb(0, 14, 33) 75%);
-    height: 100vh;
 }
 
 .gradient-wrap {
