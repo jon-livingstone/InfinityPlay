@@ -87,8 +87,52 @@ namespace InfinityPlay.Controllers
         {
             var model = new HomePageModel();
             model.Artist = GetRandomArtist();
-            model.Albums = AllAlbumList();
+            model.Albums = GetTopAlbums1();
             return model;
+        }
+
+        private List<ALBUM> GetTopAlbums1()
+        {
+            // Sort all albums by date decending, and return the first two
+            // Do it "the C# way"
+            try
+            {
+                return AllAlbumList().OrderByDescending(a => a.RELEASE_YEAR).Take(5).ToList();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                Debug.WriteLine(ex.StackTrace);
+                return null;
+            }
+        }
+
+        private List<ALBUM> GetTopAlbums2()
+        {
+            // Sort all albums by date decending, and return the first two
+            // Do it "the SQL way"
+            List<ALBUM> organize = new List<ALBUM>();
+            try
+            {
+                var rows = DbHelper.Query("SELECT TOP 2 RELEASE_YEAR, ALBUM_NAME, ALBUM_ART, BAND_NAME FROM ALBUMS ORDER BY RELEASE_YEAR DESC; ");
+
+                foreach (DataRow row in rows)
+                {
+                    var album = new ALBUM();
+                    album.RELEASE_YEAR = (int)row["RELEASE_YEAR"];
+                    album.ALBUM_NAME = (string)row["ALBUM_NAME"];
+                    album.ALBUM_ART = (string)row["ALBUM_ART"];
+                    album.BAND_NAME = (string)row["BAND_NAME"];
+
+                    organize.Add(album);
+                }
+
+                return organize;
+            }
+            catch (Exception)
+            {
+                return organize;
+            }
         }
 
         private static Random rnd = new Random();
@@ -108,7 +152,7 @@ namespace InfinityPlay.Controllers
         // Artists
         private List<ARTIST> AllArtistList()
         {
-            List<ARTIST> list = new List<ARTIST>();
+            var list = new List<ARTIST>();
             try
             {
                 var rows = DbHelper.Query("SELECT * FROM ARTISTS");
@@ -148,7 +192,7 @@ namespace InfinityPlay.Controllers
                     albumList.ALBUM_ART = (string)row["ALBUM_ART"];
                     albumList.BAND_NAME = (string)row["BAND_NAME"];
                     albumList.RELEASE_YEAR = (int)row["RELEASE_YEAR"];
-                    albumList.RECORD_LABEL = (string)row["RECORD_LABEL"];
+                    albumList.RECORD_YEAR = (string)row["RECORD_LABEL"];
                     list.Add(albumList);
                 }
 

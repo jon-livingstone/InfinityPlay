@@ -1,6 +1,6 @@
 ﻿@model InfinityPlay.Models.HomePageModel
 
-<div class=" content-spacing gradient-wrap h-auto w-100">
+<div class=" content-spacing gradient-wrap h-auto w-100 background">
     <div class="container">
         <div class="jumbotron-fluid pt-3">
             <div class="row gradient-wrap">
@@ -9,7 +9,7 @@
                     <h2 class="d-block mt-2 text-lg-right">@Model.Artist.ARTIST_NAME</h2>
                 </div>
                 <div class="col-md-6 banner-img">
-                    <img src="@Model.Artist.ARTIST_IMG" class="img-fluid banner-img img-thumbnail" height="300" />
+                    <img src="@Model.Artist.ARTIST_IMG" class="img-fluid banner-img img-thumbnail" height="400" />
                 </div>
             </div>
         </div>
@@ -22,7 +22,8 @@
         </div>
         @foreach (var item in Model.Albums)
         {
-            <div class="col-xs-6 col-sm-5 col-md-4 col-lg-3 col-xl-2 d-inline-block flex-row">
+
+            <div class="col-xs-6 col-sm-5 col-6 col-md-4 col-lg-3 col-xl-2">
                 <div class="media-object" style="max-width: 300px;">
                     <div class="media-object-hoverable">
                         <div class="media-object-wrapper">
@@ -46,6 +47,7 @@
                     </div>
                 </div>
             </div>
+
         }
     </div>
 </div>

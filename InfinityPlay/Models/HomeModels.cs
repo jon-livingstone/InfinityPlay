@@ -42,7 +42,7 @@ namespace InfinityPlay.Models
 
         public int RELEASE_YEAR { get; set; }
 
-        public string RECORD_LABEL { get; set; }
+        public string RECORD_YEAR { get; set; }
 
         //public virtual ARTISTS ARTISTS { get; set; }
 
