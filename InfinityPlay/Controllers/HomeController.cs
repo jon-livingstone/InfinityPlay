@@ -40,6 +40,7 @@ namespace InfinityPlay.Controllers
             return this.View("Home", model);
         }
 
+        // ----------------------------------------------------------------
         // ----- Artists
         public ActionResult Artists()
         {
@@ -82,7 +83,7 @@ namespace InfinityPlay.Controllers
 
         // ---------- PRIVATE METHODS ------------//
 
-        // Home
+        // Home -----------------------------------
         private HomePageModel GetPageModel()
         {
             var model = new HomePageModel();
@@ -149,7 +150,7 @@ namespace InfinityPlay.Controllers
             return artist;
         }
 
-        // Artists
+        // Artists ----------------------------------------
         private List<ARTIST> AllArtistList()
         {
             var list = new List<ARTIST>();
@@ -176,7 +177,7 @@ namespace InfinityPlay.Controllers
             }
         }
 
-        // Albums
+        // Albums -----------------------------------------
         private List<ALBUM> AllAlbumList()
         {
             List<ALBUM> list = new List<ALBUM>();
@@ -203,7 +204,6 @@ namespace InfinityPlay.Controllers
                 return list;
             }
         }
-
 
         /* ---------------------------------Get Album Rating----------------------------------
         public ActionResult GetAlbumRating(int albumId)
