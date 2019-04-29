@@ -1,22 +1,30 @@
-﻿@model IEnumerable<InfinityPlay.Models.ARTIST>
+﻿@model IEnumerable<InfinityPlay.Models.HomeModels.ARTISTS>
 
 <div class="gradientBG">
     <div class="container">
         <div class="head-text d-block p-3">
-            <div class="mb-2 mt-4">
+            <div class="mb-2 mt-4 title">
                 <h2>Artists</h2>
             </div>
         </div>
         <div class="grid-row">
             @foreach (var item in Model)
             {
-                 <div class="col-xs-6 col-sm-5 col-md-4 col-lg-3 col-xl-2 d-inline-block flex-row">
-                    <div class="text-center media-object" style="max-width: 300px;">
-                        <a aria-hidden="true" href="#">
-                            <img src="@item.ARTIST_IMG" class="img-fluid img-thumbnail cover-art" />
-                        </a>
-                        <div class="mo-info">
-                            <a class="mo-info-artist" dir="auto" href="#"> @item.ARTIST_NAME</a>
+                <div class="col-xs-6 col-sm-5 col-md-4 col-lg-3 col-xl-2 d-inline-block flex-row">
+                    <div class="media-object" style="max-width: 300px;">
+                        <div class="media-object-hoverable">
+                            <div class="media-object-wrapper">
+                                <img src="@item.ARTIST_IMG" class="img-fluid img-thumbnail image" />
+                                <div class="overlay_image">
+                                    <a class="cover-art play-icon" aria-hidden="true" href="#">
+                                        <div class="">
+                                            <i class="far fa-play-circle"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div><div class="mo-info">
+                            <div class="mo-info-artistlist" dir="auto" href="#"> @item.ARTIST_NAME</div>
                         </div>
                     </div>
                 </div>
