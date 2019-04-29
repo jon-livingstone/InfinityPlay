@@ -1,14 +1,15 @@
-﻿
-<div class="gradient-wrap content-spacing pb-4 vh-100">
+﻿@model InfinityPlay.Models.HomePageModel
+
+<div class=" content-spacing gradient-wrap h-auto w-100 background">
     <div class="container">
         <div class="jumbotron-fluid pt-3">
             <div class="row gradient-wrap">
                 <div class="col-md-6 banner-text">
-                    <h1 class="d-block display-3 d-block float-lg-right">Featured Artist</h1>
-                    <h2 class="d-block mt-2 d-block float-lg-right">Tom Misch</h2>
+                    <h1 class="d-block display-3 text-lg-right">Featured Artist</h1>
+                    <h2 class="d-block mt-2 text-lg-right">@Model.Artist.ARTIST_NAME</h2>
                 </div>
                 <div class="col-md-6 banner-img">
-                    <img src="~/Images/TM-HDR.jpg" class="img-fluid banner-img img-thumbnail" height="300" />
+                    <img src="@Model.Artist.ARTIST_IMG" class="img-fluid banner-img img-thumbnail" height="400" />
                 </div>
             </div>
         </div>
@@ -20,85 +21,35 @@
             </div>
         </div>
         <div class="grid-row">
-            <div class="col-xs-6 col-sm-5 col-md-4 col-lg-3 col-xl-2 d-inline-block flex-row">
-                <div class="text-center media-object" style="max-width: 300px;">
-                    <a aria-hidden="true" href="#">
-                        <img src="~/Images/OJ-SWL013.jpg" class="img-fluid img-thumbnail cover-art" />
-                    </a>
-                    <div class="mo-info">
-                        <a class="mo-info-album" title="Soulection White Label" dir="auto" href="#">Soulection White Label</a>
-                    </div>
-                    <div class="">
-                        <a class="mo-info-artist" title="oriJanus" dir="auto" href="#">oriJanus</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-5 col-md-4 col-lg-3 col-xl-2 d-inline-block flex-row">
-                <div class="text-center media-object" style="max-width: 300px;">
-                    <a aria-hidden="true" href="#">
-                        <img src="~/Images/SXSC.jpg" class="img-fluid img-thumbnail cover-art" />
-                    </a>
-                    <div class="mo-info">
-                        <a class="mo-info-album" title="Stussy X Soulection Compilation" dir="auto" href="#">Stussy x Soulection Compilation</a>
-                    </div>
-                    <div class="">
-                        <a class="mo-info-artist" title="Various Artists" dir="auto" href="#">Various Artists</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-5 col-md-4 col-lg-3 col-xl-2 d-inline-block flex-row">
-                <div>
-                    <div class="text-center media-object" style="max-width: 300px;">
-                        <a class="" aria-hidden="true" href="#">
-                            <img src="~/Images/TM-SWL008.jpg" class="img-fluid img-thumbnail cover-art" />
-                        </a>
+            @foreach (var item in Model.Albums)
+            {
+
+                <div class="col-xs-6 col-sm-5 col-6 col-md-4 col-lg-3 col-xl-2">
+                    <div class="media-object" style="max-width: 300px;">
+                        <div class="media-object-hoverable">
+                            <div class="media-object-wrapper">
+                                <img src="@item.ALBUM_ART" class="img-fluid img-thumbnail image" />
+                                <div class="overlay_image">
+                                    <a class="cover-art play-icon" aria-hidden="true" href="#">
+                                        <div class="">
+                                            <i class="far fa-play-circle"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                         <div class="mo-info">
-                            <a class="mo-info-album " title="Tom Misch" dir="auto" href="#">Soulection White Lable</a>
-                        </div>
-                        <div class="">
-                            <a class="mo-info-artist" title="Tom Misch" dir="auto" href="#">Tom Misch</a>
+                            <div class="mo-info-album" dir="auto" href="#">
+                                <div>@item.ALBUM_NAME</div>
+                            </div>
+                            <div>
+                                <div class="mo-info-artist" dir="auto">@item.BAND_NAME</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+
+            }
         </div>
     </div>
 </div>
-
-
-
-@*<div class="jumbotron">
-        <h1>InfinityPlay</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p>
-            <a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a>
-        </p>
-    </div>
-
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a>
-            </p>
-        </div>
-    </div>*@
