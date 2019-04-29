@@ -8,7 +8,14 @@ namespace InfinityPlay.Models
 {
     public class HomeModels
     {
-        public class ARTISTS
+        public class HomePageModel
+        {
+            public ARTIST Artist { get; set; }
+
+            public List<ALBUM> Albums { get; set; }
+        }
+
+        public class ARTIST
         {
             [Key]
             public int ARTIST_ID { get; set; }
@@ -18,13 +25,9 @@ namespace InfinityPlay.Models
             public int ALBUM_ID { get; set; }
 
             public string ARTIST_IMG { get; set; }
-
-            public virtual COMMENTS COMMENTS { get; set; }
-
-            public virtual TRACKS TRACKS { get; set; }
         }
 
-        public class ALBUMS
+        public class ALBUM
         {
             [Key]
             public int ALBUM_ID { get; set; }
@@ -37,18 +40,10 @@ namespace InfinityPlay.Models
 
             public int RELEASE_YEAR { get; set; }
 
-            public string RECORD_LABEL { get; set; }
-
-            public virtual ARTISTS ARTISTS { get; set; }
-
-            public virtual TRACKS TRACKS { get; set; }
-
-            public virtual RATINGS RATINGS { get; set; }
-
-            public virtual COMMENTS COMMENTS { get; set; }
+            public string RECORD_YEAR { get; set; }
         }
 
-        public class TRACKS
+        public class TRACK
         {
             [Key]
             public int TRACK_ID { get; set; }
@@ -58,15 +53,9 @@ namespace InfinityPlay.Models
             public int TRACK_NUMBER { get; set; }
 
             public int DURATION { get; set; }
-
-            public virtual COMMENTS COMMENTS { get; set; }
-
-            public virtual ICollection<ALBUMS> ALBUMs { get; set; }
-
-            public virtual ICollection<ARTISTS> ARTISTs { get; set; }
         }
 
-        public class COMMENTS
+        public class COMMENT
         {
             [Key]
             public int COMMENT_ID { get; set; }
@@ -75,25 +64,17 @@ namespace InfinityPlay.Models
 
             public char EMAIL { get; set; }
 
-            public char COMMENT { get; set; }
+            public string COMMENT_TEXT { get; set; }
 
             public DateTime CREATED_AT { get; set; }
-
-            public virtual ICollection<ALBUMS> ALBUMs { get; set; }
-
-            public virtual ICollection<TRACKS> TRACKs { get; set; }
-
-            public virtual ICollection<ARTISTS> ARTISTs { get; set; }
         }
 
-        public class RATINGS
+        public class RATING
         {
             [Key]
-            public int RATINGS_ID { get; set; }
+            public int RATING_ID { get; set; }
 
-            public int STAR_RATINGS { get; set; }
-
-            public virtual ICollection<ALBUMS> ALBUMs { get; set; }
+            public int STAR_RATING { get; set; }
         }
     }
 }
