@@ -720,9 +720,6 @@ a.link-subtle.navBar-link.active::after {
     position: relative;
 }
 
-
-
-
 .now-playing-bar__center {
     width: 40%;
     max-width: 722px;
@@ -745,6 +742,7 @@ a.link-subtle.navBar-link.active::after {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
+    justify-content: center;
 }
 
 .player-controls__buttons {
@@ -772,8 +770,13 @@ a.link-subtle.navBar-link.active::after {
     color: #404040;
 }
 
-.play-button {
-    font-size: 32px;
+.player-controls #play-btn {
+    content: "f144";
+    background-size: cover;
+}
+
+.player-controls #play-btn.pause {
+    content: "f28b";
 }
 
 
@@ -1117,3 +1120,6 @@ a.link-subtle.navBar-link.active::after {
         height: 100vh;
     }
 }
+
+
+
