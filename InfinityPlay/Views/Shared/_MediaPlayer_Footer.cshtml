@@ -4,42 +4,35 @@
         <div class="now-playing-bar">
             <div class="now-playing-bar__left">
                 <div class="now-playing">
-                    <button class="" aria-label="" style="border: none;" onclick="toggle('slider')">
-                        <div class="now-playing__cover-art">
-                            <img class="cover-art shadow cover-art-image" aria-hidden="true" style="width: 56px; height: 56px;">
+                    <div class="" aria-label="" style="border: none;" onclick="toggle('slider')">
+                        <div id="albumArt">
+                            <img src="~/Images/TM-SWL008.jpg" aria-hidden="true" style="width: 56px; height: 56px;">
                         </div>
-                    </button>
+                    </div>
                     <div class="track-info">
-                        <div class="track-info__name" dir="auto">
-                            <div class="react-contextmenu-wrapper">
-                                <span draggable="true"><a href="#"></a></span>
-                            </div>
+                        <div class="track-info__name" id="songName">
+                            <h6>Song Name</h6>
                         </div>
-                        <div class="track-info__artists" dir="auto">
-                            <span><span class="react-contextmenu-wrapper"><span draggable="true"><a href="#"></a></span></span></span>
+                        <div class="track-info__artists" id="songArtist">
+                            <h6>Song Artist</h6>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="now-playing-bar__center">
-                <div class="player-controls" dir="ltr">
+                <audio src="~/Audio/Risk.mp3" preload="metadata"></audio>
+                <div class="player-controls">
                     <div class="player-controls__buttons">
-                        <button class="control-button" title="Enable shuffle"> <i class="fas fa-random"></i></button>
-                        <button class="control-button control-button" title="Previous"><i class="fas fa-step-backward"></i></button>
-                        <button class="control-button control-button--circled" title="Play"><i class="far fa-play-circle"></i></button>
-                        <button class="control-button" title="Next"><i class="fas fa-step-forward"></i></button>
-                        <button class="control-button" title="Enable repeat"><i class="fas fa-redo-alt"></i></button>
+                        @*<button class="control-button" id="random-btn" title="Enable shuffle"> <i class="fas fa-random"></i></button>*@
+                        <button class="control-button" id="backward-btn" onclick="prev()" title="Previous"><i class="fas fa-step-backward"></i></button>
+                        <button class="control-button" id="play-btn" onclick="playPause()" title="Play" aria-hidden="true"><i class="far fa-play-circle fa-2x" aria-hidden="true"></i></button>
+                        <button class="control-button" id="forward-btn" onclick="next()" title="Next"><i class="fas fa-step-forward"></i></button>
+                        @*<button class="control-button" id="repeat-btn" title="Enable repeat"><i class="fas fa-redo-alt"></i></button>*@
                     </div>
-                    <div class="playback-bar">
-                        <div class="playback-bar__progress-time">0:00</div>
-                        <div class="progress_bar">
-                            <div class="middle-align progress_bar__bg">
-                                <div class="progress_bar__fg_wrapper">
-                                    <div class="progress_bar__fg" style="transform: translateX(-100%);"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="playback-bar__progress-time">3:20</div>
+                    <div id="timeNow">00:00 / 00:00</div>
+                    <div id="playbackBar">
+                        <div id="progressBar"></div>
+                        <div id="movingBar"></div>
                     </div>
                 </div>
             </div>
@@ -55,9 +48,110 @@
                     </div>
                 </div>
             </div>
+            <div id="overlay"></div>
         </div>
     </footer>
 </div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <script>
+        // Play Icon Switcher
+    //$("#play-btn").click(function (e) {
+    //    e.preventDefault();
+    //    $(this).find("i").toggleClass("fa-play-circle fa-pause-circle");
+    //});
+   
+    const songs = ["Audio/Risk.mp3", "Audio/01%20Bonita.mp3", "Audio/Zikomo%20-%20Stussy%20x%20Soulection%20Compilation%20-%2001%20Champion%20Riddim.mp3"];
+    const songNames = ["Risk", "Bonita", "Champion Riddim"];
+    const artists = ["Tom Misch", "oriJanus", "Zikomo"];
+    const posters = ["Images/TM-SWL008.jpg", "Images/OJ-SWL013.jpg", "Images/SXSC.jpg"];
+
+    const songName = document.getElementById("songName");
+    const songArtist = document.getElementById("songArtist");
+    const progressBar = document.getElementById("progressBar");
+    const timeNow = document.getElementById("timeNow");
+
+    var song = new Audio();
+    var currentSong = 0;
+    window.onload = playSong;
+
+
+    Audio.onloadedmetadata = function () {
+        console.log(Audio.duration)
+    };
+
+    //const AudioContext = window.AudioContext || window.webkitAudioContext;
+    //// get the audio element
+    //const audioElement = document.querySelector('audio');
+
+    //// pass it into the audio context
+    //const track = audioContext.createMediaElementSource(audioElement);
+
+
+    function playSong() {
+        song.src = songs[currentSong]
+        songName.textContent = songNames[currentSong];
+        songArtist.textContent = artists[currentSong];
+        song.play();
+    }
+
+    function playPause(){
+        if(song.paused) {
+            song.play();
+            $("#play-btn i").removeClass("fa-play-circle").addClass("fa-pause-circle");
+        }
+        else {
+            song.pause();
+            $("#play-btn i").removeClass("fa-pause-circle").addClass("fa-play-circle")
+        }
+    }
+
+    song.addEventListener('timeupdate', function() {
+        var position = song.currentTime / song.duration;
+        progressBar.style.width = position * 100 + '%';
+        convertTime(Math.round(song.currentTime));
+        if (song.ended) {
+            next();
+        }
+
+    });
+
+    function convertTime(seconds){
+        var min = Math.floor(seconds / 60);
+        var sec = seconds % 60;
+        min = (min < 10) ? "0" + min : min;
+        sec = (sec < 10) ? "0" + sec : sec;
+        timeNow.textContent = min + ":" + sec;
+
+        totalTime(Math.round(song.duration));
+    }
+
+    function totalTime(seconds) {
+        var min = Math.floor(seconds / 60);
+        var sec = seconds % 60;
+        min = (min < 10) ? "0" + min : min;
+        sec = (sec < 10) ? "0" + sec : sec;
+        timeNow.textContent += " / " + min + ":" + sec;
+    }
+
+    function next(){
+        currentSong++;
+        if (currentSong > 2) {
+            currentSong = 0;
+        }
+        playSong();
+        $("#play-btn i").removeClass("fa-play-circle").addClass("fa-pause-circle");
+        $("#albumArt img").attr("src", posters[currentSong]);
+    }
+
+    function prev() {
+        currentSong--;
+        if (currentSong > 0) {
+            currentSong = 2;
+        }
+        playSong();
+        $("#play-btn i").removeClass("fa-play-circle").addClass("fa-pause-circle");
+        $("albumArt img").attr("src", posters[currentSong]);
+    }
 
 </script>
