@@ -7,7 +7,8 @@
     <title>@ViewBag.Title - InfinityPlay</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
 </head>
 <body id="root">
     <div class="root-container">
@@ -35,6 +36,16 @@
     <script type="text/javascript">
         window.addEventListener('load', function () {
             Grade(document.querySelectorAll('.gradient-wrap'));
+        });
+
+        $(document).ready(function () {
+            $('ul#navLinks li').click(function () {
+                const url = $(this).attr('data-page-type');
+                history.pushState(null, null, url);
+                $('#mainContent').load("/partial/" + url, "", function () {
+                    Grade(document.querySelectorAll('.gradient-wrap'));
+                });
+            });
         });
     </script>
 </body>

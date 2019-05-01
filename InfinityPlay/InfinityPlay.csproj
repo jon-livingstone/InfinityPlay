@@ -132,6 +132,32 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Audio\EB3755C8-1009-49B2-9DB1-A01C4E07F212.mp3" />
+    <Content Include="Audio\2C750595-7596-47C9-A115-2294548E6FC1.mp3" />
+    <Content Include="Audio\0D884A13-071D-432D-9DAA-715D519B329F.mp3" />
+    <Content Include="Audio\C0DC7320-3044-4765-9A80-4E70F3625C7E.mp3" />
+    <Content Include="Audio\2A1C9ACD-3E71-4E2C-9DA6-09967B791020.mp3" />
+    <Content Include="Audio\E195239D-FC8C-43F7-9E39-3F9E271D16BD.mp3" />
+    <Content Include="Audio\12D4C4A7-1837-4F7C-A37F-1637C13C1199.mp3" />
+    <Content Include="Audio\2F107DF3-5B0D-4E35-B3AC-591DFC556800.mp3" />
+    <Content Include="Audio\69F96006-1ADF-4044-A0F6-AA24B136F4B0.mp3" />
+    <Content Include="Audio\E6EF274F-8FF4-4D87-9231-959714A80045.mp3" />
+    <Content Include="Audio\065E598C-DE44-4E08-AA2C-04BBDAA56D90.mp3" />
+    <Content Include="Audio\E45465C9-B458-447B-AC58-EE6225CA299B.mp3" />
+    <Content Include="Audio\66F58F13-984C-4E06-AAFE-59BD299EAD7C.mp3" />
+    <Content Include="Audio\3639B214-F73D-45A8-A668-E8FF64C65AB8.mp3" />
+    <Content Include="Audio\4557F31F-79DE-4AE6-AC45-B5DB4B868F15.mp3" />
+    <Content Include="Audio\FFB95EEA-5B12-4744-8995-B781A7D03CE0.mp3" />
+    <Content Include="Audio\E3B2054D-7A39-4524-85D0-FAD0E4134271.mp3" />
+    <Content Include="Audio\57726A4A-5D8B-4719-A43B-70E6929B4082.mp3" />
+    <Content Include="Audio\FEACAEBB-4C84-428E-B4CA-7E4960A6B226.mp3" />
+    <Content Include="Audio\8585EE26-EB23-425E-8395-89F3DCEAABBC.mp3" />
+    <Content Include="Audio\D53D8CCD-FEB3-4AE0-A291-A8C6261EF6D4.mp3" />
+    <Content Include="Audio\72588257-3D20-4697-8910-CB06698D75E8.mp3" />
+    <Content Include="Audio\042942ED-2024-4DF0-A726-84C869264892.mp3" />
+    <Content Include="Audio\57E9CE0C-2B23-44CD-8868-39ABF31C749E.mp3" />
+    <Content Include="Audio\E8F45485-EC19-4A0C-93AC-B840D83F8A9D.mp3" />
+    <Content Include="Audio\90F47B61-AE56-4D4C-8158-FF059A894C9B.mp3" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -226,6 +252,7 @@
     <Content Include="Views\Home\Artists.cshtml" />
     <Content Include="Views\Home\Albums.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Home\AlbumDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
