@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="now-playing-bar__center">
-                <audio src="~/Audio/Risk.mp3" preload="metadata"></audio>
+                <audio id="myAudio" src="~/Audio/Risk.mp3" preload="metadata" volume="0.2"></audio>
                 <div class="player-controls">
                     <div class="player-controls__buttons">
                         @*<button class="control-button" id="random-btn" title="Enable shuffle"> <i class="fas fa-random"></i></button>*@
@@ -29,7 +29,7 @@
                         <button class="control-button" id="forward-btn" onclick="next()" title="Next"><i class="fas fa-step-forward"></i></button>
                         @*<button class="control-button" id="repeat-btn" title="Enable repeat"><i class="fas fa-redo-alt"></i></button>*@
                     </div>
-                    <div id="timeNow">00:00 / 00:00</div>
+                    <div id="playbackTime">00:00 / 00:00</div>
                     <div id="playbackBar">
                         <div id="progressBar"></div>
                         <div id="movingBar"></div>
@@ -37,106 +37,93 @@
                 </div>
             </div>
             <div class="now-playing-bar__right">
-                <div class="volume-bar" dir="ltr">
-                    <button class="control-button volume-bar__icon" aria-label="Mute"><i class="fas fa-volume-up"></i></button>
-                    <div class="progress_bar">
-                        <div class="middle-align progress_bar__bg">
-                            <div class="progress_bar__fg_wrapper">
-                                <div class="progress_bar__fg" style="transform: translateX(-32.1243%);"></div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="volume-bar">
+                    <button class="control-button" id="volume" onclick="toggleVolume()" aria-label="Mute"><i class="fas fa-volume-up" id="volumeIcon"></i></button>
                 </div>
             </div>
-            <div id="overlay"></div>
         </div>
     </footer>
 </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <script>
-        // Play Icon Switcher
+    console.clear();
+    // Play Icon Switcher
     //$("#play-btn").click(function (e) {
     //    e.preventDefault();
     //    $(this).find("i").toggleClass("fa-play-circle fa-pause-circle");
     //});
-   
+
     const songs = ["Audio/Risk.mp3", "Audio/01%20Bonita.mp3", "Audio/Zikomo%20-%20Stussy%20x%20Soulection%20Compilation%20-%2001%20Champion%20Riddim.mp3"];
     const songNames = ["Risk", "Bonita", "Champion Riddim"];
     const artists = ["Tom Misch", "oriJanus", "Zikomo"];
     const posters = ["Images/TM-SWL008.jpg", "Images/OJ-SWL013.jpg", "Images/SXSC.jpg"];
 
-    const songName = document.getElementById("songName");
-    const songArtist = document.getElementById("songArtist");
-    const progressBar = document.getElementById("progressBar");
-    const timeNow = document.getElementById("timeNow");
+    const songNameElement = document.getElementById("songName");
+    const songArtistElement = document.getElementById("songArtist");
+    const progressBarElement = document.getElementById("progressBar");
+    const playbackTimeElement = document.getElementById("playbackTime");
 
-    var song = new Audio();
+    var player = new Audio();
     var currentSong = 0;
-    window.onload = playSong;
 
+    $(document).ready(function () {
+        player.src = songs[currentSong];
+        songNameElement.textContent = songNames[currentSong];
+        songArtistElement.textContent = artists[currentSong];
+    });
 
-    Audio.onloadedmetadata = function () {
-        console.log(Audio.duration)
-    };
-
-    //const AudioContext = window.AudioContext || window.webkitAudioContext;
-    //// get the audio element
-    //const audioElement = document.querySelector('audio');
-
-    //// pass it into the audio context
-    //const track = audioContext.createMediaElementSource(audioElement);
-
-
-    function playSong() {
-        song.src = songs[currentSong]
-        songName.textContent = songNames[currentSong];
-        songArtist.textContent = artists[currentSong];
-        song.play();
+    function playTrack(trackId) {
+        player.pause();
+        player.currentTime = 0;
+        player.src = 'Audio/' + trackId + '.mp3';
+        player.play();
+        $("#play-btn i").removeClass("fa-play-circle").addClass("fa-pause-circle");
     }
 
-    function playPause(){
-        if(song.paused) {
-            song.play();
+    function playPause() {
+        if (player.paused) {
+            player.play();
             $("#play-btn i").removeClass("fa-play-circle").addClass("fa-pause-circle");
         }
         else {
-            song.pause();
+            player.pause();
             $("#play-btn i").removeClass("fa-pause-circle").addClass("fa-play-circle")
         }
     }
 
-    song.addEventListener('timeupdate', function() {
-        var position = song.currentTime / song.duration;
-        progressBar.style.width = position * 100 + '%';
-        convertTime(Math.round(song.currentTime));
-        if (song.ended) {
+    player.addEventListener('timeupdate', function () {
+        var position = player.currentTime / player.duration;
+        progressBarElement.style.width = position * 100 + '%';
+        displayTrackTime();
+        if (player.ended) {
             next();
         }
-
     });
 
-    function convertTime(seconds){
-        var min = Math.floor(seconds / 60);
-        var sec = seconds % 60;
-        min = (min < 10) ? "0" + min : min;
-        sec = (sec < 10) ? "0" + sec : sec;
-        timeNow.textContent = min + ":" + sec;
-
-        totalTime(Math.round(song.duration));
+    function displayTrackTime() {
+        var stringCurrentTime = getFormatedTime(player.currentTime);
+        var stringTotalTime = getFormatedTime(player.duration);
+        playbackTimeElement.textContent = stringCurrentTime + ' / ' + stringTotalTime;
     }
 
-    function totalTime(seconds) {
-        var min = Math.floor(seconds / 60);
-        var sec = seconds % 60;
-        min = (min < 10) ? "0" + min : min;
-        sec = (sec < 10) ? "0" + sec : sec;
-        timeNow.textContent += " / " + min + ":" + sec;
+    function getFormatedTime(seconds) {
+        if (seconds && !isNaN(seconds)) {
+            seconds = Math.round(seconds);
+            var min = Math.floor(seconds / 60);
+            var sec = seconds % 60;
+            min = (min < 10) ? "0" + min : min;
+            sec = (sec < 10) ? "0" + sec : sec;
+            return min + ":" + sec;
+        }
+        else {
+            return "0:00"
+        }
     }
 
-    function next(){
+    function next() {
         currentSong++;
-        if (currentSong > 2) {
+        if (currentSong > songs.length-1) {
             currentSong = 0;
         }
         playSong();
@@ -146,12 +133,18 @@
 
     function prev() {
         currentSong--;
-        if (currentSong > 0) {
-            currentSong = 2;
+        if (currentSong < 0) {
+            currentSong = songs.lenth-1;
         }
         playSong();
         $("#play-btn i").removeClass("fa-play-circle").addClass("fa-pause-circle");
         $("albumArt img").attr("src", posters[currentSong]);
+    }
+
+
+    function toggleVolume() {
+        player.muted = !player.muted
+        $("#volumeIcon").toggleClass("fa-volume-up").toggleClass("fa-volume-mute");
     }
 
 </script>
