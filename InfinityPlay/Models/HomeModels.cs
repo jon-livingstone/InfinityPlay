@@ -15,6 +15,15 @@ namespace InfinityPlay.Models
             public List<ALBUM> Albums { get; set; }
         }
 
+        public class TrackMetadataModel
+        {
+            public string AlbumArt { get; set; }
+
+            public string ArtistName { get; set; }
+
+            public string TrackName { get; set; }
+        }
+
         public class ARTIST
         {
             [Key]
@@ -53,6 +62,8 @@ namespace InfinityPlay.Models
             public int TRACK_NUMBER { get; set; }
 
             public int DURATION { get; set; }
+
+            private string TRACK_FILE { get; set; }
         }
 
         public class COMMENT

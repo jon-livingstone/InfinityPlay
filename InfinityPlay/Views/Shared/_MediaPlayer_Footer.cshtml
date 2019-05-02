@@ -73,12 +73,17 @@
         songArtistElement.textContent = artists[currentSong];
     });
 
-    function playTrack(trackId) {
+    function playTrack(trackGUID) {
         player.pause();
         player.currentTime = 0;
-        player.src = 'Audio/' + trackId + '.mp3';
+        player.src = 'Audio/' + trackGUID + '.mp3';
         player.play();
         $("#play-btn i").removeClass("fa-play-circle").addClass("fa-pause-circle");
+        $.get("/GetNowPlayingTrackData?trackGUID=" + trackGUID, null, function (data) {
+            songNameElement.textContent = data.TrackName;
+            songArtistElement.textContent = data.ArtistName;
+            $("#albumArt img").attr("src", data.AlbumArt);
+        });
     }
 
     function playPause() {
