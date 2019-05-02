@@ -82,6 +82,16 @@ namespace InfinityPlay.Controllers
             return PartialView("Search");
         }
 
+        // ----- Album Details
+
+        [Route("Album/{albumId}")]
+        public ActionResult AlbumDetails(int albumId)
+        {
+            var model = new ALBUM();
+            var models = DbHelper.Query("SELECT * FROM ALBUMS WHERE ALBUM_ID = 1;");
+            return View("AlbumDetails", model);
+        }
+
         // ---------- PRIVATE METHODS ------------//
 
         // Home -----------------------------------
@@ -95,8 +105,6 @@ namespace InfinityPlay.Controllers
 
         private List<ALBUM> GetTopAlbums1()
         {
-            // Sort all albums by date decending, and return the first two
-            // Do it "the C# way"
             try
             {
                 return AllAlbumList().OrderByDescending(a => a.RELEASE_YEAR).Take(5).ToList();
@@ -111,8 +119,6 @@ namespace InfinityPlay.Controllers
 
         private List<ALBUM> GetTopAlbums2()
         {
-            // Sort all albums by date decending, and return the first two
-            // Do it "the SQL way"
             List<ALBUM> organize = new List<ALBUM>();
             try
             {
@@ -205,6 +211,14 @@ namespace InfinityPlay.Controllers
                 return list;
             }
         }
+
+        // Albums -----------------------------------------
+        //public ActionResult AlbumDetail(int albumId)
+        //{
+        //    var album = new ALBUM();
+
+        //    return View("AlbumDetails", album);
+        //}
 
         // MediaPlayer Album Info
         private HomePageModel MediaPlayerInfo()
