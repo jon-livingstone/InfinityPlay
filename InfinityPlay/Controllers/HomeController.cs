@@ -90,10 +90,11 @@ namespace InfinityPlay.Controllers
             var model = new ALBUM();
             var row = DbHelper.Query("SELECT * FROM ALBUMS WHERE ALBUM_ID =" + albumId);
 
-            var albumPageInfo = new getAlbumData();
+            var albumPageInfo = new GetAlbumData();
             albumPageInfo.ALBUM_ART = (string)row["ALBUM_ART"];
             albumPageInfo.ALBUM_NAME = (string)row["ALBUM_NAME"];
-            albumPageInfo.ARTIST_NAME = (string)row["ARTIST_NAME"];
+            albumPageInfo.BAND_NAME = (string)row["BAND_NAME"];
+            albumPageInfo.RELEASE_YEAR = (int)row["RELEASE_YEAR"];
 
             return View("AlbumDetails", model);
         }

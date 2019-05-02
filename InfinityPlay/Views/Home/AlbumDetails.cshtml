@@ -1,4 +1,4 @@
-﻿@model InfinityPlay.Models.HomeModels.ALBUM
+﻿@model InfinityPlay.Models.HomeModels.GetAlbumData
 
 <div class=" content-spacing gradient-wrap h-auto w-100 background">
     <div class="container">
@@ -8,9 +8,10 @@
                     <img src="@Model.ALBUM_ART" class="img-fluid banner-img img-thumbnail" height="400" />
                     <h2 class="d-block mt-2 text-center">@Model.ALBUM_NAME</h2>
                     <h4 class="d-block mt-2 text-center">@Model.BAND_NAME</h4>
+                    <h4 class="d-block mt-2 text-center">@Model.RELEASE_YEAR</h4>
                 </div>
                 <div class="col-md-6 banner-text">
-                    <h3 class="d-block display-3 text-lg-right">Featured Artist</h3>
+                    <h3 class="d-block text-lg-right">Featured Artist</h3>
                 </div>
             </div>
         </div>
