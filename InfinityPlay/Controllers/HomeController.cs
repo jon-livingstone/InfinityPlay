@@ -56,7 +56,7 @@ namespace InfinityPlay.Controllers
             return PartialView("Artists", list);
         }
 
-        // ----- Albums
+        // ----- Albums List
         [Route("Partial/Albums")]
         public ActionResult AlbumsPartial()
         {
@@ -80,6 +80,23 @@ namespace InfinityPlay.Controllers
         public ActionResult Search()
         {
             return PartialView("Search");
+        }
+
+        // --- Track Data
+        public JsonResult GetNowPlayingTrackData(string trackGUID)
+        {
+             var row = DbHelper.Query(@"SELECT ALBUMS.ALBUM_ART, ARTISTS.ARTIST_NAME, TRACKS.TRACK_NAME
+                                        FROM ALBUMS 
+                                        JOIN TRACKS ON TRACKS.ALBUM_ID = ALBUMS.ALBUM_ID
+                                        JOIN ARTISTS ON TRACKS.ARTIST_ID = ARTISTS.ARTIST_ID
+                                        WHERE TRACKS.TRACK_FILE = '" + trackGUID + "';").First();
+
+            var trackInfo = new TrackMetadataModel();
+            trackInfo.AlbumArt = (string)row["ALBUM_ART"];
+            trackInfo.ArtistName = (string)row["ARTIST_NAME"];
+            trackInfo.TrackName = (string)row["TRACK_NAME"];
+
+            return new JsonResult() { Data = trackInfo, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
         // ---------- PRIVATE METHODS ------------//
@@ -151,7 +168,7 @@ namespace InfinityPlay.Controllers
             return artist;
         }
 
-        // Artists ----------------------------------------
+        // Artist List ----------------------------------------
         private List<ARTIST> AllArtistList()
         {
             var list = new List<ARTIST>();
@@ -178,7 +195,7 @@ namespace InfinityPlay.Controllers
             }
         }
 
-        // Albums -----------------------------------------
+        // Albums List -----------------------------------------
         private List<ALBUM> AllAlbumList()
         {
             List<ALBUM> list = new List<ALBUM>();
@@ -211,12 +228,12 @@ namespace InfinityPlay.Controllers
         {
             var model = new HomePageModel();
             model.Artist = GetRandomArtist();
-            //model.Albums = SelectedAlbum();
+            // model.Albums = SelectedAlbum();
             return model;
         }
 
-        //private List<ALBUM> SelectedAlbum()
-        //{
+        // private List<ALBUM> SelectedAlbum()
+        // {
         //    try
         //    {
         //    }
@@ -226,8 +243,7 @@ namespace InfinityPlay.Controllers
         //        Debug.WriteLine(ex.StackTrace);
         //        return null;
         //    }
-        //}
-
+        // }
 
         /* ---------------------------------Get Album Rating----------------------------------
         public ActionResult GetAlbumRating(int albumId)
