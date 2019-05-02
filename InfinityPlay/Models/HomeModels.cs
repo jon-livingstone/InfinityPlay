@@ -15,6 +15,18 @@ namespace InfinityPlay.Models
             public List<ALBUM> Albums { get; set; }
         }
 
+        public class getAlbumData
+        {
+            public string ALBUM_ART { get; set; }
+
+            public string ARTIST_NAME { get; set; }
+
+            public string ALBUM_NAME { get; set; }
+
+            public int RELEASE_YEAR { get; set; }
+        }
+
+
         public class ARTIST
         {
             [Key]

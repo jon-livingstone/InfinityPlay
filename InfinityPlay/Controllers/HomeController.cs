@@ -88,12 +88,12 @@ namespace InfinityPlay.Controllers
         public ActionResult AlbumDetails(int albumId)
         {
             var model = new ALBUM();
-            var models = DbHelper.Query("SELECT * FROM ALBUMS WHERE ALBUM_ID =" + albumId);
+            var row = DbHelper.Query("SELECT * FROM ALBUMS WHERE ALBUM_ID =" + albumId);
 
-            var albumPageInfo = new ALBUM();
-            albumPageInfo.ALBUM_ART = (string)models["ALBUM_ART"];
-            albumPageInfo.ALBUM_NAME = (string)models["ALBUM_NAME"];
-            albumPageInfo.BAND_NAME = (string)models["BAND_NAME"];
+            var albumPageInfo = new getAlbumData();
+            albumPageInfo.ALBUM_ART = (string)row["ALBUM_ART"];
+            albumPageInfo.ALBUM_NAME = (string)row["ALBUM_NAME"];
+            albumPageInfo.ARTIST_NAME = (string)row["ARTIST_NAME"];
 
             return View("AlbumDetails", model);
         }
