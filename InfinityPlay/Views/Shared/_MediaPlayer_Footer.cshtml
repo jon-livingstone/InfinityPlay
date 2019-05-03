@@ -6,7 +6,7 @@
                 <div class="now-playing">
                     <div class="" aria-label="" style="border: none;" onclick="toggle('slider')">
                         <div id="albumArt">
-                            <img src="~/Images/TM-SWL008.jpg" aria-hidden="true" style="width: 56px; height: 56px;">
+                            <img src="#"  id="poster" aria-hidden="true" style="width: 56px; height: 56px;">
                         </div>
                     </div>
                     <div class="track-info">
@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="now-playing-bar__center">
-                <audio id="myAudio" src="~/Audio/Risk.mp3" preload="metadata" volume="0.2"></audio>
+                <audio preload="metadata" volume="0.5"></audio>
                 <div class="player-controls">
                     <div class="player-controls__buttons">
                         @*<button class="control-button" id="random-btn" title="Enable shuffle"> <i class="fas fa-random"></i></button>*@
@@ -46,105 +46,3 @@
 </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-<script>
-    console.clear();
-    // Play Icon Switcher
-    //$("#play-btn").click(function (e) {
-    //    e.preventDefault();
-    //    $(this).find("i").toggleClass("fa-play-circle fa-pause-circle");
-    //});
-
-    const songs = ["Audio/Risk.mp3", "Audio/01%20Bonita.mp3", "Audio/Zikomo%20-%20Stussy%20x%20Soulection%20Compilation%20-%2001%20Champion%20Riddim.mp3"];
-    const songNames = ["Risk", "Bonita", "Champion Riddim"];
-    const artists = ["Tom Misch", "oriJanus", "Zikomo"];
-    const posters = ["Images/TM-SWL008.jpg", "Images/OJ-SWL013.jpg", "Images/SXSC.jpg"];
-
-    const songNameElement = document.getElementById("songName");
-    const songArtistElement = document.getElementById("songArtist");
-    const progressBarElement = document.getElementById("progressBar");
-    const playbackTimeElement = document.getElementById("playbackTime");
-
-    var player = new Audio();
-    var currentSong = 0;
-
-    $(document).ready(function () {
-        player.src = songs[currentSong];
-        songNameElement.textContent = songNames[currentSong];
-        songArtistElement.textContent = artists[currentSong];
-    });
-
-    function playTrack(trackId) {
-        player.pause();
-        player.currentTime = 0;
-        player.src = 'Audio/' + trackId + '.mp3';
-        player.play();
-        $("#play-btn i").removeClass("fa-play-circle").addClass("fa-pause-circle");
-    }
-
-    function playPause() {
-        if (player.paused) {
-            player.play();
-            $("#play-btn i").removeClass("fa-play-circle").addClass("fa-pause-circle");
-        }
-        else {
-            player.pause();
-            $("#play-btn i").removeClass("fa-pause-circle").addClass("fa-play-circle")
-        }
-    }
-
-    player.addEventListener('timeupdate', function () {
-        var position = player.currentTime / player.duration;
-        progressBarElement.style.width = position * 100 + '%';
-        displayTrackTime();
-        if (player.ended) {
-            next();
-        }
-    });
-
-    function displayTrackTime() {
-        var stringCurrentTime = getFormatedTime(player.currentTime);
-        var stringTotalTime = getFormatedTime(player.duration);
-        playbackTimeElement.textContent = stringCurrentTime + ' / ' + stringTotalTime;
-    }
-
-    function getFormatedTime(seconds) {
-        if (seconds && !isNaN(seconds)) {
-            seconds = Math.round(seconds);
-            var min = Math.floor(seconds / 60);
-            var sec = seconds % 60;
-            min = (min < 10) ? "0" + min : min;
-            sec = (sec < 10) ? "0" + sec : sec;
-            return min + ":" + sec;
-        }
-        else {
-            return "0:00"
-        }
-    }
-
-    function next() {
-        currentSong++;
-        if (currentSong > songs.length-1) {
-            currentSong = 0;
-        }
-        playSong();
-        $("#play-btn i").removeClass("fa-play-circle").addClass("fa-pause-circle");
-        $("#albumArt img").attr("src", posters[currentSong]);
-    }
-
-    function prev() {
-        currentSong--;
-        if (currentSong < 0) {
-            currentSong = songs.lenth-1;
-        }
-        playSong();
-        $("#play-btn i").removeClass("fa-play-circle").addClass("fa-pause-circle");
-        $("albumArt img").attr("src", posters[currentSong]);
-    }
-
-
-    function toggleVolume() {
-        player.muted = !player.muted
-        $("#volumeIcon").toggleClass("fa-volume-up").toggleClass("fa-volume-mute");
-    }
-
-</script>

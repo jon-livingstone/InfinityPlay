@@ -7,6 +7,8 @@
     <title>@ViewBag.Title - InfinityPlay</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 </head>
@@ -18,7 +20,7 @@
         <div class="root-main-view">
             <div class="main-view-container body-content">
                 <section>
-                    <div id="mainContent">
+                    <div id="mainContent" class="gradientBG gradient-wrap vh-100">
                         @RenderBody()
                     </div>
                 </section>
@@ -28,17 +30,12 @@
             Html.RenderPartial("_MediaPlayer_Footer");
         }
     </div>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/grade")
     @RenderSection("scripts", required: false)
 
     <script type="text/javascript">
-        window.addEventListener('load', function () {
-            Grade(document.querySelectorAll('.gradient-wrap'));
-        });
-
         $(document).ready(function () {
+       
             $('ul#navLinks li').click(function () {
                 const url = $(this).attr('data-page-type');
                 history.pushState(null, null, url);

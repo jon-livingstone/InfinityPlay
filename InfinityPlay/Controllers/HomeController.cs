@@ -83,24 +83,42 @@ namespace InfinityPlay.Controllers
         }
 
         // ----- Album Details
-
         [Route("Album/{albumId}")]
         public ActionResult AlbumDetails(int albumId)
         {
-            var model = new ALBUM();
-            var row = DbHelper.Query("SELECT * FROM ALBUMS WHERE ALBUM_ID =" + albumId);
+            var album = new ALBUM();
 
-            var albumPageInfo = new GetAlbumData();
-            albumPageInfo.ALBUM_ART = (string)row["ALBUM_ART"];
-            albumPageInfo.ALBUM_NAME = (string)row["ALBUM_NAME"];
-            albumPageInfo.BAND_NAME = (string)row["BAND_NAME"];
-            albumPageInfo.RELEASE_YEAR = (int)row["RELEASE_YEAR"];
+            var rows = DbHelper.Query("SELECT * FROM ALBUMS JOIN TRACKS ON TRACKS.ALBUM_ID = ALBUMS.ALBUM_ID JOIN ARTISTS ON TRACKS.ARTIST_ID = ARTISTS.ARTIST_ID WHERE ALBUMS.ALBUM_ID =" + albumId);
 
-            return View("AlbumDetails", model);
+            album.ALBUM_ART = (string)rows[0]["ALBUM_ART"];
+            album.ALBUM_NAME = (string)rows[0]["ALBUM_NAME"];
+            album.BAND_NAME = (string)rows[0]["BAND_NAME"];
+            album.RELEASE_YEAR = (int)rows[0]["RELEASE_YEAR"];
+
+            foreach (var row in rows)
+            {
+                var track = new TRACK();
+
+                track.TRACK_FILE = (string)row["TRACK_FILE"];
+                track.TRACK_NAME = (string)row["TRACK_NAME"];
+                track.DURATION = (int)row["DURATION"];
+                track.TRACK_NUMBER = (int)row["TRACK_NUMBER"];
+
+                track.Artist = new ARTIST();
+
+                track.Artist.ARTIST_IMG = (string)row["ARTIST_IMG"];
+                track.Artist.ARTIST_NAME = (string)row["ARTIST_NAME"];
+                track.Artist.Tracks.Add(track);
+
+                track.Album = album;
+
+                album.Tracks.Add(track);
+            }
+
+            return View("AlbumDetails", album);
         }
 
         // ---------- PRIVATE METHODS ------------//
-
         // Home -----------------------------------
         private HomePageModel GetPageModel()
         {
@@ -177,7 +195,6 @@ namespace InfinityPlay.Controllers
                     var artist = new ARTIST();
                     artist.ARTIST_NAME = (string)row["ARTIST_NAME"];
                     artist.ARTIST_ID = (int)row["ARTIST_ID"];
-                    artist.ALBUM_ID = (int)row["ALBUM_ID"];
                     artist.ARTIST_IMG = (string)row["ARTIST_IMG"];
 
                     list.Add(artist);
@@ -220,24 +237,55 @@ namespace InfinityPlay.Controllers
         }
 
         // Albums -----------------------------------------
-        //public ActionResult AlbumDetail(int albumId)
-        //{
-        //    var album = new ALBUM();
-
-        //    return View("AlbumDetails", album);
-        //}
-
-        // MediaPlayer Album Info
-        private HomePageModel MediaPlayerInfo()
+        private List<TRACK> AllTrackList()
         {
-            var model = new HomePageModel();
-            model.Artist = GetRandomArtist();
-            //model.Albums = SelectedAlbum();
-            return model;
+            List<TRACK> list = new List<TRACK>();
+            try
+            {
+                var rows = DbHelper.Query("SELECT * FROM TRACK");
+
+                foreach (DataRow row in rows)
+                {
+                    var trackList = new TRACK();
+                    trackList.TRACK_NAME = (string)row["TRACK_NAME"];
+                    trackList.DURATION = (int)row["DURATION"];
+                    trackList.TRACK_NUMBER = (int)row["TRACK_NUMBER"];
+                    trackList.TRACK_FILE = (string)row["TRACK_FILE"];
+                    list.Add(trackList);
+                }
+
+                return list;
+            }
+            catch (Exception)
+            {
+                return list;
+            }
         }
 
-        //private List<ALBUM> SelectedAlbum()
-        //{
+        //// Albums -----------------------------------------
+        // private AlbumDataModel AlbumPageModel()
+        // {
+        //    var model = new AlbumDataModel();
+        //    model.Tracks = AlbumTrackList();
+        //    return model;
+        // }
+
+        // private List<TRACK> GetAlbumTracks()
+        // {
+        //    try
+        //    {
+        //        return AllTrackList()..ToList();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Debug.WriteLine(ex.Message);
+        //        Debug.WriteLine(ex.StackTrace);
+        //        return null;
+        //    }
+        // }
+
+        // private List<ALBUM> SelectedAlbum()
+        // {
         //    try
         //    {
         //    }
@@ -247,8 +295,7 @@ namespace InfinityPlay.Controllers
         //        Debug.WriteLine(ex.StackTrace);
         //        return null;
         //    }
-        //}
-
+        // }
 
         /* ---------------------------------Get Album Rating----------------------------------
         public ActionResult GetAlbumRating(int albumId)

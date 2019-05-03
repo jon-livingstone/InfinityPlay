@@ -433,8 +433,6 @@ a.link-subtle.navBar-link.active::after {
 }
 
 .content-spacing {
-    width: calc(100%);
-    height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
     will-change: transform;
@@ -442,6 +440,9 @@ a.link-subtle.navBar-link.active::after {
     -webkit-transition: opacity .25s;
     transition: opacity .25s;
     margin: 0 auto;
+    padding: 0 32px;
+    margin: 0 auto;
+    max-width: 1480px;
 }
 
 .head-text {
@@ -603,9 +604,56 @@ a.link-subtle.navBar-link.active::after {
     justify-content: flex-start;
 }
 
+/****** Tracklist View ******/
 
-/****** Footer ******/
+.tracklist-row {
+   color:#fff;
+}
 
+.trackList {
+    margin: 0 auto 1.5em;
+    text-align: center;
+    max-width: 400px;
+}
+
+.mo-tracklist-info-album {
+    font-size: 28px;
+    line-height: 36px;
+    letter-spacing: -.005em;
+    font-weight: var(--glue-font-weight-black);
+    color: #fff;
+    text-transform: none;
+}
+
+.mo-tracklist-info-artist {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: .015em;
+    color: #fff;
+    text-transform: none;
+    cursor: default;
+}
+
+.tracklist-play-pause {
+    color: #fff;
+    background-color: transparent;
+    border:none;
+}
+
+.tracklist-name {
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: .015em;
+    color: #fff;
+ 
+}
+
+.tracklist-row .tracklist-duration {
+    color: #fff;
+    opacity: .6;
+}
+
+/****** Music Player ******/
 #slider {
     border-top: 1px solid black;
     min-height: 100vh;
@@ -1183,6 +1231,13 @@ div.slider {
     .NavBar__icon {
         font-size: 24px;
     }
+
+    .playlist .col-sticky {
+        position: sticky;
+        top: 40px;
+        }
+
+
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
