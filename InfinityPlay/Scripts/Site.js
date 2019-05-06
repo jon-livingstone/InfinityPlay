@@ -12,62 +12,6 @@ $(document).ready(function () {
 //------------- END: Navigating the app without hard reloading pages
 
 
-//----------------------- Search function
-(function () {
-    var Search = document.getElementById('Search'),
-        input = Search.querySelector('input.Search-input'),
-        ctrlClose = Search.querySelector('span.Search-close'),
-        isOpen = isAnimating = false,
-        // show/hide search area
-        toggleSearch = function (evt) {
-            // return if open and the input gets focused
-            if (evt.type.toLowerCase() === 'focus' && isOpen) return false;
-
-            var offsets = Search.getBoundingClientRect();
-            if (isOpen) {
-                classie.remove(Search, 'open');
-
-                // trick to hide input text once the search overlay closes 
-                // todo: hardcoded times, should be done after transition ends
-                if (input.value !== '') {
-                    setTimeout(function () {
-                        classie.add(Search, 'hideInput');
-                        setTimeout(function () {
-                            classie.remove(Search, 'hideInput');
-                            input.value = '';
-                        }, 300);
-                    }, 500);
-                }
-
-                input.blur();
-            }
-            else {
-                classie.add(Search, 'open');
-            }
-            isOpen = !isOpen;
-        };
-
-    // events
-    input.addEventListener('focus', toggleSearch);
-    ctrlClose.addEventListener('click', toggleSearch);
-    // esc key closes search overlay
-    // keyboard navigation events
-    document.addEventListener('keydown', function (ev) {
-        var keyCode = ev.keyCode || ev.which;
-        if (keyCode === 27 && isOpen) {
-            toggleSearch(ev);
-        }
-    });
-
-
-    /***** for demo purposes only: don't allow to submit the form *****/
-    Search.querySelector('button[type="submit"]').addEventListener('click', function (ev) { ev.preventDefault(); });
-})();
-
-
-//----------------------- END: Search function
-
-
 //--------------------- Gradient Average -------------
 window.addEventListener('load', function () {
     Grade(document.querySelectorAll('.gradient-wrap'));
@@ -85,5 +29,9 @@ window.addEventListener('load', function () {
 //        $("div.Root__now-playing-bar.slider").slideDown();
 //    });
 //});
-
 //---------------------- END:Toggle Responsive Now Playing Bar -----------
+
+
+
+// ----------------------- Media Player ----------------------------------
+

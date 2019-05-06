@@ -7,7 +7,7 @@
 
 abbr, acronym, address, applet, article, aside, audio,
 b, big, blockquote, body, canvas, caption, center, cite, code, dd, del,
-details, dfn, /*div*/, dl, dt, em, embed, fieldset, figcaption, figure, footer,
+details, dfn, /*div,*/ dl, dt, em, embed, fieldset, figcaption, figure, footer,
 form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd,
 label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby,
 s, samp, section, small, span, strike, strong, sub, summary, sup,
@@ -241,8 +241,6 @@ ul {
     letter-spacing: .015em;
 }
 
-.NavBar__icon.fas fa-search {
-}
 
 .navBar-item--left-icon, .navBar-item--with-icon-right {
     position: relative;
@@ -427,7 +425,7 @@ a.link-subtle.navBar-link.active::after {
 
 .gradientBG {
     background-image: linear-gradient(135deg, rgb(37, 127, 237) 0%, rgb(0, 14, 33) 75%);
-    height: 100vh;
+    height: auto;
 }
 
 .gradient-wrap {
@@ -703,8 +701,8 @@ a.link-subtle.navBar-link.active::after {
     font-size: 14px;
     line-height: 20px;
     letter-spacing: .015em;
-    color: #fff;
     text-align: left;
+    font-weight: 500;
 }
 
 .track-info__artists {
@@ -719,9 +717,6 @@ a.link-subtle.navBar-link.active::after {
     flex-shrink: 0;
     position: relative;
 }
-
-
-
 
 .now-playing-bar__center {
     width: 40%;
@@ -745,11 +740,12 @@ a.link-subtle.navBar-link.active::after {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
+    justify-content: center;
 }
 
 .player-controls__buttons {
     margin-bottom: 12px;
-    width: 224px;
+    width: 130px;
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
@@ -772,10 +768,18 @@ a.link-subtle.navBar-link.active::after {
     color: #404040;
 }
 
-.play-button {
-    font-size: 32px;
+/*.player-controls #play-btn {
+    content: "f144";
+    background-size: cover;
+}*/
+
+.player-controls #play-btn.pause {
+    content: "f28b";
 }
 
+div.slider {
+    background-color: blue;
+}
 
 .middle-align {
     position: absolute;
@@ -801,6 +805,48 @@ a.link-subtle.navBar-link.active::after {
     align-items: center;
 }
 
+.music-cotnrol{
+    background-image: linear-gradient(white);
+}
+
+.playback-bar .progress_bar{
+    width: 0%;
+    background-color: #fff;
+    animation: width 10s infinite;
+}
+
+@keyframes width 
+{
+    100%{width: 100%;}
+}
+
+#timeNow{
+    text-align: right;
+    line-height: 16px;
+    font-size: 16px;
+}
+
+#playbackBar {
+    width: 360px;
+    height: 4px;
+    display: flex;
+    cursor: pointer;
+    background: #e5e5e5;
+    border-radius: 2px;
+}
+
+#progressBar {
+    height: 4px;
+    background-color: #257fed;
+}
+
+#movingBar {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #257fed;
+}
+
 .playback-bar__progress-time {
     font-size: 11px;
     line-height: 16px;
@@ -809,6 +855,40 @@ a.link-subtle.navBar-link.active::after {
     text-align: center;
 }
 
+.slidecontainer {
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+    .slider:hover {
+        opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        background: #4CAF50;
+        cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        background: #4CAF50;
+        cursor: pointer;
+    }
 
 .progress_bar {
     height: 12px;
@@ -941,6 +1021,7 @@ a.link-subtle.navBar-link.active::after {
 
     .gradientBG {
         height: auto;
+
     }
 
     .navbar-brand {
@@ -1117,3 +1198,6 @@ a.link-subtle.navBar-link.active::after {
         height: 100vh;
     }
 }
+
+
+
