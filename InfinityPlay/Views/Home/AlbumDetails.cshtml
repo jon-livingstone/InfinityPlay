@@ -1,46 +1,46 @@
 ﻿@model InfinityPlay.Models.HomeModels.ALBUM
 
 <div class="content-spacing">
-        <div class="container-fluid d-md-inline-flex">
-            <div class="col-xs-12 col-md-4 col-lg-4 col-xl-4">
-                <div class="position-sticky">
-                    <header class="trackList-header text-center">
-                        <img src="@Model.ALBUM_ART" class="img-fluid banner-img img-thumbnail" id="posters" height="400" />
-                        <div class="mo-info">
-                            <div class="d-block mt-2 font-weight-bold mo-tracklist-info-album" id="">@Model.ALBUM_NAME</div>
-                            <div class="d-block mt-2 mo-tracklist-info-artist">@Model.BAND_NAME</div>
-                            <p class="d-block mt-3">
-                                <small>Release Year:  @Model.RELEASE_YEAR</small>
-                            </p>
-                        </div>
-                    </header>
-                </div>
-            </div>
-            <div class="container-fluid">
-                <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
-                    <div class="position-relative .tracklist">
-                        @foreach (var track in Model.Tracks)
-                        {
-                            <div class="row d-flex p-4 tracklist-row" role="button" tabindex="0">
-                                <div class="pr-3 mt-2">
-                                    <button class="tracklist-play-pause" id="play-btn" onclick="playPause('@track.TRACK_FILE')" title="Play" aria-hidden="true">
-                                        <i class="far fa-play-circle" aria-hidden="true"></i>
-                                    </button>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <div class="mt-2 d-block tracklist-name" data-songName="@track.TRACK_NAME"></div>
-                                    <div class="text-muted tracklist-artist" data-songArtist="@track.Artist.ARTIST_NAME"></div>
-                                </div>
-                                <div class="mt-2 track-time" data-duration="@track.DURATION">
-                                </div>
-                            </div>
-                        }
+    <div class="container-fluid d-md-inline-flex">
+        <div class="col-sm-4">
+            <div class="playlist col-sticky">
+                <header class="trackList text-center">
+                    <img src="@Model.ALBUM_ART" class="img-fluid banner-img img-thumbnail" id="posters" height="400" />
+                    <div class="mo-info">
+                        <div class="d-block mt-2 font-weight-bold mo-tracklist-info-album" id="">@Model.ALBUM_NAME</div>
+                        <div class="d-block mt-2 mo-tracklist-info-artist">@Model.BAND_NAME</div>
+                        <p class="d-block mt-3">
+                            <small>Release Year:  @Model.RELEASE_YEAR</small>
+                        </p>
                     </div>
-                    <div class="text-muted">@Model.RECORD_LABEL</div>
+                </header>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="col-sm-8">
+                <div class="position-relative .tracklist">
+                    @foreach (var track in Model.Tracks)
+                    {
+                        <div class="row d-flex tracklist-row" role="button" tabindex="0">
+                            <div class="pr-3 mt-2">
+                                <button class="tracklist-play-pause" onclick="playTrack('@track.TRACK_FILE')" title="Play" aria-hidden="true">
+                                    <i class="fas fa-play" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <div class="flex-grow-1">
+                                <div class="mt-2 d-block" id="">@track.TRACK_NAME</div>
+                                <div class="text-muted">@track.Artist.ARTIST_NAME</div>
+                            </div>
+                            <div class="mt-2 track-time" data-duration="@track.DURATION">
+                            </div>
+                        </div>
+                        <hr />
+                    }
                 </div>
             </div>
         </div>
     </div>
+</div>
 <script>
     $(document).ready(function () {
         $('.track-time').each(function () {
@@ -49,9 +49,4 @@
             $(this).text(timeString);
         });
     });
-
-    $('.tracklist-name').each(function () {
-        var trackName = $(this).data();
-    });
-    
 </script>
