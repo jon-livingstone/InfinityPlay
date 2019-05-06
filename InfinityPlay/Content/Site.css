@@ -610,17 +610,35 @@ a.link-subtle.navBar-link.active::after {
    color:#fff;
 }
 
-.trackList {
+    .tracklist-row:focus, .tracklist-row:hover {
+        background-color: rgba(0,0,0,.3);
+        color:white;
+
+    }
+
+a.tracklist:focus, a.tracklist:hover , a.track-time:focus, a.track-time:hover {
+    text-decoration-color: #fff;
+}
+
+
+.trackList-header {
     margin: 0 auto 1.5em;
     text-align: center;
     max-width: 400px;
 }
 
+    .trackList-header .mo-info 
+    {
+        display: block;
+        height: auto;
+        margin-bottom: .3em;
+        text-decoration: none;
+    }
+
 .mo-tracklist-info-album {
     font-size: 28px;
     line-height: 36px;
     letter-spacing: -.005em;
-    font-weight: var(--glue-font-weight-black);
     color: #fff;
     text-transform: none;
 }
@@ -1074,7 +1092,7 @@ div.slider {
 
     .navbar-brand {
         margin-right: auto;
-        margin-bottom: 0;
+        margin-bottom: 0 !important;
     }
 
     .root-navbar {
@@ -1112,6 +1130,7 @@ div.slider {
         user-select: none;
         cursor: default;
         display: flex;
+        padding-left:0;
     }
 
     .root-navbar-header {
@@ -1136,9 +1155,9 @@ div.slider {
 
 
     .root-main-view {
-        padding-left: inherit;
         padding-bottom: 90px;
         padding-top: 140px;
+        padding-left:0 !important;
     }
 
     .banner-text {
@@ -1158,10 +1177,17 @@ div.slider {
     .head-text {
         text-align: center;
     }
-}
 
-@media (min-width: 576px) and (max-width: 991.98px) {
+    .mo-tracklist-info-album {
+        font-size: 18px;
+    }
+    }
 
+@media (max-width: 767.98px) {
+
+    .root-main-view {
+        padding-left: 140px;
+    }
     .mo-info {
         font-size: 12px;
         position: relative;
@@ -1197,31 +1223,10 @@ div.slider {
         display: none;
     }
 
-    .navBar {
-        padding-top: 24px;
-        padding-bottom: 5px;
-        -webkit-box-orient: vertical;
-        -ms-flex-direction: column;
-        flex-direction: column;
-        -webkit-box-flex: 1;
-        -ms-flex: 1;
-        flex: 1;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        width: 140px;
-        cursor: default;
-    }
-
     .navBar-Group {
         text-decoration: none;
         margin-bottom: 20px;
         margin-top: 20px;
-    }
-
-    .root-main-view {
-        padding-left: 140px;
     }
 
     .navBar-link {
@@ -1232,24 +1237,36 @@ div.slider {
         font-size: 24px;
     }
 
-    .playlist .col-sticky {
-        position: sticky;
-        top: 40px;
-        }
-
-
 }
 
-@media (min-width: 992px) and (max-width: 1199.98px) {
+@media (max-width: 991.98px) {
     .display-3 {
         font-size: 3rem;
     }
-}
 
-@media (min-width: 1200px) {
+    .navBar {
+        width: 140px;
+    }
+
+    .root-main-view {
+        padding-left: 140px;
+    }
+
+    .mo-tracklist-info-album {
+        font-size: 20px;
+    }
+
+    .navbar-brand {
+        margin-right: auto;
+        margin-bottom: 20px;
+    }
+    }
+
+@media (max-width: 1199.98px) {
     .display-3 {
         font-size: 4rem;
     }
+
 }
 
 @media screen and (min-width: 1900px) {
@@ -1257,6 +1274,4 @@ div.slider {
         height: 100vh;
     }
 }
-
-
 
