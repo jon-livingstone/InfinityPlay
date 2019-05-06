@@ -224,7 +224,7 @@ namespace InfinityPlay.Controllers
                     albumList.ALBUM_ART = (string)row["ALBUM_ART"];
                     albumList.BAND_NAME = (string)row["BAND_NAME"];
                     albumList.RELEASE_YEAR = (int)row["RELEASE_YEAR"];
-                    albumList.RECORD_YEAR = (string)row["RECORD_LABEL"];
+                    albumList.RECORD_LABEL = (string)row["RECORD_LABEL"];
                     list.Add(albumList);
                 }
 
