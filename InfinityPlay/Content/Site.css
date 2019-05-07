@@ -426,6 +426,7 @@ a.link-subtle.navBar-link.active::after {
 .gradientBG {
     background-image: linear-gradient(135deg, rgb(37, 127, 237) 0%, rgb(0, 14, 33) 75%);
     height: auto;
+ 
 }
 
 .gradient-wrap {
@@ -453,6 +454,7 @@ a.link-subtle.navBar-link.active::after {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
+    color:white;
 }
 
 .display-3 {
@@ -478,6 +480,7 @@ a.link-subtle.navBar-link.active::after {
 .banner-text {
     float: left;
     position: relative;
+    color: white;
 }
 
 .heat-text {
@@ -1155,6 +1158,7 @@ a.tracklist:focus, a.tracklist:hover , a.track-time:focus, a.track-time:hover {
         padding: 30px 0 20px 0px;
         text-align: center;
         position: relative;
+        
     }
 
     .banner-img{
