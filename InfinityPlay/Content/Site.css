@@ -639,15 +639,20 @@ a.tracklist:focus, a.tracklist:hover , a.track-time:focus, a.track-time:hover {
     }
 
 .mo-tracklist-info-album {
-    font-size: 28px;
+    font-size: 36px;
     line-height: 36px;
     letter-spacing: -.005em;
     color: #fff;
     text-transform: none;
 }
 
-.mo-tracklist-info-artist {
+.release-year{
+    color: white;
     font-size: 14px;
+}
+
+.mo-tracklist-info-artist {
+    font-size: 20px;
     line-height: 20px;
     letter-spacing: .015em;
     color: #fff;

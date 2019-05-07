@@ -8,8 +8,8 @@
                     <img src="@Model.ALBUM_ART" class="img-fluid banner-img img-thumbnail" id="posters" height="400" />
                     <div class="mo-info">
                         <div class="d-block mt-2 font-weight-bold mo-tracklist-info-album" id=""> @Model.ALBUM_NAME</div>
-                        <div class="d-block mt-2 mo-tracklist-info-artist" id=""> @Model.BAND_NAME</div>
-                        <p class="d-block mt-3">
+                        <div class="d-block mt-4 mo-tracklist-info-artist" id=""> @Model.BAND_NAME</div>
+                        <p class="d-block mt-3 release-year">
                             <small>Release Year:  @Model.RELEASE_YEAR</small>
                         </p>
                     </div>
@@ -21,7 +21,7 @@
                 <div class="position-relative .tracklist">
                     @foreach (var track in Model.Tracks)
                     {
-                        <div class="row d-flex tracklist-row" role="button" tabindex="0">
+                        <div class="row d-flex tracklist-row p-3" role="button" tabindex="0">
                             <div class="pr-3 mt-2">
                                 <button class="tracklist-play-pause" onclick="playTrack('@track.TRACK_FILE')" title="Play" aria-hidden="true">
                                     <i class="fas fa-play" aria-hidden="true"></i>
