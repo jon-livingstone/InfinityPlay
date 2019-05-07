@@ -132,8 +132,8 @@ function next() {
         currentSong = 0;
     }
     playSong();
-    //$("#play-btn i").removeClass("fa-play-circle").addClass("fa-pause-circle");
-    $("#albumArt img").attr("src", showPoster[currentSong]);
+    $("#play-btn i").removeClass("fa-play-circle").addClass("fa-pause-circle");
+    $("#albumArt img").attr("src", posters[currentSong]);
 }
 
 function prev() {
@@ -142,8 +142,8 @@ function prev() {
         currentSong = songs.lenth - 1;
     }
     playSong();
-    //$("#play-btn i").removeClass("fa-play-circle").addClass("fa-pause-circle");
-    $("albumArt img").attr("src", showPoster[currentSong]);
+    $("#play-btn i").removeClass("fa-play-circle").addClass("fa-pause-circle");
+    $("albumArt img").attr("src", posters[currentSong]);
 }
 
 
@@ -151,25 +151,3 @@ function toggleVolume() {
     player.muted = !player.muted
     $("#volumeIcon").toggleClass("fa-volume-up").toggleClass("fa-volume-mute");
 }
-
-player.addEventListener('ended', function () {
-    player.pause();
-    player.src = "/Audio/";
-    player.load();
-    player.play
-});
-
-var playlist = 'noMusic';
-var playListAudio = [];
-$(".tracklist-play-pause").each(function () {
-    var load = new Audio($($this).attr("/Audio/"));
-    load.load();
-    load.addEventListener('ended', function () {
-        next();
-    });
-    playListAudio.push(load);
-});
-
-var currentSong = 0;
-
-playPause 
