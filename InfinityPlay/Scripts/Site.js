@@ -9,6 +9,7 @@ $(document).ready(function () {
         });
     });
 });
+
 //------------- END: Navigating the app without hard reloading pages
 
 

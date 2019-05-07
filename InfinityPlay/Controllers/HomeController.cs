@@ -6,13 +6,14 @@ using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using InfinityPlay.Models;
 using static InfinityPlay.Models.HomeModels;
 
 namespace InfinityPlay.Controllers
 {
     public class HomeController : Controller
     {
+        private static Random rnd = new Random();
+
         // ----- Index
         [Route("Partial/Index")]
         public ActionResult IndexPartial()
@@ -79,12 +80,26 @@ namespace InfinityPlay.Controllers
 
         public ActionResult Search()
         {
-            return PartialView("Search");
+            return View("Search");
         }
 
         // ----- Album Details
+        [Route("Partial/Album/{albumId}")]
+        public ActionResult AlbumDetailsPartial(int albumId)
+        {
+            var album = AlbumData(albumId);
+            return PartialView("AlbumDetails", album);
+        }
+
         [Route("Album/{albumId}")]
         public ActionResult AlbumDetails(int albumId)
+        {
+            var album = AlbumData(albumId);
+            return View("AlbumDetails", album);
+        }
+
+        // ---------- PRIVATE METHODS ------------ //
+        private ALBUM AlbumData(int albumId)
         {
             var album = new ALBUM();
 
@@ -97,14 +112,15 @@ namespace InfinityPlay.Controllers
 
             foreach (var row in rows)
             {
-                var track = new TRACK();
+                var track = new TRACK
+                {
+                    TRACK_FILE = (string)row["TRACK_FILE"],
+                    TRACK_NAME = (string)row["TRACK_NAME"],
+                    DURATION = (int)row["DURATION"],
+                    TRACK_NUMBER = (int)row["TRACK_NUMBER"],
 
-                track.TRACK_FILE = (string)row["TRACK_FILE"];
-                track.TRACK_NAME = (string)row["TRACK_NAME"];
-                track.DURATION = (int)row["DURATION"];
-                track.TRACK_NUMBER = (int)row["TRACK_NUMBER"];
-
-                track.Artist = new ARTIST();
+                    Artist = new ARTIST()
+                };
 
                 track.Artist.ARTIST_IMG = (string)row["ARTIST_IMG"];
                 track.Artist.ARTIST_NAME = (string)row["ARTIST_NAME"];
@@ -115,21 +131,21 @@ namespace InfinityPlay.Controllers
                 album.Tracks.Add(track);
             }
 
-            return View("AlbumDetails", album);
+            return album;
         }
 
-        // ---------- PRIVATE METHODS ------------//
         // Home -----------------------------------
         private HomePageModel GetPageModel()
         {
-            var model = new HomePageModel();
-            model.Artist = GetRandomArtist();
-            model.Albums = GetTopAlbums1();
+            var model = new HomePageModel
+            {
+                Artist = GetRandomArtist(),
+                Albums = GetTopAlbums1()
+            };
             return model;
         }
 
         private List<ALBUM> GetTopAlbums1()
-
         {
             try
             {
@@ -152,11 +168,13 @@ namespace InfinityPlay.Controllers
 
                 foreach (DataRow row in rows)
                 {
-                    var album = new ALBUM();
-                    album.RELEASE_YEAR = (int)row["RELEASE_YEAR"];
-                    album.ALBUM_NAME = (string)row["ALBUM_NAME"];
-                    album.ALBUM_ART = (string)row["ALBUM_ART"];
-                    album.BAND_NAME = (string)row["BAND_NAME"];
+                    var album = new ALBUM
+                    {
+                        RELEASE_YEAR = (int)row["RELEASE_YEAR"],
+                        ALBUM_NAME = (string)row["ALBUM_NAME"],
+                        ALBUM_ART = (string)row["ALBUM_ART"],
+                        BAND_NAME = (string)row["BAND_NAME"]
+                    };
 
                     organize.Add(album);
                 }
@@ -169,8 +187,6 @@ namespace InfinityPlay.Controllers
             }
         }
 
-        private static Random rnd = new Random();
-
         private ARTIST GetRandomArtist()
         {
             var artist = new ARTIST();
@@ -178,7 +194,6 @@ namespace InfinityPlay.Controllers
             var allArtists = AllArtistList();
 
             int r = rnd.Next(allArtists.Count);
-            
             artist = allArtists[r];
             return artist;
         }
@@ -236,7 +251,8 @@ namespace InfinityPlay.Controllers
                 return list;
             }
         }
-        // Albums -----------------------------------------
+
+        // Track List -----------------------------------------
         private List<TRACK> AllTrackList()
         {
             List<TRACK> list = new List<TRACK>();
@@ -261,111 +277,5 @@ namespace InfinityPlay.Controllers
                 return list;
             }
         }
-        //// Albums -----------------------------------------
-        // private AlbumDataModel AlbumPageModel()
-        // {
-        //    var model = new AlbumDataModel();
-        //    model.Tracks = AlbumTrackList();
-        //    return model;
-        // }
-
-        // private List<TRACK> GetAlbumTracks()
-        // {
-        //    try
-        //    {
-        //        return AllTrackList()..ToList();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Debug.WriteLine(ex.Message);
-        //        Debug.WriteLine(ex.StackTrace);
-        //        return null;
-        //    }
-        // }
-        // private List<ALBUM> SelectedAlbum()
-        // {
-        //    try
-        //    {
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Debug.WriteLine(ex.Message);
-        //        Debug.WriteLine(ex.StackTrace);
-        //        return null;
-        //    }
-        // }
-
-        /* ---------------------------------Get Album Rating----------------------------------
-        public ActionResult GetAlbumRating(int albumId)
-        {
-            List<DataRow> rows = DbHelper.Query($"SELECT STAR_RATINGS FROM RATINGS WHERE ALBUM_ID = {albumId}");
-
-            if (rows == null || rows.Count() == 0)
-            {
-                throw new Exception("No Ratings For This Item Yet");
-            }
-
-            List<int> ratings = new List<int>();
-
-            foreach (DataRow row in rows)
-            {
-                int rating = (int)row.ItemArray[0];
-                ratings.Add(rating);
-            }
-
-            double rAverage = ratings.Average();
-            return Content(rAverage.ToString());
-        }
-
-        // ---------------------------------Get Artist Data----------------------------------
-        // public Actionresult ArtistData(int ArtistID)
-        // {
-        //    List<DataRow> rows = DbHelper.Query($"select star_ratings from ratings where track_id = {ArtistID}");
-
-        //    if (rows == null || rows.Count() == 0)
-        //    {
-        //        throw new Exception("no ratings for this item yet");
-        //    }
-
-        //    List<int> ratings = new List<int>();
-
-        //    foreach (DataRow row in rows)
-        //    {
-        //        int rating = rows.Count();
-        //        ratings.Add(rating);
-        //    }
-
-        //    double rAverage = ratings.Average();
-        //    return Content(rAverage.ToString());
-        //}
-
-        // ---------------------------------Get Track Data----------------------------------
-        public ActionResult GetTrackData()
-        {
-            string trackinfo = string.Empty;
-
-            List<string> stringList = new List<string>();
-
-            List<DataRow> rows = DbHelper.Query("SELECT * FROM TRACKS");
-
-            Debug.WriteLine("Number of rows: " + rows.Count());
-            int i = 0;
-
-            foreach (DataRow row in rows)
-            {
-                foreach (var item in row.ItemArray)
-                {
-                    string getinfo = item.ToString();
-                    Debug.WriteLine(getinfo);
-                    stringList.Add(getinfo);
-                }
-
-                Debug.WriteLine(" | ");
-                i = i + 1;
-            }
-
-            trackinfo = string.Join(" | ", stringList);
-            return Content(trackinfo);
-        }*/
     }
 }
