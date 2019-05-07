@@ -56,7 +56,7 @@ namespace InfinityPlay.Controllers
             return PartialView("Artists", list);
         }
 
-        // ----- Albums
+        // ----- Albums List
         [Route("Partial/Albums")]
         public ActionResult AlbumsPartial()
         {
@@ -129,6 +129,7 @@ namespace InfinityPlay.Controllers
         }
 
         private List<ALBUM> GetTopAlbums1()
+
         {
             try
             {
@@ -177,7 +178,7 @@ namespace InfinityPlay.Controllers
             var allArtists = AllArtistList();
 
             int r = rnd.Next(allArtists.Count);
-
+            
             artist = allArtists[r];
             return artist;
         }
@@ -235,7 +236,6 @@ namespace InfinityPlay.Controllers
                 return list;
             }
         }
-
         // Albums -----------------------------------------
         private List<TRACK> AllTrackList()
         {
@@ -261,7 +261,6 @@ namespace InfinityPlay.Controllers
                 return list;
             }
         }
-
         //// Albums -----------------------------------------
         // private AlbumDataModel AlbumPageModel()
         // {
@@ -283,7 +282,6 @@ namespace InfinityPlay.Controllers
         //        return null;
         //    }
         // }
-
         // private List<ALBUM> SelectedAlbum()
         // {
         //    try

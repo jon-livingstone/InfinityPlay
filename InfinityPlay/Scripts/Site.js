@@ -34,6 +34,7 @@ window.addEventListener('load', function () {
 
 
 // ----------------------- Media Player ----------------------------------
+
 console.clear();
 // Play Icon Switcher
 //$("#play-btn").click(function (e) {
