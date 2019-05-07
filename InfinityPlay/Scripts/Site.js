@@ -46,23 +46,43 @@ const songNames = [];
 const artists = [];
 const posters = [];
 
-
 var player = new Audio();
 var currentSong = 0;
 
 $(document).ready(function () {
-    player.src = songs[currentSong];
+    player.src = song[currentSong];
     document.getElementById("songName").textContent = songNames[currentSong];
     document.getElementById("songArtist").textContent = artists[currentSong];
 });
 
+
+
 function playTrack(trackId) {
-    player.pause();
+    player.currentSong = 0;
     player.currentTime = 0;
     player.src = '/Audio/' + trackId + '.mp3';
     player.play();
     $("#play-btn i").removeClass("fa-play-circle").addClass("fa-pause-circle");
+    songNames[currentSong] = document.getElementById("songName").textContent;
+    artists[currentSong] = document.getElementById("songArtist").textContent;
 }
+
+function playPause() {
+    if (musicTracker == player()) {
+        player[currentSong].play();
+        musicTracker = player.play();
+        $("#play-btn i").removeClass("fa-play-circle").addClass("fa-pause-circle");
+    }
+    else {
+        player[currentSong].pause();
+        musicTracker = 'noMusic'
+        player.pause();
+        player.currentTime = 0;
+        player.currentSong = 0;
+        $("#play-btn i").removeClass("fa-pause-circle").addClass("fa-play-circle")
+    }
+};
+
 
 function playPause() {
     if (player.paused) {
@@ -74,6 +94,7 @@ function playPause() {
         $("#play-btn i").removeClass("fa-pause-circle").addClass("fa-play-circle")
     }
 }
+
 
 player.addEventListener('timeupdate', function () {
     var position = player.currentTime / player.duration;
@@ -87,7 +108,7 @@ player.addEventListener('timeupdate', function () {
 function displayTrackTime() {
     var stringCurrentTime = getFormatedTime(player.currentTime);
     var stringTotalTime = getFormatedTime(player.duration);
-    playbackTimeElement.textContent = stringCurrentTime + ' / ' + stringTotalTime;
+    playbackTime.textContent = stringCurrentTime + ' / ' + stringTotalTime;
 }
 
 function getFormatedTime(seconds) {
@@ -110,8 +131,8 @@ function next() {
         currentSong = 0;
     }
     playSong();
-    $("#play-btn i").removeClass("fa-play-circle").addClass("fa-pause-circle");
-    $("#albumArt img").attr("src", posters[currentSong]);
+    //$("#play-btn i").removeClass("fa-play-circle").addClass("fa-pause-circle");
+    $("#albumArt img").attr("src", showPoster[currentSong]);
 }
 
 function prev() {
@@ -120,8 +141,8 @@ function prev() {
         currentSong = songs.lenth - 1;
     }
     playSong();
-    $("#play-btn i").removeClass("fa-play-circle").addClass("fa-pause-circle");
-    $("albumArt img").attr("src", posters[currentSong]);
+    //$("#play-btn i").removeClass("fa-play-circle").addClass("fa-pause-circle");
+    $("albumArt img").attr("src", showPoster[currentSong]);
 }
 
 
@@ -130,3 +151,24 @@ function toggleVolume() {
     $("#volumeIcon").toggleClass("fa-volume-up").toggleClass("fa-volume-mute");
 }
 
+player.addEventListener('ended', function () {
+    player.pause();
+    player.src = "/Audio/";
+    player.load();
+    player.play
+});
+
+var playlist = 'noMusic';
+var playListAudio = [];
+$(".tracklist-play-pause").each(function () {
+    var load = new Audio($($this).attr("/Audio/"));
+    load.load();
+    load.addEventListener('ended', function () {
+        next();
+    });
+    playListAudio.push(load);
+});
+
+var currentSong = 0;
+
+playPause 

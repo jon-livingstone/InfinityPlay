@@ -49,4 +49,9 @@
             $(this).text(timeString);
         });
     });
+
+    $(document).ready(function () {
+        $('#posters').each(function () {
+            var showPoster = $(this).data(@Model.ALBUM_ART);
+    });
 </script>
