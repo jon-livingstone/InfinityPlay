@@ -429,12 +429,10 @@ a.link-subtle.navBar-link.active::after {
 }
 
 .gradient-wrap {
-    height: 100%;
+    height: 100% !important;
 }
 
 .content-spacing {
-    width: calc(100%);
-    height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
     will-change: transform;
@@ -442,6 +440,9 @@ a.link-subtle.navBar-link.active::after {
     -webkit-transition: opacity .25s;
     transition: opacity .25s;
     margin: 0 auto;
+    padding: 0 32px;
+    margin: 0 auto;
+    max-width: 1480px;
 }
 
 .head-text {
@@ -603,9 +604,74 @@ a.link-subtle.navBar-link.active::after {
     justify-content: flex-start;
 }
 
+/****** Tracklist View ******/
 
-/****** Footer ******/
+.tracklist-row {
+   color:#fff;
+}
 
+    .tracklist-row:focus, .tracklist-row:hover {
+        background-color: rgba(0,0,0,.3);
+        color:white;
+
+    }
+
+a.tracklist:focus, a.tracklist:hover , a.track-time:focus, a.track-time:hover {
+    text-decoration-color: #fff;
+}
+
+
+.trackList-header {
+    margin: 0 auto 1.5em;
+    text-align: center;
+    max-width: 400px;
+}
+
+    .trackList-header .mo-info 
+    {
+        display: block;
+        height: auto;
+        margin-bottom: .3em;
+        text-decoration: none;
+    }
+
+.mo-tracklist-info-album {
+    font-size: 28px;
+    line-height: 36px;
+    letter-spacing: -.005em;
+    color: #fff;
+    text-transform: none;
+}
+
+.mo-tracklist-info-artist {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: .015em;
+    color: #fff;
+    text-transform: none;
+    cursor: default;
+}
+
+.tracklist-play-pause {
+    color: #fff;
+    background-color: transparent;
+    border:none;
+}
+
+.tracklist-name {
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: .015em;
+    color: #fff;
+ 
+}
+
+.tracklist-row .tracklist-duration {
+    color: #fff;
+    opacity: .6;
+}
+
+/****** Music Player ******/
 #slider {
     border-top: 1px solid black;
     min-height: 100vh;
@@ -1026,7 +1092,7 @@ div.slider {
 
     .navbar-brand {
         margin-right: auto;
-        margin-bottom: 0;
+        margin-bottom: 0 !important;
     }
 
     .root-navbar {
@@ -1064,6 +1130,7 @@ div.slider {
         user-select: none;
         cursor: default;
         display: flex;
+        padding-left:0;
     }
 
     .root-navbar-header {
@@ -1088,15 +1155,19 @@ div.slider {
 
 
     .root-main-view {
-        padding-left: inherit;
         padding-bottom: 90px;
         padding-top: 140px;
+        padding-left:0 !important;
     }
 
     .banner-text {
         padding: 30px 0 20px 0px;
         text-align: center;
         position: relative;
+    }
+
+    .banner-img{
+        text-align: center;
     }
 
     .display-3 {
@@ -1106,10 +1177,17 @@ div.slider {
     .head-text {
         text-align: center;
     }
-}
 
-@media (min-width: 576px) and (max-width: 991.98px) {
+    .mo-tracklist-info-album {
+        font-size: 18px;
+    }
+    }
 
+@media (max-width: 767.98px) {
+
+    .root-main-view {
+        padding-left: 140px;
+    }
     .mo-info {
         font-size: 12px;
         position: relative;
@@ -1145,31 +1223,10 @@ div.slider {
         display: none;
     }
 
-    .navBar {
-        padding-top: 24px;
-        padding-bottom: 5px;
-        -webkit-box-orient: vertical;
-        -ms-flex-direction: column;
-        flex-direction: column;
-        -webkit-box-flex: 1;
-        -ms-flex: 1;
-        flex: 1;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        width: 140px;
-        cursor: default;
-    }
-
     .navBar-Group {
         text-decoration: none;
         margin-bottom: 20px;
         margin-top: 20px;
-    }
-
-    .root-main-view {
-        padding-left: 140px;
     }
 
     .navBar-link {
@@ -1179,18 +1236,37 @@ div.slider {
     .NavBar__icon {
         font-size: 24px;
     }
+
 }
 
-@media (min-width: 992px) and (max-width: 1199.98px) {
+@media (max-width: 991.98px) {
     .display-3 {
         font-size: 3rem;
     }
-}
 
-@media (min-width: 1200px) {
+    .navBar {
+        width: 140px;
+    }
+
+    .root-main-view {
+        padding-left: 140px;
+    }
+
+    .mo-tracklist-info-album {
+        font-size: 20px;
+    }
+
+    .navbar-brand {
+        margin-right: auto;
+        margin-bottom: 20px;
+    }
+    }
+
+@media (max-width: 1199.98px) {
     .display-3 {
         font-size: 4rem;
     }
+
 }
 
 @media screen and (min-width: 1900px) {
@@ -1198,6 +1274,4 @@ div.slider {
         height: 100vh;
     }
 }
-
-
 

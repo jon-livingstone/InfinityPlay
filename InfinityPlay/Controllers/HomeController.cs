@@ -82,25 +82,43 @@ namespace InfinityPlay.Controllers
             return PartialView("Search");
         }
 
-        // --- Track Data
-        public JsonResult GetNowPlayingTrackData(string trackGUID)
+        // ----- Album Details
+        [Route("Album/{albumId}")]
+        public ActionResult AlbumDetails(int albumId)
         {
-             var row = DbHelper.Query(@"SELECT ALBUMS.ALBUM_ART, ARTISTS.ARTIST_NAME, TRACKS.TRACK_NAME
-                                        FROM ALBUMS 
-                                        JOIN TRACKS ON TRACKS.ALBUM_ID = ALBUMS.ALBUM_ID
-                                        JOIN ARTISTS ON TRACKS.ARTIST_ID = ARTISTS.ARTIST_ID
-                                        WHERE TRACKS.TRACK_FILE = '" + trackGUID + "';").First();
+            var album = new ALBUM();
 
-            var trackInfo = new TrackMetadataModel();
-            trackInfo.AlbumArt = (string)row["ALBUM_ART"];
-            trackInfo.ArtistName = (string)row["ARTIST_NAME"];
-            trackInfo.TrackName = (string)row["TRACK_NAME"];
+            var rows = DbHelper.Query("SELECT * FROM ALBUMS JOIN TRACKS ON TRACKS.ALBUM_ID = ALBUMS.ALBUM_ID JOIN ARTISTS ON TRACKS.ARTIST_ID = ARTISTS.ARTIST_ID WHERE ALBUMS.ALBUM_ID =" + albumId);
 
-            return new JsonResult() { Data = trackInfo, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            album.ALBUM_ART = (string)rows[0]["ALBUM_ART"];
+            album.ALBUM_NAME = (string)rows[0]["ALBUM_NAME"];
+            album.BAND_NAME = (string)rows[0]["BAND_NAME"];
+            album.RELEASE_YEAR = (int)rows[0]["RELEASE_YEAR"];
+
+            foreach (var row in rows)
+            {
+                var track = new TRACK();
+
+                track.TRACK_FILE = (string)row["TRACK_FILE"];
+                track.TRACK_NAME = (string)row["TRACK_NAME"];
+                track.DURATION = (int)row["DURATION"];
+                track.TRACK_NUMBER = (int)row["TRACK_NUMBER"];
+
+                track.Artist = new ARTIST();
+
+                track.Artist.ARTIST_IMG = (string)row["ARTIST_IMG"];
+                track.Artist.ARTIST_NAME = (string)row["ARTIST_NAME"];
+                track.Artist.Tracks.Add(track);
+
+                track.Album = album;
+
+                album.Tracks.Add(track);
+            }
+
+            return View("AlbumDetails", album);
         }
 
         // ---------- PRIVATE METHODS ------------//
-
         // Home -----------------------------------
         private HomePageModel GetPageModel()
         {
@@ -111,9 +129,8 @@ namespace InfinityPlay.Controllers
         }
 
         private List<ALBUM> GetTopAlbums1()
+
         {
-            // Sort all albums by date decending, and return the first two
-            // Do it "the C# way"
             try
             {
                 return AllAlbumList().OrderByDescending(a => a.RELEASE_YEAR).Take(5).ToList();
@@ -128,8 +145,6 @@ namespace InfinityPlay.Controllers
 
         private List<ALBUM> GetTopAlbums2()
         {
-            // Sort all albums by date decending, and return the first two
-            // Do it "the SQL way"
             List<ALBUM> organize = new List<ALBUM>();
             try
             {
@@ -163,12 +178,12 @@ namespace InfinityPlay.Controllers
             var allArtists = AllArtistList();
 
             int r = rnd.Next(allArtists.Count);
-
+            
             artist = allArtists[r];
             return artist;
         }
 
-        // Artist List ----------------------------------------
+        // Artists ----------------------------------------
         private List<ARTIST> AllArtistList()
         {
             var list = new List<ARTIST>();
@@ -181,7 +196,6 @@ namespace InfinityPlay.Controllers
                     var artist = new ARTIST();
                     artist.ARTIST_NAME = (string)row["ARTIST_NAME"];
                     artist.ARTIST_ID = (int)row["ARTIST_ID"];
-                    artist.ALBUM_ID = (int)row["ALBUM_ID"];
                     artist.ARTIST_IMG = (string)row["ARTIST_IMG"];
 
                     list.Add(artist);
@@ -195,7 +209,7 @@ namespace InfinityPlay.Controllers
             }
         }
 
-        // Albums List -----------------------------------------
+        // Albums -----------------------------------------
         private List<ALBUM> AllAlbumList()
         {
             List<ALBUM> list = new List<ALBUM>();
@@ -211,7 +225,7 @@ namespace InfinityPlay.Controllers
                     albumList.ALBUM_ART = (string)row["ALBUM_ART"];
                     albumList.BAND_NAME = (string)row["BAND_NAME"];
                     albumList.RELEASE_YEAR = (int)row["RELEASE_YEAR"];
-                    albumList.RECORD_YEAR = (string)row["RECORD_LABEL"];
+                    albumList.RECORD_LABEL = (string)row["RECORD_LABEL"];
                     list.Add(albumList);
                 }
 
@@ -222,16 +236,52 @@ namespace InfinityPlay.Controllers
                 return list;
             }
         }
-
-        // MediaPlayer Album Info
-        private HomePageModel MediaPlayerInfo()
+        // Albums -----------------------------------------
+        private List<TRACK> AllTrackList()
         {
-            var model = new HomePageModel();
-            model.Artist = GetRandomArtist();
-            // model.Albums = SelectedAlbum();
-            return model;
-        }
+            List<TRACK> list = new List<TRACK>();
+            try
+            {
+                var rows = DbHelper.Query("SELECT * FROM TRACK");
 
+                foreach (DataRow row in rows)
+                {
+                    var trackList = new TRACK();
+                    trackList.TRACK_NAME = (string)row["TRACK_NAME"];
+                    trackList.DURATION = (int)row["DURATION"];
+                    trackList.TRACK_NUMBER = (int)row["TRACK_NUMBER"];
+                    trackList.TRACK_FILE = (string)row["TRACK_FILE"];
+                    list.Add(trackList);
+                }
+
+                return list;
+            }
+            catch (Exception)
+            {
+                return list;
+            }
+        }
+        //// Albums -----------------------------------------
+        // private AlbumDataModel AlbumPageModel()
+        // {
+        //    var model = new AlbumDataModel();
+        //    model.Tracks = AlbumTrackList();
+        //    return model;
+        // }
+
+        // private List<TRACK> GetAlbumTracks()
+        // {
+        //    try
+        //    {
+        //        return AllTrackList()..ToList();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Debug.WriteLine(ex.Message);
+        //        Debug.WriteLine(ex.StackTrace);
+        //        return null;
+        //    }
+        // }
         // private List<ALBUM> SelectedAlbum()
         // {
         //    try

@@ -9,35 +9,57 @@ namespace InfinityPlay.Models
     public class HomeModels
     {
         public class HomePageModel
+
         {
             public ARTIST Artist { get; set; }
 
             public List<ALBUM> Albums { get; set; }
         }
 
-        public class TrackMetadataModel
+        public class AlbumDataModel
         {
-            public string AlbumArt { get; set; }
+            public AlbumDataModel()
+            {
+                Tracks = new List<TRACK>();
+            }
 
-            public string ArtistName { get; set; }
+            public string ALBUM_ART { get; set; }
 
-            public string TrackName { get; set; }
+            public string BAND_NAME { get; set; }
+
+            public string ALBUM_NAME { get; set; }
+
+            public int RELEASE_YEAR { get; set; }
+
+            public List<TRACK> Tracks { get; set; }
+
+            public string ARTIST_NAME { get; set; }
         }
 
         public class ARTIST
         {
+            public ARTIST()
+            {
+                Tracks = new List<TRACK>();
+            }
+
             [Key]
             public int ARTIST_ID { get; set; }
 
             public string ARTIST_NAME { get; set; }
 
-            public int ALBUM_ID { get; set; }
-
             public string ARTIST_IMG { get; set; }
+          
+            public List<TRACK> Tracks { get; set; }
         }
 
         public class ALBUM
         {
+            public ALBUM()
+            {
+                Tracks = new List<TRACK>();
+            }
+
             [Key]
             public int ALBUM_ID { get; set; }
 
@@ -49,7 +71,10 @@ namespace InfinityPlay.Models
 
             public int RELEASE_YEAR { get; set; }
 
-            public string RECORD_YEAR { get; set; }
+
+            public string RECORD_LABEL { get; set; }
+
+            public List<TRACK> Tracks { get; set; }
         }
 
         public class TRACK
@@ -57,13 +82,22 @@ namespace InfinityPlay.Models
             [Key]
             public int TRACK_ID { get; set; }
 
-            public char TRACK_NAME { get; set; }
+            public string TRACK_NAME { get; set; }
 
             public int TRACK_NUMBER { get; set; }
 
             public int DURATION { get; set; }
 
-            private string TRACK_FILE { get; set; }
+
+            public string TRACK_FILE { get; set; }
+
+            public int ALBUM_ID { get; set; }
+
+            public ALBUM Album { get; set; }
+
+            public int ARTIST_ID { get; set; }
+
+            public ARTIST Artist { get; set; }
         }
 
         public class COMMENT
