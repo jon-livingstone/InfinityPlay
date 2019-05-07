@@ -16,11 +16,9 @@
                         <div class="media-object-wrapper">
                             <img src="@item.ALBUM_ART" class="img-fluid img-thumbnail image" />
                             <div class="overlay_image">
-                                <a class="cover-art play-icon" aria-hidden="true" href="/album/@item.ALBUM_ID">
-                                    <div class="">
+                                <div class="cover-art play-icon play-album-link" aria-hidden="true" data-albumid="@item.ALBUM_ID">
                                         <i class="far fa-play-circle"></i>
-                                    </div>
-                                </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -38,3 +36,15 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $('.play-album-link').click(function () {
+            const albumid = $(this).attr('data-albumid');
+            const url = '/Album/' + albumid;
+            history.pushState(null, null, url);
+            $('#mainContent').load("/partial" + url, "", function () {
+                Grade(document.querySelectorAll('.content-spacing'));
+            });
+        });
+    });
+</script>
