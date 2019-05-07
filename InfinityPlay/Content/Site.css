@@ -834,18 +834,10 @@ a.tracklist:focus, a.tracklist:hover , a.track-time:focus, a.track-time:hover {
     color: #404040;
 }
 
-/*.player-controls #play-btn {
-    content: "f144";
-    background-size: cover;
-}*/
-
-.player-controls #play-btn.pause {
-    content: "f28b";
+.play-button {
+    font-size: 32px;
 }
 
-div.slider {
-    background-color: blue;
-}
 
 .middle-align {
     position: absolute;
@@ -1087,7 +1079,6 @@ div.slider {
 
     .gradientBG {
         height: auto;
-
     }
 
     .navbar-brand {

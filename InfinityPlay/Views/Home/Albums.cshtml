@@ -16,18 +16,20 @@
                         <div class="media-object-wrapper">
                             <img src="@item.ALBUM_ART" class="img-fluid img-thumbnail image" />
                             <div class="overlay_image">
-                                <div class="cover-art play-icon play-album-link" aria-hidden="true" data-albumid="@item.ALBUM_ID">
+                                <a class="cover-art play-icon" aria-hidden="true" href="#">
+                                    <div class="">
                                         <i class="far fa-play-circle"></i>
-                                </div>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>
                     <div class="mo-info">
-                        <div class="mo-info-album" href="/album/@item.ALBUM_ID">
+                        <div class="mo-info-album" dir="auto" href="#">
                             <div>@item.ALBUM_NAME</div>
                         </div>
                         <div>
-                            <div class="mo-info-artist" >/artist/@item.BAND_NAME</div>
+                            <div class="mo-info-artist" dir="auto">@item.BAND_NAME</div>
                         </div>
                     </div>
                 </div>
