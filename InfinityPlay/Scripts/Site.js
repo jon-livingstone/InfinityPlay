@@ -70,23 +70,6 @@ function playTrack(trackId) {
 }
 
 function playPause() {
-    if (musicTracker == player()) {
-        player[currentSong].play();
-        musicTracker = player.play();
-        $("#play-btn i").removeClass("fa-play-circle").addClass("fa-pause-circle");
-    }
-    else {
-        player[currentSong].pause();
-        musicTracker = 'noMusic'
-        player.pause();
-        player.currentTime = 0;
-        player.currentSong = 0;
-        $("#play-btn i").removeClass("fa-pause-circle").addClass("fa-play-circle")
-    }
-};
-
-
-function playPause() {
     if (player.paused) {
         player.play();
         $("#play-btn i").removeClass("fa-play-circle").addClass("fa-pause-circle");
