@@ -51,11 +51,11 @@ const posters = [];
 var player = new Audio();
 var currentSong = 0;
 
-$(document).ready(function () {
-    player.src = song[currentSong];
-    document.getElementById("songName").textContent = songNames[currentSong];
-    document.getElementById("songArtist").textContent = artists[currentSong];
-});
+//$(document).ready(function () {
+//    player.src = song[currentSong];
+//    document.getElementById("songName").textContent = songNames[currentSong];
+//    document.getElementById("songArtist").textContent = artists[currentSong];
+//});
 
 
 

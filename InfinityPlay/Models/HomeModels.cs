@@ -9,7 +9,6 @@ namespace InfinityPlay.Models
     public class HomeModels
     {
         public class HomePageModel
-
         {
             public ARTIST Artist { get; set; }
 
@@ -49,7 +48,7 @@ namespace InfinityPlay.Models
             public string ARTIST_NAME { get; set; }
 
             public string ARTIST_IMG { get; set; }
-          
+
             public List<TRACK> Tracks { get; set; }
         }
 
@@ -71,7 +70,6 @@ namespace InfinityPlay.Models
 
             public int RELEASE_YEAR { get; set; }
 
-
             public string RECORD_LABEL { get; set; }
 
             public List<TRACK> Tracks { get; set; }
@@ -87,7 +85,6 @@ namespace InfinityPlay.Models
             public int TRACK_NUMBER { get; set; }
 
             public int DURATION { get; set; }
-
 
             public string TRACK_FILE { get; set; }
 

@@ -147,7 +147,6 @@ namespace InfinityPlay.Controllers
         }
 
         private List<ALBUM> GetTopAlbums1()
-
         {
             try
             {
@@ -161,34 +160,33 @@ namespace InfinityPlay.Controllers
             }
         }
 
-        private List<ALBUM> GetTopAlbums2()
-        {
-            List<ALBUM> organize = new List<ALBUM>();
-            try
-            {
-                var rows = DbHelper.Query("SELECT TOP 2 RELEASE_YEAR, ALBUM_NAME, ALBUM_ART, BAND_NAME FROM ALBUMS ORDER BY RELEASE_YEAR DESC; ");
+        // private List<ALBUM> GetTopAlbums2()
+        // {
+        //    List<ALBUM> organize = new List<ALBUM>();
+        //    try
+        //    {
+        //        var rows = DbHelper.Query("SELECT TOP 2 RELEASE_YEAR, ALBUM_NAME, ALBUM_ART, BAND_NAME FROM ALBUMS ORDER BY RELEASE_YEAR DESC; ");
 
-                foreach (DataRow row in rows)
-                {
-                    var album = new ALBUM
-                    {
-                        RELEASE_YEAR = (int)row["RELEASE_YEAR"],
-                        ALBUM_NAME = (string)row["ALBUM_NAME"],
-                        ALBUM_ART = (string)row["ALBUM_ART"],
-                        BAND_NAME = (string)row["BAND_NAME"]
-                    };
+        // foreach (DataRow row in rows)
+        //        {
+        //            var album = new ALBUM
+        //            {
+        //                RELEASE_YEAR = (int)row["RELEASE_YEAR"],
+        //                ALBUM_NAME = (string)row["ALBUM_NAME"],
+        //                ALBUM_ART = (string)row["ALBUM_ART"],
+        //                BAND_NAME = (string)row["BAND_NAME"]
+        //            };
 
-                    organize.Add(album);
-                }
+        // organize.Add(album);
+        //        }
 
-                return organize;
-            }
-            catch (Exception)
-            {
-                return organize;
-            }
-        }
-
+        // return organize;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return organize;
+        //    }
+        // }
         private ARTIST GetRandomArtist()
         {
             var artist = new ARTIST();

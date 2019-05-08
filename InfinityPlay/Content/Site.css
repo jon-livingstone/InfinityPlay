@@ -493,7 +493,7 @@ a.link-subtle.navBar-link.active::after {
 }
 
 .discover {
-    padding: 0px;
+    padding: 0;
     display: inline-block;
     padding-left: 10px;
     padding-right: 10px;
@@ -876,7 +876,7 @@ a.tracklist:focus, a.tracklist:hover , a.track-time:focus, a.track-time:hover {
 }
 
 .playback-bar .progress_bar{
-    width: 0%;
+    width: 0;
     background-color: #fff;
     animation: width 10s infinite;
 }
@@ -920,41 +920,6 @@ a.tracklist:focus, a.tracklist:hover , a.track-time:focus, a.track-time:hover {
     min-width: 40px;
     text-align: center;
 }
-
-.slidecontainer {
-    width: 100%;
-}
-
-.slider {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 25px;
-    background: #d3d3d3;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-}
-
-    .slider:hover {
-        opacity: 1;
-    }
-
-    .slider::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 25px;
-        height: 25px;
-        background: #4CAF50;
-        cursor: pointer;
-    }
-
-    .slider::-moz-range-thumb {
-        width: 25px;
-        height: 25px;
-        background: #4CAF50;
-        cursor: pointer;
-    }
 
 .progress_bar {
     height: 12px;
@@ -1180,6 +1145,7 @@ a.tracklist:focus, a.tracklist:hover , a.track-time:focus, a.track-time:hover {
 
     .mo-tracklist-info-album {
         font-size: 18px;
+
     }
     }
 
