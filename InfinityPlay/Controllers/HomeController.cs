@@ -147,7 +147,6 @@ namespace InfinityPlay.Controllers
         }
 
         private List<ALBUM> GetTopAlbums1()
-
         {
             try
             {
@@ -161,14 +160,14 @@ namespace InfinityPlay.Controllers
             }
         }
 
-        //private List<ALBUM> GetTopAlbums2()
-        //{
+        // private List<ALBUM> GetTopAlbums2()
+        // {
         //    List<ALBUM> organize = new List<ALBUM>();
         //    try
         //    {
         //        var rows = DbHelper.Query("SELECT TOP 2 RELEASE_YEAR, ALBUM_NAME, ALBUM_ART, BAND_NAME FROM ALBUMS ORDER BY RELEASE_YEAR DESC; ");
 
-        //        foreach (DataRow row in rows)
+        // foreach (DataRow row in rows)
         //        {
         //            var album = new ALBUM
         //            {
@@ -178,17 +177,16 @@ namespace InfinityPlay.Controllers
         //                BAND_NAME = (string)row["BAND_NAME"]
         //            };
 
-        //            organize.Add(album);
+        // organize.Add(album);
         //        }
 
-        //        return organize;
+        // return organize;
         //    }
         //    catch (Exception)
         //    {
         //        return organize;
         //    }
-        //}
-
+        // }
         private ARTIST GetRandomArtist()
         {
             var artist = new ARTIST();
