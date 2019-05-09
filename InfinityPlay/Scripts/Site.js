@@ -3,7 +3,7 @@
 $(document).ready(function () {
     $('ul#navLinks li').click(function () {
         const url = $(this).attr('data-page-type');
-        history.pushState(null, null, url);
+        history.replaceState(null, null, url);
         $('#mainContent').load("/partial/" + url, "", function () {
             Grade(document.querySelectorAll('.gradient-wrap'));
         });
@@ -152,3 +152,13 @@ function toggleVolume() {
     player.muted = !player.muted
     $("#volumeIcon").toggleClass("fa-volume-up").toggleClass("fa-volume-mute");
 }
+
+
+    $('.play-album-link').click(function () {
+        const albumid = $(this).attr('data-albumid');
+        const url = '/Album/' + albumid;
+        history.pushState(null, null, url);
+        $('#mainContent').load("/partial" + url, "", function () {
+            Grade(document.querySelectorAll(''));
+        });
+    });

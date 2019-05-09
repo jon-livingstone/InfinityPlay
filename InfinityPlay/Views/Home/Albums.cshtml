@@ -23,11 +23,11 @@
                             </div>
                         </div>
                         <div class="mo-info">
-                            <div class="mo-info-album" href="/album/@item.ALBUM_ID">
+                            <div class="mo-info-album" href="@item.ALBUM_ID">
                                 <div>@item.ALBUM_NAME</div>
                             </div>
                             <div>
-                                <div class="mo-info-artist">/artist/@item.BAND_NAME</div>
+                                <div class="mo-info-artist">@item.BAND_NAME</div>
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
         $('.play-album-link').click(function () {
             const albumid = $(this).attr('data-albumid');
             const url = '/Album/' + albumid;
-            history.pushState(null, null, url);
+            history.replaceState(null, null, url);
             $('#mainContent').load("/partial" + url, "", function () {
                 Grade(document.querySelectorAll(''));
             });

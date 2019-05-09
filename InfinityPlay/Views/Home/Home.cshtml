@@ -1,9 +1,9 @@
 ﻿@model InfinityPlay.Models.HomeModels.HomePageModel
 
-<div class=" content-spacing gradient-wrap  w-100">
+<div class=" content-spacing">
     <div class="container">
         <div class="jumbotron-fluid pt-3">
-            <div class="row gradient-wrap">
+            <div class="row ">
                 <div class="col-md-6 banner-text">
                     <h1 class="d-block display-3 text-lg-right">Featured Artist</h1>
                     <h2 class="d-block mt-2 text-lg-right">@Model.Artist.ARTIST_NAME</h2>
@@ -23,23 +23,22 @@
         <div class="grid-row">
             @foreach (var item in Model.Albums)
             {
-
                 <div class="col-xs-6 col-sm-5 col-6 col-md-4 col-lg-3 col-xl-2">
                     <div class="media-object" style="max-width: 300px;">
                         <div class="media-object-hoverable">
                             <div class="media-object-wrapper">
                                 <img src="@item.ALBUM_ART" class="img-fluid img-thumbnail image" />
                                 <div class="overlay_image">
-                                    <a class="cover-art play-icon" aria-hidden="true" href="#">
+                                    <div class="cover-art play-icon play-album-link" aria-hidden="true" data-albumid="@item.ALBUM_ID">
                                         <div class="">
                                             <i class="far fa-play-circle"></i>
                                         </div>
-                                    </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="mo-info">
-                            <div class="mo-info-album" dir="auto" href="#">
+                            <div class="mo-info-album play-album-link"  data-albumid="@item.ALBUM_ID">
                                 <div>@item.ALBUM_NAME</div>
                             </div>
                             <div>
@@ -48,8 +47,19 @@
                         </div>
                     </div>
                 </div>
-
             }
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $('.play-album-link').click(function () {
+            const albumid = $(this).attr('data-albumid');
+            const url = '/Album/' + albumid;
+            history.replaceState(null, null, url);
+            $('#mainContent').load("/partial" + url, "", function () {
+                Grade(document.querySelectorAll(''));
+            });
+        });
+    });
+</script>

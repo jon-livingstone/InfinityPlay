@@ -218,7 +218,7 @@ namespace InfinityPlay.Controllers
 
                 return list;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return list;
             }
