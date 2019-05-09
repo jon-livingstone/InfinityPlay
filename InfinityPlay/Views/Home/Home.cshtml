@@ -56,7 +56,7 @@
         $('.play-album-link').click(function () {
             const albumid = $(this).attr('data-albumid');
             const url = '/Album/' + albumid;
-            history.replaceState(null, null, url);
+            history.replaceState({}, null, url);
             $('#mainContent').load("/partial" + url, "", function () {
                 Grade(document.querySelectorAll(''));
             });

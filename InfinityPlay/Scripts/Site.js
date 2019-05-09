@@ -2,8 +2,9 @@
 //-------------Navigating the app without hard reloading pages
 $(document).ready(function () {
     $('ul#navLinks li').click(function () {
-        const url = $(this).attr('data-page-type');
-        history.replaceState(null, null, url);
+        const page = $(this).attr('data-page-type');
+        const url = page;
+        window.history.replaceState({}, null, url);
         $('#mainContent').load("/partial/" + url, "", function () {
             Grade(document.querySelectorAll('.gradient-wrap'));
         });
@@ -153,12 +154,3 @@ function toggleVolume() {
     $("#volumeIcon").toggleClass("fa-volume-up").toggleClass("fa-volume-mute");
 }
 
-
-    $('.play-album-link').click(function () {
-        const albumid = $(this).attr('data-albumid');
-        const url = '/Album/' + albumid;
-        history.pushState(null, null, url);
-        $('#mainContent').load("/partial" + url, "", function () {
-            Grade(document.querySelectorAll(''));
-        });
-    });

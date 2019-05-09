@@ -1,6 +1,6 @@
 ﻿@model InfinityPlay.Models.HomeModels.ALBUM
 
-<div class="content-spacing vh-100">
+<div class="content-spacing">
     <div class="container-fluid d-md-inline-flex">
         <div class="col-sm-4">
             <div class="playlist col-sticky">
@@ -34,7 +34,11 @@
                             <div class="mt-2 track-time" data-duration="@track.DURATION">
                             </div>
                         </div>
-                    }
+
+                    } 
+                    <div>
+                        <p class="pl-5 pb-5 pt-5 text-muted" style="color: white;"> @Model.RECORD_LABEL</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -49,8 +53,8 @@
         });
     });
 
-    $(document).ready(function () {
+    @*$(document).ready(function () {
         $('#posters').each(function () {
             var showPoster = $(this).data(@Model.ALBUM_ART);
-    });
+    });*@
 </script>

@@ -29,7 +29,8 @@
     <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
     <StyleCopTreatErrorsAsWarnings>True</StyleCopTreatErrorsAsWarnings>
     <ApplicationInsightsResourceId>/subscriptions/7f0ecf0e-8a4c-4cc2-81b7-f35f964a650a/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/InfinityPlay</ApplicationInsightsResourceId>
-    <ApplicationInsightsAnnotationResourceId>/subscriptions/7f0ecf0e-8a4c-4cc2-81b7-f35f964a650a/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/InfinityPlay</ApplicationInsightsAnnotationResourceId>
+    <ApplicationInsightsAnnotationResourceId>
+    </ApplicationInsightsAnnotationResourceId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -148,7 +149,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AiHandleErrorAttribute.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -226,10 +226,6 @@
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
     <Content Include="InfinityPlay.ruleset" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Connected Services\Application Insights\ConnectedService.json" />
     <None Include="Properties\PublishProfiles\InfinityPlay-2019-03-29 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\InfinityPlay-2019-03-29 - Web Deploy1.pubxml" />
     <None Include="Properties\PublishProfiles\InfinityPlay-2019-03-29 - Web Deploy2.pubxml" />
@@ -288,8 +284,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Connected Services\Application Insights\" />
     <Folder Include="Content\Icons\" />
     <Folder Include="DAL\" />
+    <Folder Include="ErrorHandler\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
