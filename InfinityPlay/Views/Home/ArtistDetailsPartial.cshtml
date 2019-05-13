@@ -1,0 +1,66 @@
+﻿@model InfinityPlay.Models.HomeModels.ARTIST
+
+<div class="content-spacing min-vh-100">
+    <div class="container-fluid d-md-inline-flex">
+        <div class="col-sm-4">
+            <div class="playlist col-sticky">
+                <header class="trackList text-center">
+                    <img src="@Model.ARTIST_IMG" class="img-fluid banner-img img-thumbnail" id="posters" height="400" />
+                    <div class="mo-info" @Model.ARTIST_ID>
+                        <div class="d-block mt-4 mo-tracklist-info-artist" id=""> @Model.ARTIST_NAME</div>
+                    </div>
+                </header>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="col-sm-8">
+                <div class="position-relative .tracklist">
+                    @foreach (var album in Model.Albums)
+                    {
+                        <div class="row d-flex tracklist-row p-3" role="button" tabindex="0" onclick="playTrack('@album.ALBUM_ART')">
+                            <div class="pr-3 mt-2">
+                                <button class="tracklist-play-pause" id="songs" data-albumid="@album.ALBUM_ID" title="Play" aria-hidden="true">
+                                    <i class="fas fa-play" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <div class="flex-grow-1">
+                                <div class="mo-info">
+                                    <div class="mo-info-album" href="@album.ALBUM_ID">
+                                        <div>@album.ALBUM_NAME</div>
+                                    </div>
+                                    <div>
+                                        <div class="mo-info-artist">@album.BAND_NAME</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                Model
+            </div>
+            <div class="container-fluid">
+                <div class="col-sm-8">
+                    <div class="position-relative .tracklist">
+                        @foreach (var track in Model.Tracks)
+                        {
+                            <div class="row d-flex tracklist-row p-3" role="button" tabindex="0" onclick="playTrack('@track.TRACK_FILE')">
+                                <div class="pr-3 mt-2">
+                                    <button class="tracklist-play-pause" id="songs" data-audio='@track.TRACK_FILE' )" title="Play" aria-hidden="true">
+                                        <i class="fas fa-play" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <div class="mt-2 d-block" id="song-title">@track.TRACK_NAME</div>
+                                    <div class="text-muted" id="song-artist">@track.Artist.ARTIST_NAME</div>
+                                </div>
+                                <div class="mt-2 track-time" data-duration="@track.DURATION">
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
