@@ -215,8 +215,7 @@ ul {
 }
 
 .navBar {
-    padding-top: 24px;
-    padding-bottom: 5px;
+    padding-top: 15px;
     -webkit-box-orient: vertical;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -819,7 +818,6 @@ a.tracklist:focus, a.tracklist:hover , a.track-time:focus, a.track-time:hover {
 
 .player-controls__buttons {
     margin-bottom: 12px;
-    width: 130px;
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
@@ -1120,7 +1118,7 @@ a.tracklist:focus, a.tracklist:hover , a.track-time:focus, a.track-time:hover {
 
     .root-main-view {
         padding-bottom: 90px;
-        padding-top: 140px;
+        padding-top: 105px;
         padding-left:0 !important;
     }
 

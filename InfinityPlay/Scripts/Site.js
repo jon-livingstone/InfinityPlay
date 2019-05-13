@@ -44,10 +44,7 @@ console.clear();
 //    $(this).find("i").toggleClass("fa-play-circle fa-pause-circle");
 //});
 
-const songs = [];
-const songNames = [];
-const artists = [];
-const posters = [];
+
 
 var player = new Audio();
 var currentSong = 0;
@@ -58,7 +55,66 @@ var currentSong = 0;
 //    document.getElementById("songArtist").textContent = artists[currentSong];
 //});
 
+//var xhr = new XMLHttpRequest();
+//const url = 'https://jsonplaceholder.typicode.com/posts';
+//xhr.open("GET", url, true );
+//xhr.send();
 
+//xhr.onreadystatechange = function () {
+//    if (xhr.readyState == 4 && xhr.status == 200) {
+//        alert(xhr.responseText);
+//    }
+//};
+
+//xhr.onload = function () {
+
+//}
+
+//$(document).ready(function () {
+//    var tracks = [
+//        {
+//            trackName: 'The Journey',
+//            trackArtist: 'Tom Misch',
+//            trackFile: 'E8F45485-EC19-4A0C-93AC-B840D83F8A9D.mp3',
+//            trackNumer: '1',
+//            trackDuration: '265',
+//            trackArt: 'TM-SWL008.jpg'
+//        },
+//        {
+//            trackName: 'Risk',
+//            trackArtist: 'Tom Misch',
+//            trackFile: '57726A4A-5D8B-4719-A43B-70E6929B4082.mp3',
+//            trackNumer: '2',
+//            trackDuration: '265',
+//            trackArt: 'TM-SWL008.jpg'
+//        },
+//        {
+//            trackName: 'South East',
+//            trackArtist: 'Tom Misch',
+//            trackFile: '72588257-3D20-4697-8910-CB06698D75E8',
+//            trackNumer: '3',
+//            trackDuration: '265',
+//            trackArt: 'TM-SWL008.jpg'
+//        }
+//    ]
+//});
+
+//for (let track of tracks) {
+//    $("#songs").appendd('<div class="row d-flex tracklist-row p-3" role="button" tabindex="0" data-audio="' + tracks.trackFile + '">' +
+//        '<div class= "pr-3 mt-2" >' +
+//        '<button class="tracklist-play-pause" id="songs" data-audio="' + tracks.trackFile + '" aria-hidden="true">' +
+//        '<i class="fas fa-play" aria-hidden="true">' +
+//        '</i>' +
+//        '</button>' +
+//        '</div>' +
+//        '< div class="flex-grow-1" >' +
+//        '<div class="mt-2 d-block" id="title">' + tracks.trackName + '</div>' +
+//        ' <div class="text-muted" id="artist">' + tracks.trackArtist + '</div >' +
+//        '</div>' +
+//        '<div class="mt-2 track-time" data-duration="' + tracks.trackDuration + '>' +
+//        '</div>' +
+//        '</div>');
+//}
 
 function playTrack(trackId) {
     player.currentSong = 0;

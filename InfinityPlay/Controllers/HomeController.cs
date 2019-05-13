@@ -71,17 +71,20 @@ namespace InfinityPlay.Controllers
             return View("Albums", list);
         }
 
-        // ----- Search
-        [Route("Partial/Search")]
-        public ActionResult SearchPartial()
-        {
-            return PartialView("Search");
-        }
+        // ----- Artist Details
+        //[Route("Partial/Artist/{artistId}")]
+        //public ActionResult ArtistDetailsPartial(int artistId)
+        //{
+        //    var artist = ArtistData(artistId);
+        //    return PartialView("ArtistDetails", artist);
+        //}
 
-        public ActionResult Search()
-        {
-            return View("Search");
-        }
+        //[Route("Artist/{artistId}")]
+        //public ActionResult ArtistDetails(int artistId)
+        //{
+        //    var artist = ArtistData(artistId);
+        //    return View("ArtistDetails", artist);
+        //}
 
         // ----- Album Details
         [Route("Partial/Album/{albumId}")]
@@ -99,6 +102,40 @@ namespace InfinityPlay.Controllers
         }
 
         // ---------- PRIVATE METHODS ------------ //
+        //private ARTIST ArtistData(int artistId)
+        //{
+        //    var artist = new ARTIST();
+
+        //    var rows = DbHelper.Query("SELECT * FROM ARTISTS JOIN tracks ON tracks.ARTIST_ID = ARTISTS.ARTIST_ID JOIN ALBUMS ON ARTISTS.ALBUM_ID = ALBUMS.ALBUM_ID WHERE  ARTISTS.ARTIST_ID = 1" + artistId);
+
+        //    artist.ARTIST_ID = (int)rows[0]["ARTIST_ID"];
+        //    artist.ARTIST_NAME = (string)rows[0]["ARTIST_NAME"];
+        //    artist.ARTIST_IMG = (string)rows[0]["ARTIST_IMG"];
+
+        //    foreach (var row in rows)
+        //    {
+        //        var track = new TRACK
+        //        {
+        //            TRACK_FILE = (string)row["TRACK_FILE"],
+        //            TRACK_NAME = (string)row["TRACK_NAME"],
+        //            DURATION = (int)row["DURATION"],
+        //            TRACK_NUMBER = (int)row["TRACK_NUMBER"],
+
+        //            Album = new ARTIST()
+        //        };
+
+        //        track.Artist.ARTIST_IMG = (string)row["ARTIST_IMG"];
+        //        track.Artist.ARTIST_NAME = (string)row["ARTIST_NAME"];
+        //        track.Artist.Tracks.Add(track);
+
+        //        track.Album = album;
+
+        //        album.Tracks.Add(track);
+
+        //        return artist;
+        //    }
+        //}
+
         private ALBUM AlbumData(int albumId)
         {
             var album = new ALBUM();
@@ -134,7 +171,6 @@ namespace InfinityPlay.Controllers
             return album;
         }
 
-        // ---------- PRIVATE METHODS ------------//
         // Home -----------------------------------
         private HomePageModel GetPageModel()
         {

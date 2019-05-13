@@ -17,7 +17,7 @@
                             <div class="media-object-wrapper">
                                 <img src="@item.ARTIST_IMG" class="img-fluid img-thumbnail image" />
                                 <div class="overlay_image">
-                                    <a class="cover-art play-icon" aria-hidden="true" href="#">
+                                    <a class="cover-art play-icon artist-link" aria-hidden="true" href="#" @*data-artistid="@item.ARTIST_ID"*@>
                                         <div class="">
                                             <i class="far fa-play-circle"></i>
                                         </div>
@@ -34,3 +34,19 @@
         </div>
     </div>
 </div>
+
+<script>
+    //$(document).ready(function () {
+    //    $('.artist-link').click(function () {
+    //        const artistid = $(this).attr('data-artistid');
+    //        const url = '/Artist/' + artistid;
+    //        history.replaceState(null, null, url);
+    //        $('#mainContent').load("/partial" + url, "");
+    //    });
+    //});
+
+    @*$(document).ready(function () {
+        $('#posters').each(function () {
+            var showPoster = $(this).data(@Model.ALBUM_ART);
+    });*@
+</script>

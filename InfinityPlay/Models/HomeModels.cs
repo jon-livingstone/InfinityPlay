@@ -40,6 +40,7 @@ namespace InfinityPlay.Models
             public ARTIST()
             {
                 Tracks = new List<TRACK>();
+                Albums = new List<ALBUM>();
             }
 
             [Key]
@@ -50,6 +51,8 @@ namespace InfinityPlay.Models
             public string ARTIST_IMG { get; set; }
 
             public List<TRACK> Tracks { get; set; }
+
+            public List<ALBUM> Albums { get; set; }
         }
 
         public class ALBUM
@@ -73,6 +76,7 @@ namespace InfinityPlay.Models
             public string RECORD_LABEL { get; set; }
 
             public List<TRACK> Tracks { get; set; }
+
         }
 
         public class TRACK
